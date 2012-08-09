@@ -1,0 +1,252 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>标题</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <style type="text/css">
+        *{margin: 0;padding: 0;font-size: 12px;}
+        .wrapper{margin-left: 2px;}
+        .base{width: 472px;height: 70px; margin-left: 10px;margin-top:10px;border: 1px solid #ddd;}
+        legend{margin-left: 5px; font-weight: bold;font-size: 12px;color: #0066cc;}
+        fieldset table{margin-left: 5px;float: left;}
+        select{width: 50px}
+        .base table{margin-left: 10px;}
+        .base table tr{height: 25px;}
+        input{ width: 50px;border:1px solid #ccc;}
+        .extend {width: 300px;height: 160px;margin:10px;;float: left;border: 1px solid #ddd;}
+        .extend table{height: 135px;}
+        #preview{width: 160px;height: 155px;float: left;border: 1px solid #ccc;margin: 16px 0;background-color: #eee}
+        span.bold{font-weight: bold}
+        #preview table {margin:3px 5px;}
+        #preview table td{width: 30px;height: 20px;}
+        #message{float: left;width: 110px;margin-left: 10px;font-size: 10px;color: red;line-height: 15px}
+        #messageContent{color: green;margin-top: 5px;}
+        .extend select{width: 90px}
+        #bgColor{width: 85px;}
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <fieldset  class="base">
+            <legend>基本信息</legend>
+            <table>
+                <tr>
+                    <td width="120"><label for="numRows">行数: </label><input id="numRows" type="text"  /> 行</td>
+                    <td>
+                        <label for="width">宽度: </label><input id="width" type="text"  />
+                        <label for="widthUnit">度量单位: </label>
+                        <select id="widthUnit">
+                            <option value="%">%</option>
+                            <option value="px">px</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="numCols">列数: </label><input id="numCols" type="text"  /> 列</td>
+                    <td>
+                        <label for="height">高度: </label><input id="height" type="text"  />
+                        <label for="heightUnit">度量单位: </label>
+                        <select id="heightUnit">
+                            <option value="%">%</option>
+                            <option value="px">px</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <div id="message" style="display: none">
+                <p>温馨提示：</p>
+                <p id="messageContent">边距最大值不能超过13px！</p>
+            </div>
+        </fieldset>
+        <div>
+            <fieldset  class="extend">
+                <legend>扩展信息<span style="font-weight: normal;">(可预览)</span></legend>
+                <table>
+                    <tr>
+                        <td width="60"><span class="bold">表格边框</span>:</td>
+                        <td><label for="border">大小: </label><input id="border" type="text"  /> px&nbsp;</td>
+                        <td><label for="borderColor">颜色: </label><input id="borderColor" type="text"  /></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #ddd">
+                        <td><span class="bold">边距间距</span>:</td>
+                        <td><label for="cellPadding">边距: </label><input id="cellPadding" type="text"  /> px&nbsp;</td>
+                        <td><label for="cellSpacing">间距: </label><input id="cellSpacing" type="text"  /> px </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><span class="bold">表格的背景颜色</span>:
+                            <input id="bgColor" type="text"  />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><span class="bold">表格的对齐方式</span>:
+                            <select id="align">
+                                <option value="">默认</option>
+                                <option value="center">居中</option>
+                                <option value="left">居左</option>
+                                <option value="right">居右</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                       <td colspan="3">
+                           <span class="bold">边框设置作用于</span>:
+                           <select id="borderType">
+                               <option value="0">仅表格</option>
+                               <option value="1">所有单元格</option>
+                           </select>
+                       </td>
+                    </tr>
+
+                </table>
+            </fieldset>
+
+            <div id="preview">
+                <table border="1" borderColor="#000" cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
+                    <tr><td>这</td><td>是</td><td>用</td></tr>
+                    <tr><td>来</td><td>预</td><td>览</td></tr>
+                    <tr><td>的</td><td></td><td></td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="../internal.js"></script>
+    <script type="text/javascript" src="table.js"></script>
+    <script type="text/javascript">
+        var inputs = document.getElementsByTagName('input'),
+            selects=document.getElementsByTagName('select');
+        //ie给出默认值
+        for(var i=0,ci;ci=inputs[i++];){
+            switch (ci.id){
+                case 'numRows':
+                case 'numCols':
+                    ci.value = 5;
+                    break;
+                case 'bgColor':
+                    ci.value = '#FFFFFF';
+                    break;
+                case 'borderColor':
+                    ci.value = '#000000';
+                    break;
+                case 'border':
+                    ci.value = 1;
+                    break;
+                case 'cellSpacing':
+                case 'cellPadding':
+                    ci.value = '0';
+                    break;
+                default:
+            }
+        }
+        for(var i=0,ci;ci=selects[i++];){
+            ci.options[0].selected = true;
+        }
+        var state = editor.queryCommandState("edittable");
+        if(state == 0){
+            var range = editor.selection.getRange(),
+                    table = domUtils.findParentByTagName(range.startContainer,'table',true);
+            if(table){
+                var numRows = table.rows.length,cellCount=0;
+                //列取最大数
+                for(var i=0,ri;ri=table.rows[i++];){
+                    var tmpCellCount = 0;
+                    for(var j=0,cj;cj=ri.cells[j++];){
+                        if(cj.style.display != 'none'){
+                            tmpCellCount++;
+                        }
+                    }
+                    cellCount = Math.max(tmpCellCount,cellCount)
+                }
+                domUtils.setAttributes($G('numRows'),{
+                    'value':numRows,
+                    'disabled':true
+                });
+                domUtils.setAttributes($G('numCols'),{
+                    'value':cellCount,
+                    'disabled':true
+                });
+
+                $G("cellPadding").value = table.getAttribute("cellPadding") || '0';
+                $G("cellSpacing").value = table.getAttribute("cellSpacing") || '0';
+
+                var value = table.getAttribute('width');
+                value = !value ? ['',table.offsetWidth]:/%$/.test(value) ? value.match(/(\d+)(%)?/) : ['',value.replace(/px/i,'')];
+                $G("width").value = value[1];
+                $G('widthUnit').options[value[2] ? 0:1].selected = true;
+                value = table.getAttribute('height');
+                value = !value ? ['','']:/%$/.test(value) ? value.match(/(\d+)(%)?/) : ['',value.replace(/px/i,'')];
+                $G("height").value = value[1];
+                $G('heightUnit').options[value[2]?0:1].selected = true;
+                $G('borderColor').value = (table.getAttribute('borderColor')||"#000000").toUpperCase();
+                $G("border").value = table.getAttribute("border");
+                for(var i=0,ip,opts= $G("align").options;ip=opts[i++];){
+                    if(ip.value == table.getAttribute('align')){
+                        ip.selected = true;
+                        break;
+                    }
+                }
+                $G("borderType").options[table.getAttribute('borderType') == '1' ? 1: 0].selected = true;
+                $G("bgColor").value = (table.getAttribute("bgColor")||"#FFFFFF").toUpperCase();
+                createTable();
+            }
+        }else{
+            $focus($G("numRows"));
+        }
+        init();
+
+        domUtils.on($G("width"),"keyup",function(){
+            var value = this.value;
+            if(value>100){
+                $G("widthUnit").value="px";
+            }
+        });
+        domUtils.on($G("height"),"keyup",function(){
+            var value = this.value;
+            if(value>100){
+                $G("heightUnit").value="px";
+            }
+        });
+
+        dialog.onok = function(){
+            for(var i=0,opt={},ci;ci=inputs[i++];){
+                switch (ci.id){
+                    case 'numRows':
+                    case 'numCols':
+                    case 'height':
+                    case 'width':
+                        if(ci.value && !/^[1-9]+[0-9]*$/.test(ci.value)){
+                            alert("请输入正确的数值！");
+                            $focus(ci);
+                            return false;
+                        }
+                        break;
+                    case 'cellspacing':
+                    case 'cellpadding':
+                    case 'border':
+                        if(ci.value && !/^[0-9]*$/.test(ci.value)){
+                            alert("请输入正确的数值！");
+                            $focus(ci);
+                            return false;
+                        }
+                        break;
+                    case 'bgColor':
+                    case 'borderColor':
+                        if(ci.value && !/^#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(ci.value)){
+                            alert("请输入正确的颜色值");
+                            $focus(ci);
+                            return false;
+                        }
+                        break;
+                    default:
+                }
+                opt[ci.id] = ci.value || (ci.id == 'border' ? 0 : '')
+            }
+
+            for(var i=0,ci;ci=selects[i++];){
+                opt[ci.id] = ci.value.toUpperCase()
+            }
+            editor.execCommand(state == -1 ? 'inserttable' : 'edittable',opt );
+        };
+    </script>
+</body>
+</html>

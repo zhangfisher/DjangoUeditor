@@ -1,0 +1,18 @@
+<textarea name={{ UEditor.name }} id=id_{{ UEditor.name }} style="width:{{ UEditor.width }}px;height:{{ UEditor.height }}px;{{ UEditor.css }}">{{UEditor.value}}</textarea>
+<script type="text/javascript">
+     var id_{{ UEditor.name  }}= new baidu.editor.ui.Editor({
+         "UEDITOR_HOME_URL":"{{ STATIC_URL }}ueditor/",
+         {% ifnotequal UEditor.toolbars None %}"toolbars":{{ UEditor.toolbars|safe }},{% endifnotequal %}
+         "imageUrl":"/ueditor/ImageUp/{{ UEditor.imagePath }}",
+         "imagePath":"{{ MEDIA_URL }}{{ UEditor.imagePath }}",
+         "imageManagerUrl":"/ueditor/ImageManager/{{ UEditor.imageManagerPath }}",
+         "imageManagerPath":"{{ MEDIA_URL }}{{ UEditor.imageManagerPath }}",
+         "catcherUrl":"/ueditor/RemoteCatchImage/{{ UEditor.imagePath }}",
+         "catcherPath":"{{ MEDIA_URL }}{{ UEditor.imagePath }}",
+         "fileUrl":"/ueditor/FileUp/{{ UEditor.filePath }}",
+         "filePath":"{{ MEDIA_URL }}{{ UEditor.filePath }}",
+         "getMovieUrl":"/ueditor/SearchMovie/"
+         {% ifnotequal UEditor.options '' %},{{ UEditor.options|safe }}{% endifnotequal %}
+     });
+     id_{{UEditor.name}}.render('id_{{ UEditor.name }}');
+</script>

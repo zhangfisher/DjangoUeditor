@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title></title>
+    
+    <script type="text/javascript" charset="utf-8" src="../editor_config.js"></script>
+
+    <!--使用版-->
+    <!--<script type="text/javascript" charset="utf-8" src="../editor_all.js"></script>-->
+
+    <!--开发版-->
+    <script type="text/javascript" charset="utf-8" src="editor_api.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../themes/default/ueditor.css"/>
+    <style type="text/css">
+        body{
+            font-size:14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>UEditor提交示例</h1>
+    <form id="form" method="post" action="../php/getContent.php">
+        <p style="color:red">给容器name，那么在后台就可以按着name给的键值在后台一次取的编辑器的值</p>
+        <!--style给定宽度可以影响编辑器的最终宽度-->
+        <script type="text/plain" id="myEditor" name="myEditor"style="width:1000px">
+            <p>这里我可以写一些输入提示</p>
+        </script>
+        <p>&nbsp;&nbsp;</p>
+        <textarea id="myEditor1" name="myEditor1" style="width:600px;">编辑器2</textarea>
+        <p>直接提交<input type="submit" id="submitInner" value="表单内部提交" /></p>
+    </form>
+    手动调用form的submit方法提交需要使用sync方法<input type="button" value="手动提交" onclick="sync()" />
+  
+    <script type="text/javascript">
+
+        var editor_a = new baidu.editor.ui.Editor();
+        editor_a.render( 'myEditor' );
+        var editor_a1 = new baidu.editor.ui.Editor();
+        editor_a1.render( 'myEditor1' );
+        //同步
+        function sync(){
+            editor_a.sync();
+            editor_a1.sync();
+            document.getElementById('form').submit()
+        }
+    </script>
+
+</body>
+
+
+</html>
