@@ -1,6 +1,5 @@
 #coding:utf-8
 from django.http import HttpResponse
-from  PIL import Image
 import settings as USettings
 import os
 from  utils import GenerateRndFilename
