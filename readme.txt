@@ -1,15 +1,18 @@
-Ueditor HTMLç¼–è¾‘å™¨æ˜¯ç™¾åº¦å¼€æºçš„HTMLç¼–è¾‘å™¨ï¼Œ
+Ueditor HTML±à¼­Æ÷ÊÇ°Ù¶È¿ªÔ´µÄHTML±à¼­Æ÷£¬
 
-æœ¬æ¨¡å—å¸®åŠ©åœ¨Djangoåº”ç”¨ä¸­é›†æˆç™¾åº¦Ueditor HTMLç¼–è¾‘å™¨ã€‚
-å®‰è£…åŒ…ä¸­å·²ç»é›†æˆUeditor v1.2.2
+±¾Ä£¿é°ïÖúÔÚDjangoÓ¦ÓÃÖĞ¼¯³É°Ù¶ÈUeditor HTML±à¼­Æ÷¡£
+°²×°°üÖĞÒÑ¾­¼¯³ÉUeditor v1.2.2
 
-ä½¿ç”¨Django-Ueditoréå¸¸ç®€å•ï¼Œæ–¹æ³•å¦‚ä¸‹ï¼š
+Ê¹ÓÃDjango-Ueditor·Ç³£¼òµ¥£¬·½·¨ÈçÏÂ£º
 
-1ã€å®‰è£…æ–¹æ³•
-	ä¸‹è½½å®‰è£…åŒ…ï¼Œåœ¨å‘½ä»¤è¡Œè¿è¡Œï¼š
-	python setup.py install
+1¡¢°²×°·½·¨
+	
+	**·½·¨Ò»£ºÏÂÔØ°²×°°ü£¬ÔÚÃüÁîĞĞÔËĞĞ£º
+		python setup.py install
+	**·½·¨¶ş£ºÊ¹ÓÃpip¹¤¾ßÔÚÃüÁîĞĞÔËĞĞ(ÍÆ¼ö)£º
+   		pip install DjangoUeditor
 
-2ã€åœ¨INSTALL_APPSé‡Œé¢å¢åŠ DjangoUeditor appï¼Œå¦‚ä¸‹ï¼š
+2¡¢ÔÚINSTALL_APPSÀïÃæÔö¼ÓDjangoUeditor app£¬ÈçÏÂ£º
      
 		INSTALLED_APPS = (
 			#........
@@ -17,57 +20,54 @@ Ueditor HTMLç¼–è¾‘å™¨æ˜¯ç™¾åº¦å¼€æºçš„HTMLç¼–è¾‘å™¨ï¼Œ
 		)
 
 
-3ã€åœ¨urls.pyä¸­å¢åŠ ï¼š
+3¡¢ÔÚurls.pyÖĞÔö¼Ó£º
 
-         url(r'^ueditor/',include('DjangoUeditor.urls' ),name='ueditor'),
+	url(r'^ueditor/',include('DjangoUeditor.urls' ),name='ueditor'),
 
-4ã€åœ¨modelsä¸­è¿™æ ·å®šä¹‰ï¼š
+4¡¢ÔÚmodelsÖĞÕâÑù¶¨Òå£º
 	
 	from DjangoUeditor.models import UEditorField
 	class Blog(models.Model):
     	Name=models.CharField(,max_length=100,blank=True)
-    	Content=UEditorField('å†…å®¹	',height=100,width=500,default='test',imagePath="uploadimg/",imageManagerPath="imglib",toolbars='mini',options={"elementPathEnabled":True},filePath='upload',blank=True)
+    	Content=UEditorField('ÄÚÈİ	',height=100,width=500,default='test',imagePath="uploadimg/",imageManagerPath="imglib",toolbars='mini',options={"elementPathEnabled":True},filePath='upload',blank=True)
 
-	è¯´æ˜ï¼š
-	UEditorFieldç»§æ‰¿è‡ªmodels.TextField,å› æ­¤ä½ å¯ä»¥ç›´æ¥å°†modelé‡Œé¢å®šä¹‰çš„models.TextFieldç›´æ¥æ”¹æˆUEditorFieldå³å¯ã€‚
-	UEditorFieldæä¾›äº†é¢å¤–çš„å‚æ•°ï¼š
-        toolbars:é…ç½®ä½ æƒ³æ˜¾ç¤ºçš„å·¥å…·æ ï¼Œå–å€¼ä¸ºmini,normal,fullï¼Œä»£è¡¨å°ï¼Œä¸€èˆ¬ï¼Œå…¨éƒ¨ã€‚å¦‚æœé»˜è®¤çš„å·¥å…·æ ä¸ç¬¦åˆæ‚¨çš„è¦æ±‚ï¼Œæ‚¨å¯ä»¥åœ¨settingsé‡Œé¢é…ç½®è‡ªå·±çš„æ˜¾ç¤ºæŒ‰é’®ã€‚å‚è§åé¢ä»‹ç»ã€‚
-        imagePath:å›¾ç‰‡ä¸Šä¼ çš„è·¯å¾„,å¦‚"images/",å®ç°ä¸Šä¼ åˆ°"{{MEDIA_ROOT}}/images"æ–‡ä»¶å¤¹
-        filePath:é™„ä»¶ä¸Šä¼ çš„è·¯å¾„,å¦‚"files/",å®ç°ä¸Šä¼ åˆ°"{{MEDIA_ROOT}}/files"æ–‡ä»¶å¤¹
-        imageManagerPath:å›¾ç‰‡ç®¡ç†å™¨æ˜¾ç¤ºçš„è·¯å¾„ï¼Œå¦‚"imglib/",å®ç°ä¸Šä¼ åˆ°"{{MEDIA_ROOT}}/imglib",å¦‚æœä¸æŒ‡å®šåˆ™é»˜è®¤=imagepathã€‚
-        optionsï¼šå…¶ä»–UEditorå‚æ•°ï¼Œå­—å…¸ç±»å‹ã€‚å‚è§Ueditorçš„æ–‡æ¡£ueditor_config.jsé‡Œé¢çš„è¯´æ˜ã€‚
-        css:ç¼–è¾‘å™¨textareaçš„CSSæ ·å¼
-		widthï¼Œheight:ç¼–è¾‘å™¨çš„å®½åº¦å’Œé«˜åº¦ï¼Œä»¥åƒç´ ä¸ºå•ä½ã€‚
+	ËµÃ÷£º
+	UEditorField¼Ì³Ğ×Ômodels.TextField,Òò´ËÄã¿ÉÒÔÖ±½Ó½«modelÀïÃæ¶¨ÒåµÄmodels.TextFieldÖ±½Ó¸Ä³ÉUEditorField¼´¿É¡£
+	UEditorFieldÌá¹©ÁË¶îÍâµÄ²ÎÊı£º
+        toolbars:ÅäÖÃÄãÏëÏÔÊ¾µÄ¹¤¾ßÀ¸£¬È¡ÖµÎªmini,normal,full£¬´ú±íĞ¡£¬Ò»°ã£¬È«²¿¡£Èç¹ûÄ¬ÈÏµÄ¹¤¾ßÀ¸²»·ûºÏÄúµÄÒªÇó£¬Äú¿ÉÒÔÔÚsettingsÀïÃæÅäÖÃ×Ô¼ºµÄÏÔÊ¾°´Å¥¡£²Î¼ûºóÃæ½éÉÜ¡£
+        imagePath:Í¼Æ¬ÉÏ´«µÄÂ·¾¶,Èç"images/",ÊµÏÖÉÏ´«µ½"{{MEDIA_ROOT}}/images"ÎÄ¼ş¼Ğ
+        filePath:¸½¼şÉÏ´«µÄÂ·¾¶,Èç"files/",ÊµÏÖÉÏ´«µ½"{{MEDIA_ROOT}}/files"ÎÄ¼ş¼Ğ
+        imageManagerPath:Í¼Æ¬¹ÜÀíÆ÷ÏÔÊ¾µÄÂ·¾¶£¬Èç"imglib/",ÊµÏÖÉÏ´«µ½"{{MEDIA_ROOT}}/imglib",Èç¹û²»Ö¸¶¨ÔòÄ¬ÈÏ=imagepath¡£
+        options£ºÆäËûUEditor²ÎÊı£¬×ÖµäÀàĞÍ¡£²Î¼ûUeditorµÄÎÄµµueditor_config.jsÀïÃæµÄËµÃ÷¡£
+        css:±à¼­Æ÷textareaµÄCSSÑùÊ½
+        width£¬height:±à¼­Æ÷µÄ¿í¶ÈºÍ¸ß¶È£¬ÒÔÏñËØÎªµ¥Î»¡£
 
-5ã€åœ¨è¡¨å•ä¸­ä½¿ç”¨éå¸¸ç®€å•ï¼Œä¸å¸¸è§„çš„formå­—æ®µæ²¡ä»€ä¹ˆå·®åˆ«ï¼Œå¦‚ä¸‹ï¼š
+5¡¢ÔÚ±íµ¥ÖĞÊ¹ÓÃ·Ç³£¼òµ¥£¬Óë³£¹æµÄform×Ö¶ÎÃ»Ê²Ã´²î±ğ£¬ÈçÏÂ£º
 	
-	from  DjangoUeditor.widgets import UEditorWidget
-	from  DjangoUeditor.forms import UEditorField
-	***********************************
 	class TestUeditorModelForm(forms.ModelForm):
-    class Meta:
-        model=Blog
+    	class Meta:
+        	model=Blog
 	***********************************
-	å¦‚æœä¸æ˜¯ç”¨ModelFormï¼Œå¯ä»¥æœ‰ä¸¤ç§æ–¹æ³•ä½¿ç”¨ï¼š
+	Èç¹û²»ÊÇÓÃModelForm£¬¿ÉÒÔÓĞÁ½ÖÖ·½·¨Ê¹ÓÃ£º
 
-	1>forms.UEditorField
+	1: Ê¹ÓÃforms.UEditorField
 
 	from  DjangoUeditor.forms import UEditorField
 	class TestUEditorForm(forms.Form):
-	    Description=UEditorField("æè¿°",initial="abc",width=600,height=800)
+	    Description=UEditorField("ÃèÊö",initial="abc",width=600,height=800)
 	
-	2>widgets.UEditorWidget
+	2: widgets.UEditorWidget
 
 	from  DjangoUeditor.widgets import UEditorWidget
 	class TestUEditorForm(forms.Form):
-		Content=forms.CharField(label="å†…å®¹",widget=UEditorWidget(width=800,height=500, imagePath='aa', filePath='bb',toolbars={}))
+		Content=forms.CharField(label="ÄÚÈİ",widget=UEditorWidget(width=800,height=500, imagePath='aa', filePath='bb',toolbars={}))
 	
-	widgets.UEditorWidgetå’Œforms.UEditorFieldçš„è¾“å…¥å‚æ•°ä¸ä¸Šè¿°models.UEditorFieldä¸€æ ·ã€‚
+	widgets.UEditorWidgetºÍforms.UEditorFieldµÄÊäÈë²ÎÊıÓëÉÏÊömodels.UEditorFieldÒ»Ñù¡£
 
 
-6ã€å…¶ä»–äº‹é¡¹ï¼š
+6¡¢ÆäËûÊÂÏî£º
 
-    **æœ¬ç¨‹åºåŸºäºç™¾åº¦ueditor 1.2.2ï¼Œå®‰è£…åŒ…é‡Œé¢å·²ç»åŒ…æ‹¬äº†ï¼Œä¸éœ€è¦å†é¢å¤–å®‰è£…ã€‚
-    **ç›®å‰æš‚æ—¶ä¸æ”¯æŒueditorçš„æ’ä»¶
-	**Djangoé»˜è®¤å¼€å¯äº†CSRFä¸­é—´ä»¶ï¼Œå› æ­¤å¦‚æœä½ çš„è¡¨å•æ²¡æœ‰åŠ å…¥{% csrf_token %}ï¼Œé‚£ä¹ˆå½“æ‚¨ä¸Šä¼ æ–‡ä»¶å’Œå›¾ç‰‡æ—¶ä¼šå¤±è´¥
-    **æ”¯æŒDjangoçš„adminç•Œé¢ï¼Œä½†æ˜¯å·¥å…·æ æ˜¾ç¤ºä¼šæœ‰ç¼©è¿›ï¼Œç›®å‰è¿˜ä¸çŸ¥é“æ€ä¹ˆè§£å†³ï¼Œå¯èƒ½æ˜¯djangoçš„CSSæœ‰å†²çªã€‚
+    **±¾³ÌĞò»ùÓÚ°Ù¶Èueditor 1.2.2£¬°²×°°üÀïÃæÒÑ¾­°üÀ¨ÁË£¬²»ĞèÒªÔÙ¶îÍâ°²×°¡£
+    **Ä¿Ç°ÔİÊ±²»Ö§³ÖueditorµÄ²å¼ş
+	**DjangoÄ¬ÈÏ¿ªÆôÁËCSRFÖĞ¼ä¼ş£¬Òò´ËÈç¹ûÄãµÄ±íµ¥Ã»ÓĞ¼ÓÈë{% csrf_token %}£¬ÄÇÃ´µ±ÄúÉÏ´«ÎÄ¼şºÍÍ¼Æ¬Ê±»áÊ§°Ü
+    **Ö§³ÖDjangoµÄadmin½çÃæ£¬µ«ÊÇ¹¤¾ßÀ¸ÏÔÊ¾»áÓĞËõ½ø£¬Ä¿Ç°»¹²»ÖªµÀÔõÃ´½â¾ö£¬¿ÉÄÜÊÇdjangoµÄCSSÓĞ³åÍ»¡£
