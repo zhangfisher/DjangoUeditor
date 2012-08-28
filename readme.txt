@@ -1,4 +1,4 @@
-Ueditor HTML编辑器是百度开源的HTML编辑器，
+﻿Ueditor HTML编辑器是百度开源的HTML编辑器，
 
 本模块帮助在Django应用中集成百度Ueditor HTML编辑器。
 安装包中已经集成Ueditor v1.2.2
@@ -22,7 +22,7 @@ Ueditor HTML编辑器是百度开源的HTML编辑器，
 
 3、在urls.py中增加：
 
-	url(r'^ueditor/',include('DjangoUeditor.urls' ),name='ueditor'),
+	url(r'^ueditor/',include('DjangoUeditor.urls' )),
 
 4、在models中这样定义：
 	
@@ -64,10 +64,30 @@ Ueditor HTML编辑器是百度开源的HTML编辑器，
 	
 	widgets.UEditorWidget和forms.UEditorField的输入参数与上述models.UEditorField一样。
 
+6、Settings配置
+     
+      在Django的Settings可以配置以下参数：
+            UEDITOR_SETTINGS={
+                "toolbars":{                                                    #定义多个工具栏显示的按钮，允行定义多个
+                    "name1":[[ 'source', '|','bold', 'italic', 'underline']],
+                    "name2",[]
+                },
+                "images_upload":{
+                    "allow_type":"jpg,png",                                 #定义允许的上传的图片类型
+                    "max_size":"2222kb"                                     #定义允许上传的图片大小，0代表不限制
+                },
+                "files_upload":{
+                     "allow_type":"zip,rar",                                 #定义允许的上传的文件类型
+                     "max_size":"2222kb"                                     #定义允许上传的文件大小，0代表不限制
+                 },,
+                "image_manager":{
+                     "location":""                  #图片管理器的位置,如果没有指定，默认跟图片路径上传一样
+                },
+            }
 
-6、其他事项：
+7、其他事项：
 
     **本程序基于百度ueditor 1.2.2，安装包里面已经包括了，不需要再额外安装。
     **目前暂时不支持ueditor的插件
     **Django默认开启了CSRF中间件，因此如果你的表单没有加入{% csrf_token %}，那么当您上传文件和图片时会失败
-    **支持Django的admin界面，但是工具栏显示会有缩进，目前还不知道怎么解决，可能是django的CSS有冲突。
+   

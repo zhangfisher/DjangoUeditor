@@ -309,7 +309,7 @@
 
         //autoHeightEnabled
         // 是否自动长高,默认true
-        ,autoHeightEnabled:false
+        ,autoHeightEnabled:true
 
 
         //autoFloatEnabled

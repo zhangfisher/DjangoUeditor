@@ -154,7 +154,10 @@ LOGGING = {
 }
 
 UEDITOR_SETTINGS = {
-    'configfile':"a.js",
-    'toolbar':'mini',
-    'imageupload':'a'
+    'toolbars':{"testa":[['fullscreen', 'source', '|', 'undo', 'redo', '|','bold', 'italic', 'underline']],
+                "testb":[[ 'source', '|','bold', 'italic', 'underline']]
+                },
+    'images_upload':{
+        'max_size':0
+    }
 }

@@ -6,9 +6,10 @@ from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
 from django.utils.html import  conditional_escape
 from django.utils.encoding import  force_unicode
+from django.utils import simplejson
 
 from utils import FixFilePath
-import settings as uSettings
+import settings as USettings
 
 class UEditorWidget(forms.Textarea):
     def __init__(self,width=600,height=300,plugins=(),toolbars="normal",filePath="",imagePath="",imageManagerPath="",css="",options={}, attrs=None):
@@ -30,22 +31,29 @@ class UEditorWidget(forms.Textarea):
         uOptions['height']=height
         self.ueditor_options=uOptions
         super(UEditorWidget, self).__init__(attrs)
+
     def render(self, name, value, attrs=None):
         if value is None: value = ''
         #取得工具栏设置
-        if self.ueditor_options['toolbars']=="mini":
-            tbar=uSettings.TOOLBARS_SETTINGS["mini"]
-        elif self.ueditor_options['toolbars']=="normal":
-            tbar=uSettings.TOOLBARS_SETTINGS["normal"]
-        else:
-            tbar=None
+        try:
+            if type(self.ueditor_options['toolbars'])==list:
+                tbar=simplejson.dumps(self.ueditor_options['toolbars'])
+            else:
+                if getattr(USettings,"TOOLBARS_SETTINGS",{}).has_key(str(self.ueditor_options['toolbars'])):
+                    tbar=simplejson.dumps(USettings.TOOLBARS_SETTINGS[str(self.ueditor_options['toolbars'])])
+                else:
+                    tbar=None
+        except Exception:
+            pass
+
         #传入模板的参数
         uOptions=self.ueditor_options.copy()
         uOptions.update({
             "name":name,
             "value":conditional_escape(force_unicode(value)),
-            "toolbars":str(tbar),
-            "options":str(self.ueditor_options['options'])[1:-1].replace("True","true").replace("False","false").replace("'",'"')
+            "toolbars":tbar,
+            "options":simplejson.dumps(self.ueditor_options['options'])[1:-1]
+                #str(self.ueditor_options['options'])[1:-1].replace("True","true").replace("False","false").replace("'",'"')
         })
         context = {
                 'UEditor':uOptions,

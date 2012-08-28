@@ -1,7 +1,6 @@
 #coding:utf-8
-from django.conf.urls import patterns, include, url
+from django.conf.urls import patterns, url
 from DjangoUeditor.views import UploadFile,ImageManager,RemoteCatchImage,SearchMovie
-
 
 urlpatterns = patterns('',
     url(r'^ImageUp/(?P<uploadpath>.*)',UploadFile,{'uploadtype':'image'}),
@@ -9,5 +8,4 @@ urlpatterns = patterns('',
     url(r'^ImageManager/(?P<imagepath>.*)$',ImageManager),
     url(r'^RemoteCatchImage/(?P<imagepath>.*)$',RemoteCatchImage),
     url(r'^SearchMovie/$',SearchMovie),
-
 )

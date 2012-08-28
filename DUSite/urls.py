@@ -15,7 +15,7 @@ urlpatterns = patterns('',
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^ueditor/',include('DjangoUeditor.urls' ),name='ueditor'),
+    url(r'^ueditor/',include('DjangoUeditor.urls')),
     url(r'^test/$',TestUEditorModel)
 )
 
