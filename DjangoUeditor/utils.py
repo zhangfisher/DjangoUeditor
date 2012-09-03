@@ -4,7 +4,7 @@
 def FixFilePath(OutputPath):
     if callable(OutputPath):
         try:
-            OutputPath=OutputPath()
+            OutputPath=OutputPath(modelrow)
         except Exception:
             OutputPath=""
     if len(OutputPath)>0:

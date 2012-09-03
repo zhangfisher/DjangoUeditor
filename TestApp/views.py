@@ -26,7 +26,7 @@ def TestUEditorModel(request):
     else:
         try:
             M=Blog.objects.get(pk=1)
-            form = TestUeditorModelForm(model=M)
+            form = TestUeditorModelForm(instance= M)
         except Exception:
             form = TestUeditorModelForm(
                 initial={'Description': '测试'}
