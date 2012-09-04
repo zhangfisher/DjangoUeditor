@@ -84,10 +84,19 @@
                      "location":""         #图片管理器的位置,如果没有指定，默认跟图片路径上传一样
                 },
             }
+7、在模板里面：
 
-7、其他事项：
+    <head>
+        ......
+        {{ form.media }}        #这一句会将所需要的CSS和JS加进来。
+        ......
+    </head>
+    注：运行collectstatic命令，将所依赖的css,js之类的文件复制到{{STATIC_ROOT}}文件夹里面。
+
+8、其他事项：
 
     **本程序基于百度ueditor 1.2.2，安装包里面已经包括了，不需要再额外安装。
     **目前暂时不支持ueditor的插件
+    **别忘记了运行collectstatic命令，该命令可以将ueditor的所有文件复制到{{STATIC_ROOT}}文件夹里面
     **Django默认开启了CSRF中间件，因此如果你的表单没有加入{% csrf_token %}，那么当您上传文件和图片时会失败
    
