@@ -2,70 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a277f214-fdc3-4d56-a982-825f5989727e" name="Default" comment="">
-      <change type="DELETED" beforePath="E:\Work\Code\Django\DjangoUeditor\.idea\dictionaries\Administrator.xml" afterPath="" />
-      <change type="DELETED" beforePath="E:\Work\Code\Django\DjangoUeditor\.idea\inspectionProfiles\Project_Default.xml" afterPath="" />
-      <change type="DELETED" beforePath="E:\Work\Code\Django\DjangoUeditor\.idea\jsLibraryMappings.xml" afterPath="" />
-      <change type="DELETED" beforePath="E:\Work\Code\Django\DjangoUeditor\.idea\runConfigurations\DjangoUeditor.xml" afterPath="" />
-      <change type="DELETED" beforePath="E:\Work\Code\Django\DjangoUeditor\DjangoUeditor\static\UEditor\CHANGELOG.TXT" afterPath="" />
-      <change type="DELETED" beforePath="E:\Work\Code\Django\DjangoUeditor\DjangoUeditor\static\UEditor\dialogs\code\code.html" afterPath="" />
-      <change type="DELETED" beforePath="E:\Work\Code\Django\DjangoUeditor\DjangoUeditor\static\UEditor\themes\default\images\copy.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\Work\Code\Django\DjangoUeditor\DjangoUeditor\static\UEditor\themes\default\images\imgLable.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\Work\Code\Django\DjangoUeditor\DjangoUeditor\static\UEditor\themes\default\images\localimage.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DUSite/test.db" afterPath="$PROJECT_DIR$/DUSite/test.db" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/image/imageUploader.swf" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/image/imageUploader.swf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/wordimage/imageUploader.swf" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/wordimage/imageUploader.swf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/themes/default/images/icons.gif" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/themes/default/images/icons.gif" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/themes/default/images/icons.png" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/themes/default/images/icons.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/DjangoUeditor.iml" afterPath="$PROJECT_DIR$/.idea/DjangoUeditor.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/wxzhang.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/wxzhang.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/other.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/testrunner.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DUSite/settings.py" afterPath="$PROJECT_DIR$/DUSite/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/forms.py" afterPath="$PROJECT_DIR$/DjangoUeditor/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/models.py" afterPath="$PROJECT_DIR$/DjangoUeditor/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/readme.txt" afterPath="$PROJECT_DIR$/DjangoUeditor/readme.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/settings.py" afterPath="$PROJECT_DIR$/DjangoUeditor/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/anchor/anchor.html" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/anchor/anchor.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/attachment/attachment.css" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/attachment/attachment.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/attachment/attachment.html" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/attachment/attachment.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/attachment/callbacks.js" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/attachment/callbacks.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/emotion/emotion.html" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/emotion/emotion.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/gmap/gmap.html" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/gmap/gmap.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/help/help.html" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/help/help.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/image/image.css" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/image/image.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/image/image.html" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/image/image.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/image/image.js" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/image/image.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/insertframe/insertframe.html" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/insertframe/insertframe.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/internal.js" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/internal.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/link/link.html" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/link/link.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/map/map.html" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/map/map.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/searchreplace/searchreplace.html" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/searchreplace/searchreplace.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/snapscreen/snapscreen.html" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/snapscreen/snapscreen.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/spechars/spechars.html" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/spechars/spechars.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/table/edittd.html" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/table/edittd.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/table/table.html" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/table/table.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/table/table.js" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/table/table.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/video/video.css" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/video/video.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/video/video.html" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/video/video.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/video/video.js" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/video/video.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/webapp/webapp.html" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/webapp/webapp.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/wordimage/wordimage.html" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/wordimage/wordimage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/wordimage/wordimage.js" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/dialogs/wordimage/wordimage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/editor_all.js" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/editor_all.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/editor_all_min.js" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/editor_all_min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/editor_config.js" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/editor_config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/themes/default/ueditor.css" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/themes/default/ueditor.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/third-party/SyntaxHighlighter/shCore.js" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/third-party/SyntaxHighlighter/shCore.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/third-party/codemirror2.15/codemirror.js" afterPath="$PROJECT_DIR$/DjangoUeditor/static/UEditor/third-party/codemirror2.15/codemirror.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/templates/ueditor.html" afterPath="$PROJECT_DIR$/DjangoUeditor/templates/ueditor.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/urls.py" afterPath="$PROJECT_DIR$/DjangoUeditor/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/utils.py" afterPath="$PROJECT_DIR$/DjangoUeditor/utils.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/views.py" afterPath="$PROJECT_DIR$/DjangoUeditor/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/widgets.py" afterPath="$PROJECT_DIR$/DjangoUeditor/widgets.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TestApp/forms.py" afterPath="$PROJECT_DIR$/TestApp/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TestApp/models.py" afterPath="$PROJECT_DIR$/TestApp/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TestApp/views.py" afterPath="$PROJECT_DIR$/TestApp/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.txt" afterPath="$PROJECT_DIR$/readme.txt" />
     </list>
     <ignored path="DjangoUeditor.iws" />
@@ -88,88 +27,7 @@
     <favorites_list name="DjangoUeditor" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="widgets.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DjangoUeditor/widgets.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="28" selection-start="432" selection-end="432" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#14#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="forms.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DjangoUeditor/forms.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="0" selection-start="1068" selection-end="1068" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#16#40#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TestApp/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="9" selection-start="893" selection-end="893" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TestApp/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="88" selection-start="591" selection-end="603" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="forms.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TestApp/forms.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="11" selection-start="477" selection-end="497" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#14#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DjangoUeditor/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="0" selection-start="206" selection-end="206" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#15#43#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DjangoUeditor/settings.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="1" selection-start="1517" selection-end="1517" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="settings.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/DUSite/settings.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="161" column="20" selection-start="5658" selection-end="5658" vertical-scroll-proportion="0.4128114">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -185,7 +43,6 @@
         <option value="$PROJECT_DIR$/TestApp/forms.py" />
         <option value="$PROJECT_DIR$/DjangoUeditor/templates/ueditor.html" />
         <option value="$PROJECT_DIR$/DjangoUeditor/urls.py" />
-        <option value="$PROJECT_DIR$/readme.txt" />
         <option value="$PROJECT_DIR$/DjangoUeditor/readme.txt" />
         <option value="$PROJECT_DIR$/DjangoUeditor/views.py" />
         <option value="$PROJECT_DIR$/DjangoUeditor/settings.py" />
@@ -196,6 +53,7 @@
         <option value="$PROJECT_DIR$/TestApp/views.py" />
         <option value="$PROJECT_DIR$/DjangoUeditor/forms.py" />
         <option value="$PROJECT_DIR$/DUSite/settings.py" />
+        <option value="$PROJECT_DIR$/readme.txt" />
       </list>
     </option>
   </component>
@@ -263,52 +121,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DjangoUeditor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DjangoUeditor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DjangoUeditor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DjangoUeditor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DjangoUeditor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DjangoUeditor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DjangoUeditor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DjangoUeditor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DUSite" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope">
@@ -326,12 +138,12 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="com.jetbrains.django.DjangoModulesConfigurable" />
     <property name="recentsLimit" value="5" />
-    <property name="restartRequiresConfirmation" value="true" />
+    <property name="options.lastSelected" value="com.jetbrains.django.DjangoModulesConfigurable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="restartRequiresConfirmation" value="true" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -366,25 +178,6 @@
       <option name="MULTIPROCESS" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="tests" factoryName="Unittests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <module name="DjangoUeditor" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <method />
-    </configuration>
     <configuration default="true" type="Python.DjangoServer" factoryName="Django server">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -404,6 +197,25 @@
       <option name="runNoReload" value="false" />
       <option name="useCustomRunCommand" value="false" />
       <option name="customRunCommand" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <module name="DjangoUeditor" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
@@ -487,20 +299,20 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30454546" sideWeight="0.22030981" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30454546" sideWeight="0.5869191" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3098485" sideWeight="0.5869191" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4130809" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.24096386" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32874355" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -566,30 +378,17 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/DjangoUeditor/readme.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="130" column="39" selection-start="4411" selection-end="4411" vertical-scroll-proportion="0.58064514">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/readme.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="130" column="39" selection-start="4411" selection-end="4411" vertical-scroll-proportion="0.4516129">
-          <folding />
-        </state>
+        <state line="130" column="39" selection-start="4411" selection-end="4411" vertical-scroll-proportion="0.58064514" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DjangoUeditor/templates/ueditor.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="59" selection-start="662" selection-end="672" vertical-scroll-proportion="-4.096774">
-          <folding />
-        </state>
+        <state line="8" column="59" selection-start="662" selection-end="672" vertical-scroll-proportion="-4.096774" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DUSite/templates/test.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DjangoUeditor/urls.py">
@@ -608,15 +407,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DjangoUeditor/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="206" selection-end="206" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#15#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DjangoUeditor/utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="160" column="0" selection-start="5193" selection-end="5193" vertical-scroll-proportion="0.66768295">
@@ -626,62 +416,68 @@
     </entry>
     <entry file="file://D:/Python27/Lib/site-packages/django/core/handlers/base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="184" column="0" selection-start="8602" selection-end="8602" vertical-scroll-proportion="0.48230088">
+        <state line="184" column="0" selection-start="8602" selection-end="8602" vertical-scroll-proportion="0.48230088" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DUSite/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="161" column="20" selection-start="5658" selection-end="5658" vertical-scroll-proportion="0.6065259">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="87" column="52" selection-start="3078" selection-end="3078" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DjangoUeditor/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="18" selection-start="1479" selection-end="1492" vertical-scroll-proportion="0.6871401">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DjangoUeditor/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="107" selection-start="961" selection-end="971" vertical-scroll-proportion="0.54894435">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestApp/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="11" selection-start="477" selection-end="497" vertical-scroll-proportion="0.36531365">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TestApp/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="88" selection-start="591" selection-end="603" vertical-scroll-proportion="0.67527676">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TestApp/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="9" selection-start="893" selection-end="893" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DjangoUeditor/widgets.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="28" selection-start="432" selection-end="432" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#14#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TestApp/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="11" selection-start="477" selection-end="497" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#14#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TestApp/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="88" selection-start="591" selection-end="603" vertical-scroll-proportion="0.0">
+        <state line="26" column="9" selection-start="893" selection-end="893" vertical-scroll-proportion="0.4054054">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DjangoUeditor/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="1068" selection-end="1068" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#16#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DjangoUeditor/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="1" selection-start="1517" selection-end="1517" vertical-scroll-proportion="0.0">
+        <state line="21" column="0" selection-start="1068" selection-end="1068" vertical-scroll-proportion="0.040590405">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DUSite/settings.py">
+    <entry file="file://$PROJECT_DIR$/DjangoUeditor/widgets.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="161" column="20" selection-start="5658" selection-end="5658" vertical-scroll-proportion="0.4128114">
+        <state line="11" column="28" selection-start="432" selection-end="432" vertical-scroll-proportion="0.040590405">
           <folding />
         </state>
       </provider>

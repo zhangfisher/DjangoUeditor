@@ -1,7 +1,5 @@
-﻿Ueditor HTML编辑器是百度开源的HTML编辑器，
-
-本模块帮助在Django应用中集成百度Ueditor HTML编辑器。
-安装包中已经集成Ueditor v1.2.2
+﻿本模块帮助在Django应用中集成百度Ueditor HTML编辑器，Ueditor HTML编辑器是百度开源的HTML编辑器，
+Ueditor HTML编辑器版本：1.2.3
 
 使用Django-Ueditor非常简单，方法如下：
 
@@ -75,15 +73,20 @@
                 },
                 "images_upload":{
                     "allow_type":"jpg,png",    #定义允许的上传的图片类型
+                    "path":"",                   #定义默认的上传路径
                     "max_size":"2222kb"        #定义允许上传的图片大小，0代表不限制
                 },
                 "files_upload":{
                      "allow_type":"zip,rar",   #定义允许的上传的文件类型
+                     "path":""                   #定义默认的上传路径
                      "max_size":"2222kb"       #定义允许上传的文件大小，0代表不限制
                  },,
                 "image_manager":{
-                     "location":""         #图片管理器的位置,如果没有指定，默认跟图片路径上传一样
+                     "path":""         #图片管理器的位置,如果没有指定，默认跟图片路径上传一样
                 },
+                "scrawl_upload":{
+                    "path":""           #涂鸦图片默认的上传路径
+                }
             }
 7、在模板里面：
 
