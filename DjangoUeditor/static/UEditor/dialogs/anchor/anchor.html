@@ -3,8 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>插入锚点</title>
-        <script type="text/javascript" src="../internal.js"></script>
+        <title></title>
         <style type="text/css">
             *{color: #838383;margin: 0;padding: 0}
             html,body {font-size: 12px;overflow: hidden; }
@@ -14,8 +13,9 @@
     </head>
     <body>
         <div class="content">
-            <span>锚点名字：</span><input id="anchorName"  value="" />
+            <span><var id="lang_input_anchorName"></var></span><input id="anchorName"  value="" />
         </div>
+        <script type="text/javascript" src="../internal.js"></script>
         <script type="text/javascript">
             var anchorInput = $G('anchorName'),
                 node = editor.selection.getRange().getClosedNode();

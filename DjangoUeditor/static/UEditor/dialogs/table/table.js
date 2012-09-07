@@ -51,13 +51,13 @@
                 $G("message").style.display="none";
                 switch(this.id){
                     case "border":
-                        $G("border").value = filter(this.value,"border","边框");
+                        $G("border").value = filter(this.value,"border");
                         break;
                     case "cellPadding":
-                        $G("cellPadding").value = filter(this.value,"cellPadding","边距");
+                        $G("cellPadding").value = filter(this.value,"cellPadding");
                         break;
                     case "cellSpacing":
-                        $G("cellSpacing").value = filter(this.value,"cellSpacing","间距");
+                        $G("cellSpacing").value = filter(this.value,"cellSpacing");
                         break;
                     default:
 
@@ -97,7 +97,7 @@
         cellSpacing>0 && html.push(' cellSpacing="' + cellSpacing + '" ');
         html.push(' border="' + (border||1) +'" borderColor="' + (borderColor||'#000000') +'"');
         bgColor && html.push(' bgColor="' + bgColor + '"');
-        html.push(' ><tr><td>这</td><td>是</td><td>用</td></tr><tr><td>来</td><td>预</td><td>览</td></tr><tr><td>的</td><td></td><td></td></tr></table>');
+        html.push(' ><tr><td colspan="3"><var id="lang_forPreview">'+lang.static.lang_forPreview+'</var></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr></table>');
         var preview = $G("preview");
         preview.innerHTML = html.join("");
         //如果针对每个单元格
@@ -110,24 +110,25 @@
         for(var i =0,td,tds = domUtils.getElementsByTagName(table,"td");td = tds[i++];){
             td.style.padding = cellPadding + "px";
         }
+        setTablePosition(align.toLowerCase());
     }
     function setMax(value,max){
         return value>max? max:value;
     }
-    function filter(value,property,des){
+    function filter(value,property){
         var maxPreviewValue = 5,
                 maxValue = 10;
         if(!isNum(value) && value!=""){
             $G(property).value = "";
             $G("message").style.display ="";
-            $G("messageContent").innerHTML= "请输入正确的数值！";
+            $G("messageContent").innerHTML= lang.errorNum;
             return property=="border"?1:0;
         }
         if(value > maxPreviewValue){
             $G("message").style.display ="";
-            $G("messageContent").innerHTML= des+"超过" + maxPreviewValue+"px时不再提供实时预览！";
+            $G("messageContent").innerHTML= lang.overflowPreviewMsg.replace("{#value}",maxPreviewValue);
             if(value>maxValue){
-                $G("messageContent").innerHTML = des+"最大值不能超过"+maxValue+"px!";
+                $G("messageContent").innerHTML = lang.overflowMsg.replace("{#value}",maxValue);
                 $G(property).value = maxValue;
                 return maxValue;
             }
@@ -171,7 +172,8 @@
     function getColorPicker(){
         return new UE.ui.Popup({
             content: new UE.ui.ColorPicker({
-                noColorText: '清除颜色'
+                noColorText: lang.noColor,
+                editor:editor
             })
         });
     }

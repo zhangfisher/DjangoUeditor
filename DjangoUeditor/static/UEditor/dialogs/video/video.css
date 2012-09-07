@@ -5,7 +5,8 @@ body{font-size: 12px;color: #888}
 #tabHeads{position: relative; width:560px;padding-left:9px;z-index: 10;}
 #tabHeads span{
     display:inline-block;
-    width: 82px;
+    /*width: 82px;*/
+    padding: 0 5px;
     height:30px;
     text-align: center;
     cursor: pointer;
@@ -36,12 +37,13 @@ body{font-size: 12px;color: #888}
     border: 1px solid #d7d7d7;
 }
 #videoSearchBtn,#videoSearchReset{
-    width: 80px;
+    /*width: 80px;*/
     height: 25px;
     line-height: 25px;
     background: #eee;
     border: 1px solid #d7d7d7;
-    cursor: pointer
+    cursor: pointer;
+    padding: 0 5px;
 }
 
 
@@ -53,11 +55,12 @@ fieldset{
     padding-left: 5px;
     margin-bottom: 20px;
     padding-bottom: 5px;
+    width: 115px;
 }
 fieldset legend{font-weight: bold;}
 fieldset p{line-height: 30px;}
 fieldset input.txt{
-    width: 70px;
+    width: 65px;
     height: 21px;
     line-height: 21px;
     margin: 8px 5px;

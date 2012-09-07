@@ -158,6 +158,10 @@ UEDITOR_SETTINGS = {
                 "testb":[[ 'source', '|','bold', 'italic', 'underline']]
                 },
     'images_upload':{
-        'max_size':0
+        'max_size':0,
+        'path':"asd"
+    },
+    'scrawl_upload':{
+        'path':'scrawlabc'
     }
 }

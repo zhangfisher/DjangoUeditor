@@ -13,20 +13,20 @@ The FileProgress class is not part of SWFUpload.
    ********************** */
 function preLoad() {
 	if (!this.support.loading) {
-		alert("当前Flash版本过低，请更新FlashPlayer后重试！");
+		alert(lang.flashVersionError);
 		return false;
 	}
     return true;
 }
 function loadFailed() {
-	alert("SWFUpload加载失败!请检查路径或网络状态");
+	alert(lang.flashLoadingError);
 }
 
 function fileQueued(file) {
 	try {
 		var progress = new FileProgress(file, this.customSettings.progressTarget);
-		progress.setStatus("等待上传……");
-		progress.toggleCancel(true, this,"从上传队列中移除");
+		progress.setStatus(lang.fileUploadReady);
+		progress.toggleCancel(true, this,lang.delUploadQueue);
 	} catch (ex) {
 		this.debug(ex);
 	}
@@ -36,30 +36,30 @@ function fileQueued(file) {
 function fileQueueError(file, errorCode, message) {
 	try {
 		if (errorCode === SWFUpload.QUEUE_ERROR.QUEUE_LIMIT_EXCEEDED) {
-			alert("单次不能选择超过"+ message +  "个文件！请重新选择！");
+			alert(lang.limitPrompt1+ message +  lang.limitPrompt2);
 			return;
 		}
 
 		var progress = new FileProgress(file, this.customSettings.progressTarget);
 		progress.setError();
-        progress.toggleCancel(true, this,"移除失败文件");
+        progress.toggleCancel(true, this,lang.delFailFile);
 
 		switch (errorCode) {
 		case SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT:
-			progress.setStatus("文件大小超出限制！");
+			progress.setStatus(lang.fileSizeLimit);
 			this.debug("Error Code: File too big, File name: " + file.name + ", File size: " + file.size + ", Message: " + message);
 			break;
 		case SWFUpload.QUEUE_ERROR.ZERO_BYTE_FILE:
-			progress.setStatus("空文件无法上传！");
+			progress.setStatus(lang.emptyFile);
 			this.debug("Error Code: Zero byte file, File name: " + file.name + ", File size: " + file.size + ", Message: " + message);
 			break;
 		case SWFUpload.QUEUE_ERROR.INVALID_FILETYPE:
-			progress.setStatus("文件类型错误！");
+			progress.setStatus(lang.fileTypeError);
 			this.debug("Error Code: Invalid File Type, File name: " + file.name + ", File size: " + file.size + ", Message: " + message);
 			break;
 		default:
 			if (file !== null) {
-				progress.setStatus("未知错误！");
+				progress.setStatus(lang.unknownError);
 			}
 			this.debug("Error Code: " + errorCode + ", File name: " + file.name + ", File size: " + file.size + ", Message: " + message);
 			break;
@@ -79,8 +79,8 @@ function uploadStart(file) {
 		we can do is say we are uploading.
 		 */
 		var progress = new FileProgress(file, this.customSettings.progressTarget);
-		progress.setStatus("上传中，请等待……");
-		progress.toggleCancel(true, this,"取消上传");
+		progress.setStatus(lang.fileUploading);
+		progress.toggleCancel(true, this,lang.cancelUpload);
 	}catch (ex) {}
 
 	return true;
@@ -92,7 +92,7 @@ function uploadProgress(file, bytesLoaded, bytesTotal) {
 
 		var progress = new FileProgress(file, this.customSettings.progressTarget);
 		progress.setProgress(percent);
-		progress.setStatus("上传中，请等待……");
+		progress.setStatus(lang.fileUploading);
 	} catch (ex) {
 		this.debug(ex);
 	}
@@ -107,27 +107,27 @@ function uploadError(file, errorCode, message) {
 
 		switch (errorCode) {
 		case SWFUpload.UPLOAD_ERROR.HTTP_ERROR:
-			progress.setStatus("网络错误: " + message);
+			progress.setStatus(lang.netError + message);
 			this.debug("Error Code: HTTP Error, File name: " + file.name + ", Message: " + message);
 			break;
 		case SWFUpload.UPLOAD_ERROR.UPLOAD_FAILED:
-			progress.setStatus("上传失败！");
+			progress.setStatus(lang.failUpload);
 			this.debug("Error Code: Upload Failed, File name: " + file.name + ", File size: " + file.size + ", Message: " + message);
 			break;
 		case SWFUpload.UPLOAD_ERROR.IO_ERROR:
-			progress.setStatus("服务器IO错误！");
+			progress.setStatus(lang.serverIOError);
 			this.debug("Error Code: IO Error, File name: " + file.name + ", Message: " + message);
 			break;
 		case SWFUpload.UPLOAD_ERROR.SECURITY_ERROR:
-			progress.setStatus("无权限！");
+			progress.setStatus(lang.noAuthority);
 			this.debug("Error Code: Security Error, File name: " + file.name + ", Message: " + message);
 			break;
 		case SWFUpload.UPLOAD_ERROR.UPLOAD_LIMIT_EXCEEDED:
-			progress.setStatus("上传个数限制");
+			progress.setStatus(lang.fileNumLimit);
 			this.debug("Error Code: Upload Limit Exceeded, File name: " + file.name + ", File size: " + file.size + ", Message: " + message);
 			break;
 		case SWFUpload.UPLOAD_ERROR.FILE_VALIDATION_FAILED:
-			progress.setStatus("验证失败，本次上传被跳过！");
+			progress.setStatus(lang.failCheck);
 			this.debug("Error Code: File Validation Failed, File name: " + file.name + ", File size: " + file.size + ", Message: " + message);
 			break;
 		case SWFUpload.UPLOAD_ERROR.FILE_CANCELLED:
@@ -135,14 +135,14 @@ function uploadError(file, errorCode, message) {
 //			if (this.getStats().files_queued === 0) {
 //				document.getElementById(this.customSettings.cancelButtonId).disabled = true;
 //			}
-			progress.setStatus("取消中，请等待……");
+			progress.setStatus(lang.fileCanceling);
 			progress.setCancelled();
 			break;
 		case SWFUpload.UPLOAD_ERROR.UPLOAD_STOPPED:
-			progress.setStatus("上传已停止……");
+			progress.setStatus(lang.stopUploading);
 			break;
 		default:
-			progress.setStatus("未知错误！" + errorCode);
+			progress.setStatus(lang.unknownError + errorCode);
 			this.debug("Error Code: " + errorCode + ", File name: " + file.name + ", File size: " + file.size + ", Message: " + message);
 			break;
 		}
@@ -162,5 +162,5 @@ function uploadComplete(file) {
 function queueComplete(numFilesUploaded) {
 	var status = document.getElementById("divStatus");
     var num = status.innerHTML.match(/\d+/g);
-	status.innerHTML = "本次共成功上传 "+((num && num[0] ?parseInt(num[0]):0) + numFilesUploaded) +" 个文件" ;
+	status.innerHTML = ((num && num[0] ?parseInt(num[0]):0) + numFilesUploaded) +lang.statusPrompt;
 }

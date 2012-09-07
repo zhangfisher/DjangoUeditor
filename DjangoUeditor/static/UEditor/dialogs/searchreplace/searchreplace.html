@@ -2,9 +2,8 @@
         "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>查找替换</title>
+    <title></title>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
-    <script type="text/javascript" src="../internal.js"></script>
     <style type="text/css">
         *{color: #838383}
         body {
@@ -12,12 +11,9 @@
             width:380px;
             height: 170px;
             overflow: hidden;
-            margin:0px;padding:0px;
+            margin:0;padding:0;
         }
-        .warp{
-            padding: 39px 0px 0px 15px;
-            height:88%;position:relative;
-        }
+        .warp{ padding: 39px 0 0 15px;height:88%;position:relative;}
         * +html .warp{height:80%}
         .head{position:absolute;height:31px;top:9px;}
         .content{height:110px;border: 1px solid #ddd;padding:5px}
@@ -25,31 +21,31 @@
         .head span.def{background:url("../../themes/default/images/dialog-title-bg.png") repeat-x;border:1px solid #ccc;}
         .head span.act{background:#FFF;border:1px solid #ccc;border-bottom: 1px solid #FFF}
         .content table{width:100%;}
-        .content input.int{ width:190px;height:21px;background: #FFF;border:1px solid #d7d7d7;padding: 0px; margin: 0px;line-height:21px;}
-        .content input.btn{width:60px; text-align:center;line-height:24px; text-decoration: none;height:24px;border: 0px;margin:0px;padding:0px;background:url("../../themes/default/images/dialog-title-bg.png") repeat-x;border:1px solid #ccc; }
+        .content input.int{ width:190px;height:21px;background: #FFF;border:1px solid #d7d7d7;padding: 0; margin: 0;line-height:21px;}
+        .content input.btn{padding: 0 5px; text-align:center;line-height:24px; text-decoration: none;height:24px;border: 0;margin:0;background:url("../../themes/default/images/dialog-title-bg.png") repeat-x;border:1px solid #ccc; }
     </style>
 </head>
 <body>
 <div class="warp">
     <div id="head" class="head">
-        <span name="find" class="act">查找</span> <span name="replace" class="def">替换</span>
+        <span name="find" class="act"><var id="lang_tab_search"></var></span> <span name="replace" class="def"><var id="lang_tab_replace"></var></span>
     </div>
     <div class="content" id="find">
         <table>
             <tr>
-                <td width="80">查找：</td>
+                <td width="80"><var id="lang_search1"></var>: </td>
                 <td><input id="findtxt" type="text" class="int" /></td>
             </tr>
             <tr>
-                <td>区分大小写：</td>
+                <td><var id="lang_case_sensitive1"></var></td>
                 <td>
                     <input id="matchCase" type="checkbox" />
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <input id="nextFindBtn" type="button" value="下一个" class="btn" />
-                    <input id="preFindBtn" type="button" value="上一个"class="btn" />
+                    <input id="nextFindBtn" type="button" class="btn" />
+                    <input id="preFindBtn" type="button" class="btn" />
                 </td>
             </tr>
         </table>
@@ -58,30 +54,31 @@
     <div class="content" id="replace">
         <table>
             <tr>
-                <td width="80">查找：</td>
+                <td width="80"><var id="lang_search2"></var>: </td>
                 <td><input id="findtxt1" type="text" class="int"  /></td>
             </tr>
             <tr>
-                <td>替换：</td>
+                <td><var id="lang_replace"></var>: </td>
                 <td><input id="replacetxt" type="text" class="int" /></td>
             </tr>
             <tr>
-                <td>区分大小写：</td>
+                <td><var id="lang_case_sensitive2"></var></td>
                 <td>
                     <input id="matchCase1" type="checkbox" />
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <input id="nextReplaceBtn" type="button" value="下一个" class="btn" />
-                    <input id="preReplaceBtn" type="button" value="上一个" class="btn" />
-                    <input id="repalceBtn" type="button" value="替换" class="btn" />
-                    <input id="allrepalceBtn" type="button" value="全部替换" class="btn" />
+                    <input id="nextReplaceBtn" type="button" class="btn" />
+                    <input id="preReplaceBtn" type="button" class="btn" />
+                    <input id="repalceBtn" type="button" class="btn" />
+                    <input id="repalceAllBtn" type="button" class="btn" />
                 </td>
             </tr>
         </table>
     </div>
 </div>
+<script type="text/javascript" src="../internal.js"></script>
 <script type="text/javascript">
         //清空上次查选的痕迹
         editor.firstForSR = 0;
@@ -128,9 +125,9 @@
                 casesensitive : getMatchCase("matchCase")
             };
             if(!frCommond(obj)){
-                alert("已经搜索到文章底部！");
+                alert(lang.getEnd);
             }
-        }
+        };
         $G("nextReplaceBtn").onclick = function(txt,dir,mcase){
             var findtxt = $G("findtxt1").value,obj;
             if(!findtxt){
@@ -154,7 +151,7 @@
                 casesensitive : getMatchCase("matchCase")
             };
             if(!frCommond(obj)){
-                alert("已经搜索到文章顶部！");
+                alert(lang.getStart);
             }
         }
         $G("preReplaceBtn").onclick = function(txt,dir,mcase){
@@ -188,7 +185,7 @@
             frCommond(obj);
         }
         //全部替换
-        $G("allrepalceBtn").onclick = function(){
+        $G("repalceAllBtn").onclick = function(){
             var findtxt = $G("findtxt1").value.replace(/^\s|\s$/g,""),obj,
                 replacetxt = $G("replacetxt").value.replace(/^\s|\s$/g,"");
             if(!findtxt){
@@ -205,7 +202,7 @@
             };
             var num = frCommond(obj);
             if(num){
-                alert("总共替换了"+num+"个内容！");
+                alert(lang.countMsg.replace("{#count}",num));
             }
         }
         //执行

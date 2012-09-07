@@ -1,7 +1,7 @@
 <!DOCTYPE>
 <html>
 <head>
-    <title>标题</title>
+    <title></title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
     <script type="text/javascript" src="../internal.js"></script>
 
@@ -28,7 +28,7 @@
         if ( apikey && apikey.length == 24 ) {
             var searchConfig = {
                 container:'appShow', //容器ID
-                tips:"搜索应用", //该值用于自动清空
+                tips:"", //该值用于自动清空
                 search:1, //是否显示搜索框
                 ps:12, //每页显示的条数
                 suggest:1, //是否开启搜索自动完成
@@ -53,7 +53,7 @@
             script.src = "http://app.baidu.com/appweb/api/search?auto=yes&container=container&apikey=" + apikey + "&instanceName=baiduApp&callback=clickCallback&config=searchConfig";
             document.body.appendChild( script );
         } else {
-            $G( "appShow" ).innerHTML = "<p class='errorMsg'>本功能由百度APP提供，如看到此页面，请各位站长首先申请百度APPKey! <a title='百度开放接口' href='http://app.baidu.com/static/cms/getapikey.html' target='_blank'>点此申请</a></p><p class='errorMsg'>申请完成之后请至editor_config.js中配置获得的appkey!</p>" ;
+            $G( "appShow" ).innerHTML = "<p class='errorMsg'>"+lang.tip1+"<a title='"+lang.anthorApi+"' href='http://app.baidu.com/static/cms/getapikey.html' target='_blank'>"+lang.applyFor+"</a></p><p class='errorMsg'>"+lang.tip2+"</p>" ;
         }
 
     </script>

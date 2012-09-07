@@ -8,29 +8,14 @@ from django.utils.html import  conditional_escape
 from django.utils.encoding import  force_unicode
 from django.utils import simplejson
 
-from utils import FixFilePath
+from utils import MadeUeditorOptions
 import settings as USettings
 
 class UEditorWidget(forms.Textarea):
-    def __init__(self,width=600,height=300,plugins=(),toolbars="normal",filePath="",imagePath="",imageManagerPath="",css="",options={}, attrs=None):
-        uOptions={}
-        #图片上传路径
-        uOptions['imagePath']=FixFilePath(imagePath)
-        #附件上传路径
-        uOptions['filePath']=FixFilePath(filePath)
-        #图片管理器路径,如果没有指定，则默认等于image上传路径
-        if len(imageManagerPath)==0:
-            uOptions['imageManagerPath']=uOptions['imagePath']
-        else:
-            uOptions['imageManagerPath']=FixFilePath(imageManagerPath)
-        uOptions['css']=css
-        uOptions['plugins']=plugins
-        uOptions['toolbars']=toolbars
-        uOptions['options']=options
-        uOptions['width']=width
-        uOptions['height']=height
-        self.ueditor_options=uOptions
+    def __init__(self,width=600,height=300,plugins=(),toolbars="normal",filePath="",imagePath="",scrawlPath="",imageManagerPath="",css="",options={}, attrs=None,**kwargs):
+        self.ueditor_options=MadeUeditorOptions(width,height,plugins,toolbars,filePath,imagePath,scrawlPath,imageManagerPath,css,options)
         super(UEditorWidget, self).__init__(attrs)
+
 
     def render(self, name, value, attrs=None):
         if value is None: value = ''
@@ -40,10 +25,13 @@ class UEditorWidget(forms.Textarea):
                 tbar=simplejson.dumps(self.ueditor_options['toolbars'])
             else:
                 if getattr(USettings,"TOOLBARS_SETTINGS",{}).has_key(str(self.ueditor_options['toolbars'])):
-                    tbar=simplejson.dumps(USettings.TOOLBARS_SETTINGS[str(self.ueditor_options['toolbars'])])
+                    if self.ueditor_options['toolbars'] =="full":
+                        tbar=None
+                    else:
+                        tbar=simplejson.dumps(USettings.TOOLBARS_SETTINGS[str(self.ueditor_options['toolbars'])])
                 else:
                     tbar=None
-        except Exception:
+        except:
             pass
 
         #传入模板的参数

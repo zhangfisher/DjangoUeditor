@@ -12,12 +12,11 @@ var imageUploader = {};
             maskIframe = g( "maskIframe" ), //tab遮罩层,用来解决flash和其他dom元素的z-index层级不一致问题
             flashObj;               //flash上传对象
 
-    var flagImg = null;
+    var flagImg = null,flashContainer;
     imageUploader.init = function ( opt, callbacks ) {
         switchTab( "imageTab" );
         createAlignButton( ["remoteFloat", "localFloat"] );
         createFlash( opt, callbacks );
-
         var srcImg = editor.selection.getRange().getClosedNode();
         if ( srcImg ) {
             showImageInfo( srcImg );
@@ -40,13 +39,17 @@ var imageUploader = {};
         $focus( g( "url" ) );
     };
 
+    function insertImage(imgObjs){
+        editor.fireEvent('beforeInsertImage',imgObjs);
+        editor.execCommand( "insertImage", imgObjs );
+    }
     function searchImage() {
         var imgSearchInput = $G( "imgSearchTxt" );
         if ( !imgSearchInput.getAttribute( "hasClick" ) || !imgSearchInput.value ) {
             selectTxt( imgSearchInput );
             return;
         }
-        g( "searchList" ).innerHTML = "<p class='msg'>图片加载中，请稍后……</p>";
+        g( "searchList" ).innerHTML = "<p class='msg'>" + lang.imageLoading + "</p>";
         var key = imgSearchInput.value,
                 type = $G( "imgType" ).value,
                 url = "http://image.baidu.com/i?ct=201326592&cl=2&lm=-1&st=-1&tn=baiduimagejson&istype=2&rn=32&fm=index&pv=&word=" + encodeToGb2312( key ) + type + "&" + +new Date;
@@ -58,7 +61,7 @@ var imageUploader = {};
             }
             var frg = document.createDocumentFragment();
             if ( imgObjs.length < 2 ) {
-                g( "searchList" ).innerHTML = "<p class='msg'> :( ，抱歉，没有找到图片！请重试一次！</p>";
+                g( "searchList" ).innerHTML = "<p class='msg'>"+lang.tryAgain+"</p>";
                 return;
             }
             for ( var i = 0, len = imgObjs.length; i < len - 1; i++ ) {
@@ -66,7 +69,7 @@ var imageUploader = {};
                 img.src = obj.objURL; //obj.thumbURL 为缩略图，只能针对百度内部使用
                 img.setAttribute( "sourceUrl", obj.objURL );
                 var title = obj.fromPageTitleEnc.replace( /^\.\.\./i, "" );
-                img.setAttribute( "title", "单击可切换选中状态\n原图尺寸: " + obj.width + "X" + obj.height );
+                img.setAttribute( "title", lang.toggleSelect + obj.width + "X" + obj.height );
                 img.onclick = function () {
                     changeSelected( this );
                 };
@@ -99,7 +102,7 @@ var imageUploader = {};
         g( "imgSearchTxt" ).onclick = function () {
             selectTxt( this );
             this.setAttribute( "hasClick", true );
-            if ( this.value == "请输入搜索关键词" ) {
+            if ( this.value == lang.searchInitInfo ) {
                 this.value = "";
             }
         };
@@ -167,10 +170,16 @@ var imageUploader = {};
                 case "imgSearch":
                     return insertSearch( "searchList", true );
                     break;
-                default:
-                    return;
             }
+        };
+        dialog.oncancel = function(){
+            hideFlash();
         }
+    }
+
+    function hideFlash(){
+        flashObj = null;
+        flashContainer.innerHTML = "";
     }
 
     /**
@@ -188,8 +197,9 @@ var imageUploader = {};
                 imgObjs.push( img );
             }
         }
-        editor.execCommand( "insertImage", imgObjs );
+        insertImage(imgObjs);
         catchRemote && editor.fireEvent( "catchRemoteImage" );
+        hideFlash();
     }
 
     /**
@@ -216,8 +226,9 @@ var imageUploader = {};
         imgObj.vspace = imgObj.hspace = vhSpace.value;
         imgObj.title = title.value;
         imgObj.style = "width:" + width.value + "px;height:" + height.value + "px;";
-        editor.execCommand( "insertImage", imgObj );
+        insertImage(imgObj);
         editor.fireEvent( "catchRemoteImage" );
+        hideFlash();
     }
 
     /**
@@ -227,7 +238,7 @@ var imageUploader = {};
     function checkNum( nodes ) {
         for ( var i = 0, ci; ci = nodes[i++]; ) {
             if ( !isNumber( ci.value ) || ci.value < 0 ) {
-                alert( "请输入正确的长度或者宽度值！例如：123，400" );
+                alert(lang.numError);
                 ci.value = "";
                 ci.focus();
                 return false;
@@ -260,7 +271,8 @@ var imageUploader = {};
             tmpObj.data_ue_src = tmpObj.src = editor.options.imagePath + ci.url;
             imgObjs.push( tmpObj );
         }
-        editor.execCommand( "insertImage", imgObjs );
+        insertImage(imgObjs);
+        hideFlash();
     }
 
     /**
@@ -355,11 +367,11 @@ var imageUploader = {};
         var imgTypeReg = /\.(png|gif|jpg|jpeg)$/gi, //格式过滤
                 urlFilter = "";                                     //地址过滤
         if ( !imgTypeReg.test( url ) || url.indexOf( urlFilter ) == -1 ) {
-            preview.innerHTML = "<span style='color: red'>不允许的图片格式或者图片域！</span>";
+            preview.innerHTML = "<span style='color: red'>"+lang.imageUrlError+"</span>";
             flagImg = null;
             return;
         }
-        preview.innerHTML = "图片加载中……";
+        preview.innerHTML = lang.imageLoading;
         img.onload = function () {
             flagImg = this;
             showImageInfo( this );
@@ -367,7 +379,7 @@ var imageUploader = {};
             this.onload = null;
         };
         img.onerror = function () {
-            preview.innerHTML = "<span style='color: red'>图片加载失败！请检查链接地址或网络状态！</span>";
+            preview.innerHTML = "<span style='color: red'>"+lang.imageLoadError+"</span>";
             flagImg = null;
             this.onerror = null;
         };
@@ -451,19 +463,28 @@ var imageUploader = {};
      * @param callbacks
      */
     function createFlash( opt, callbacks ) {
+        var i18n = utils.extend({},lang.flashI18n);
+        //处理图片资源地址的编码，补全等问题
+        for(var i in i18n){
+            if(!(i in {"lang":1,"uploadingTF":1,"imageTF":1,"textEncoding":1}) && i18n[i]){
+                i18n[i] = encodeURIComponent(editor.options.langPath + editor.options.lang + "/images/" + i18n[i]);
+            }
+        }
+        opt = utils.extend(opt,i18n,false);
         var option = {
             createOptions:{
                 id:'flash',
                 url:opt.flashUrl,
                 width:opt.width,
                 height:opt.height,
-                errorMessage:'Flash插件初始化失败，请更新您的FlashPlayer版本之后重试！',
+                errorMessage:lang.flashError,
                 wmode:browser.safari ? 'transparent' : 'window',
                 ver:'10.0.0',
                 vars:opt,
                 container:opt.container
             }
         };
+        flashContainer = $G(opt.container);
         option = utils.extend( option, callbacks, false );
         flashObj = new baidu.flash.imageUploader( option );
     }
@@ -494,7 +515,7 @@ var imageUploader = {};
     function createAlignButton( ids ) {
         for ( var i = 0, ci; ci = ids[i++]; ) {
             var floatContainer = g( ci ),
-                    nameMaps = {"none":"默认", "left":"左浮动", "right":"右浮动", "center":"居中"};
+                    nameMaps = {"none":lang.floatDefault, "left":lang.floatLeft, "right":lang.floatRight, "center":lang.floatCenter};
             for ( var j in nameMaps ) {
                 var div = document.createElement( "div" );
                 div.setAttribute( "name", j );
@@ -504,6 +525,12 @@ var imageUploader = {};
                 floatContainer.appendChild( div );
             }
             switchSelect( ci );
+        }
+    }
+
+    function toggleFlash(show){
+        if(flashContainer && browser.webkit){
+            flashContainer.style.left = show ? "0":"-10000px";
         }
     }
 
@@ -524,18 +551,23 @@ var imageUploader = {};
         for ( var j = 0, length = tabBodys.length; j < length; j++ ) {
             var body = tabBodys[j],
                     id = body.getAttribute( "id" );
+            body.onclick = function(){
+                this.style.zoom = 1;
+            };
             if ( id != tabSrc ) {
                 body.style.zIndex = 1;
             } else {
                 body.style.zIndex = 200;
                 //当切换到本地图片上传时，隐藏遮罩用的iframe
                 if ( id == "local" ) {
+                    toggleFlash(true);
                     maskIframe.style.display = "none";
                     //处理确定按钮的状态
                     if ( selectedImageCount ) {
                         dialog.buttons[0].setDisabled( true );
                     }
                 } else {
+                    toggleFlash(false);
                     maskIframe.style.display = "";
                     dialog.buttons[0].setDisabled( false );
                 }
@@ -550,10 +582,11 @@ var imageUploader = {};
                             timeout:100000,
                             action:"get",
                             onsuccess:function ( xhr ) {
-                                var tmp = xhr.responseText,
+                                //去除空格
+                                var tmp = utils.trim(xhr.responseText),
                                         imageUrls = !tmp ? [] : tmp.split( "ue_separate_ue" ),
                                         length = imageUrls.length;
-                                g( "imageList" ).innerHTML = !length ? "&nbsp;&nbsp;当前未上传过任何图片！" : "";
+                                g( "imageList" ).innerHTML = !length ? "&nbsp;&nbsp;"+lang.noUploadImage : "";
                                 for ( var k = 0, ci; ci = imageUrls[k++]; ) {
                                     var img = document.createElement( "img" );
 
@@ -564,35 +597,19 @@ var imageUploader = {};
                                     img.onclick = function () {
                                         changeSelected( this );
                                     };
-                                    //                                        img.ondblclick = function(){
-                                    //                                            var me = this,src = me.getAttribute("src",2);
-                                    //                                            if(!confirm("删除操作不可恢复，您确认要删除本图片么？")) return;
-                                    //                                            ajax.request(editor.options.imageManagerPath,{
-                                    //                                                action:"del",
-                                    //                                                fileName:src.substr(src.lastIndexOf("/")+1),
-                                    //                                                onsuccess:function(xhr){
-                                    //
-                                    //                                                    if(xhr.responseText=="success") {
-                                    //                                                        me.parentNode.removeChild(me);
-                                    //                                                    }else{
-                                    //                                                        alert("服务器删除图片失败，请重试！");
-                                    //                                                    }
-                                    //                                                }
-                                    //                                            });
-                                    //                                        };
                                     img.onload = function () {
                                         this.parentNode.style.display = "";
                                         var w = this.width, h = this.height;
                                         scale( this, 100, 120, 80 );
-                                        this.title = "点击切换选择状态\n原图尺寸:" + w + "X" + h;
+                                        this.title = lang.toggleSelect + w + "X" + h;
                                     };
-                                    img.setAttribute( k < 35 ? "src" : "lazy_src", editor.options.imageManagerPath + ci );
-                                    img.setAttribute( "data_ue_src", editor.options.imageManagerPath + ci );
+                                    img.setAttribute( k < 35 ? "src" : "lazy_src", editor.options.imageManagerPath + ci.replace(/\s+|\s+/ig,"") );
+                                    img.setAttribute( "data_ue_src", editor.options.imageManagerPath + ci.replace(/\s+|\s+/ig,"") );
 
                                 }
                             },
                             onerror:function () {
-                                g( "imageList" ).innerHTML = "糟糕，图片读取失败了！";
+                                g( "imageList" ).innerHTML = lang.imageLoadError;
                             }
                         } );
                     }
@@ -605,6 +622,7 @@ var imageUploader = {};
                 }
             }
         }
+
     }
 
     /**
@@ -644,16 +662,17 @@ var imageUploader = {};
      * @param selectParentId
      */
     function switchSelect( selectParentId ) {
-        var selects = g( selectParentId ).children;
-        for ( var i = 0, ci; ci = selects[i++]; ) {
-            domUtils.on( ci, "click", function () {
-                for ( var j = 0, cj; cj = selects[j++]; ) {
-                    cj.className = "";
-                    cj.removeAttribute && cj.removeAttribute( "class" );
-                }
-                this.className = "focus";
-            } )
-        }
+        var select = g(selectParentId ),
+                children = select.children;
+        domUtils.on(select,"click",function(evt){
+            var tar = evt.srcElement || evt.target;
+            for ( var j = 0, cj; cj = children[j++]; ) {
+                cj.className = "";
+                cj.removeAttribute && cj.removeAttribute( "class" );
+            }
+            tar.className = "focus";
+
+        });
     }
 
     /**

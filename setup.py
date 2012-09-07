@@ -66,7 +66,7 @@ if len(sys.argv) > 1 and sys.argv[1] == 'bdist_wininst':
         file_info[0] = '\\PURELIB\\%s' % file_info[0]
 
 # Dynamically calculate the version based on django.VERSION.
-version = "1.2.122"
+version = "1.3.123"
 
 setup(
     name = "DjangoUeditor",
@@ -75,7 +75,7 @@ setup(
     author = 'Zhang WeiXiong',
     author_email = 'wxzhang@126.com',
     description = 'A Django application for Baidu Ueditor.',
-    download_url = 'https://www.djangoproject.com/m/releases/1.4/Django-1.4.tar.gz',
+    download_url = 'http://github.com/zhangfisher/DjangoUeditor',
     packages = packages,
     cmdclass = cmdclasses,
     data_files = data_files,

@@ -2,9 +2,8 @@
         "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>插入链接</title>
+    <title></title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-    <script type="text/javascript" src="../internal.js"></script>
     <style type="text/css">
         *{margin:0;padding:0;color: #838383;}
         table{font-size: 12px;margin: 10px;line-height: 30px}
@@ -14,20 +13,20 @@
 <body>
     <table>
         <tr>
-            <td><label for="text"> 文本内容：</label></td>
-            <td><input class="txt" id="text" type="text" disabled="true" value="只支持选中一个链接时生效"/></td>
+            <td><label for="text"> <var id="lang_input_text"></var></label></td>
+            <td><input class="txt" id="text" type="text" disabled="true"/></td>
         </tr>
         <tr>
-            <td><label for="href"> 链接地址：</label></td>
+            <td><label for="href"> <var id="lang_input_url"></var></label></td>
             <td><input class="txt" id="href" type="text" /></td>
         </tr>
         <tr>
-            <td><label for="title"> 标题：</label></td>
+            <td><label for="title"> <var id="lang_input_title"></var></label></td>
             <td><input class="txt" id="title" type="text"/></td>
         </tr>
         <tr>
              <td colspan="2">
-                 <label for="target">是否在新窗口打开：</label>
+                 <label for="target"><var id="lang_input_target"></var></label>
                  <input id="target" type="checkbox"/>
              </td>
         </tr>
@@ -35,6 +34,7 @@
             <td colspan="2" id="msg"></td>
         </tr>
     </table>
+    <script type="text/javascript" src="../internal.js"></script>
 <script type="text/javascript">
     var range = editor.selection.getRange(),
         link = range.collapsed ? editor.queryCommandValue( "link" ) : editor.selection.getStart(),
@@ -51,7 +51,7 @@
             orgText = text.value = link[browser.ie ? 'innerText':'textContent'];
         }else{
             text.setAttribute('disabled','true');
-            text.value = '只支持选中一个链接时生效';
+            text.value = lang.validLink;
         }
 
     }else{
@@ -60,7 +60,7 @@
             text.value = '';
         }else{
             text.setAttribute('disabled','true');
-            text.value = '只支持选中一个链接时生效';
+            text.value = lang.validLink;
         }
 
     }
@@ -84,7 +84,6 @@
             //修改链接内容的情况太特殊了，所以先做到这里了
             //todo:情况多的时候，做到command里
             if(orgText && text.value != orgText){
-
                 link[browser.ie ? 'innerText' : 'textContent'] =  obj.textValue = text.value;
                 range.selectNode(link).select()
             }
@@ -105,7 +104,7 @@
     };
     $G('href').onblur = function(){
         if(!hrefStartWith(this.value,["http","/","ftp://"])){
-            $G("msg").innerHTML = "<span style='color: red'>您输入的超链接中不包含http等协议名称，默认将为您添加http://前缀</span>";
+            $G("msg").innerHTML = "<span style='color: red'>"+lang.httpPrompt+"</span>";
         }else{
             $G("msg").innerHTML = "";
         }

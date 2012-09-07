@@ -27,7 +27,7 @@ def UploadFile(request,uploadtype,uploadpath):
     #取得上传的文件的原始名称
     original_name,original_ext=file.name.split('.')
     #类型检验
-    if uploadtype=="image":
+    if uploadtype=="image" or uploadtype=="scrawlbg":
         allow_type= USettings.UEditorSettings["images_upload"]['allow_type']
     else:
         allow_type= USettings.UEditorSettings["files_upload"]['allow_type']
@@ -52,7 +52,7 @@ def UploadFile(request,uploadtype,uploadpath):
         state=SaveUploadFile(file,os.path.join(OutputPath,OutputFile))
     #返回数据
 
-    if uploadtype=="image":
+    if uploadtype=="image" or uploadtype=="scrawlbg":
         rInfo={
             'url'      :OutputFile,    #保存后的文件名称
             'title'    :request.POST.get("pictitle",file.name),       #文件描述，对图片来说在前端会添加到title属性上
@@ -66,7 +66,10 @@ def UploadFile(request,uploadtype,uploadpath):
             'filetype' :original_ext,
             'state'    :state               #上传状态，成功时返回SUCCESS,其他任何值将原样返回至图片上传框中
         }
-    return HttpResponse(simplejson.dumps(rInfo),mimetype="application/javascript")
+    if uploadtype=="scrawlbg":#上传涂鸦背景
+        return HttpResponse(u"<script>parent.ue_callback('%s','%s');</script>" % (rInfo["url"],rInfo["state"]))
+    else:#上传文件与图片
+        return HttpResponse(simplejson.dumps(rInfo),mimetype="application/javascript")
 
 #图片文件管理器
 def ImageManager(request,imagepath):
@@ -145,3 +148,31 @@ def SearchMovie(request):
         return HttpResponse(htmlcontent)
     except Exception,E:
         return HttpResponse(E.message)
+
+#涂鸦功能上传
+def scrawlUp(request,uploadpath):
+    action=request.GET.get("action","")
+    #背景上传
+    if action=="tmpImg":
+        return UploadFile(request,"scrawlbg", uploadpath)
+    else:       #处理涂鸦合成相片上传
+        try:
+            content=request.POST.get("content","")
+            import base64
+
+
+            OutputFile=GenerateRndFilename("scrawl.png")
+            OutputPath=os.path.join(USettings.gSettings.MEDIA_ROOT,os.path.dirname(uploadpath)).replace("//","/")
+            if not os.path.exists(OutputPath):
+                os.makedirs(OutputPath)
+            f = open(os.path.join(OutputPath,OutputFile), 'wb')
+            f.write(base64.decodestring(content))
+            f.close()
+            state="SUCCESS"
+        except Exception,E:
+            state="ERROR:"
+        rInfo={
+            "url":OutputFile,
+            "state":state
+        }
+        return HttpResponse(simplejson.dumps(rInfo),mimetype="application/javascript")

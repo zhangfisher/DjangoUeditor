@@ -2,14 +2,14 @@
         "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>附件上传</title>
+    <title></title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
     <link rel="stylesheet" type="text/css" href="attachment.css"/>
 </head>
 <body>
 <div class="wrapper">
     <div class="controller">
-        <span id="divStatus">本次共成功上传 0 个文件</span>
+        <!--<span id="divStatus"></span>-->
         <span id="spanButtonPlaceHolder"></span>
     </div>
     <div class="fieldset flash" id="fsUploadProgress"></div>
@@ -48,11 +48,11 @@
             debug:false,
 
             // 按钮设置
-            button_image_url:"../../themes/default/images/fileScan.png",
+            button_image_url:"../../themes/default/images/filescan.png",
             button_width:"100",
             button_height:"25",
             button_placeholder_id:"spanButtonPlaceHolder",
-            button_text:'<span class="theFont">文件浏览…</span>',
+            button_text:'<span class="theFont">'+lang.browseFiles+'</span>',
             button_text_style:".theFont { font-size:14px;}",
             button_text_left_padding:10,
             button_text_top_padding:4,
@@ -85,13 +85,13 @@
                 var progress = new FileProgress(file, this.customSettings.progressTarget);
                 if(info.state=="SUCCESS"){
                     progress.setComplete();
-                    progress.setStatus("<span style='color: #0b0;font-weight: bold'>上传成功!</span>");
+                    progress.setStatus("<span style='color: #0b0;font-weight: bold'>"+lang.uploadSuccess+"</span>");
                     filesList.push({url:info.url,type:info.fileType,original:info.original});
-                    progress.toggleCancel(true,this,"从成功队列中移除");
+                    progress.toggleCancel(true,this,lang.delSuccessFile);
                 }else{
                     progress.setError();
                     progress.setStatus(info.state);
-                    progress.toggleCancel(true,this,"移除保存失败文件");
+                    progress.toggleCancel(true,this,lang.delFailSaveFile);
                 }
 
             },
@@ -100,9 +100,9 @@
             //队列完成回调
             queue_complete_handler:function(numFilesUploaded){
                 dialog.buttons[0].setDisabled(false);
-                var status = $G("divStatus");
-                var num = status.innerHTML.match(/\d+/g);
-                status.innerHTML = "本次共成功上传 "+((num && num[0] ?parseInt(num[0]):0) + numFilesUploaded) +" 个文件" ;
+//                var status = $G("divStatus");
+//                var num = status.innerHTML.match(/\d+/g);
+//                status.innerHTML = ((num && num[0] ?parseInt(num[0]):0) + numFilesUploaded) +lang.statusPrompt;
             }
         };
         swfupload = new SWFUpload( settings );

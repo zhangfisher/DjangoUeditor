@@ -147,7 +147,7 @@ var video = {};
          for ( var i = 0, ci; ci = nodes[i++]; ) {
              var value = ci.value;
              if ( !isNumber( value ) && value) {
-                 alert( "请输入正确的长度或者宽度值！例如：123，400" );
+                 alert( lang.numError );
                  ci.value = "";
                  ci.focus();
                  return false;
@@ -210,7 +210,7 @@ var video = {};
      function createAlignButton( ids ) {
          for ( var i = 0, ci; ci = ids[i++]; ) {
              var floatContainer = $G( ci ),
-                     nameMaps = {"none":"默认", "left":"左浮动", "right":"右浮动", "center":"独占一行"};
+                     nameMaps = {"none":lang['default'], "left":lang.floatLeft, "right":lang.floatRight, "center":lang.block};
              for ( var j in nameMaps ) {
                  var div = document.createElement( "div" );
                  div.setAttribute( "name", j );
@@ -270,7 +270,7 @@ var video = {};
 		}else if(youku){
             url = "http://player.youku.com/player.php/sid/"+youku[1]+"/v.swf"
         }else if(!endWith(url,[".swf",".flv",".wmv"])){
-            $G("preview").innerHTML = "您输入的视频地址有误，请检查后确认！";
+            $G("preview").innerHTML = lang.urlError;
             return;
         }
         $G("preview").innerHTML = '<embed type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer"' +
@@ -306,7 +306,7 @@ var video = {};
             selectTxt(keywordInput);
             return;
         }
-        $G( "searchList" ).innerHTML = " &nbsp;视频加载中，请稍后……";
+        $G( "searchList" ).innerHTML = lang.loading;
         var keyword = keywordInput.value,
                 type = $G("videoType").value,
             str="";
@@ -325,16 +325,16 @@ var video = {};
                 for(var i=0,ci;ci = videos[i++];){
                     html.push(
                         "<tr>" +
-                            "<td><img title='单击选中视频' ue_video_url='"+ci.outerPlayerUrl+"' alt='"+ci.tags+"' width='106' height='80' src='"+ci.picUrl+"' /> </td>" +
+                            "<td><img title='"+lang.clickToSelect+"' ue_video_url='"+ci.outerPlayerUrl+"' alt='"+ci.tags+"' width='106' height='80' src='"+ci.picUrl+"' /> </td>" +
                             "<td>" +
-                                "<p><a target='_blank' title='访问源视频' href='"+ci.itemUrl+"'>"+ci.title.substr(0,30)+"</a></p>" +
+                                "<p><a target='_blank' title='"+lang.goToSource+"' href='"+ci.itemUrl+"'>"+ci.title.substr(0,30)+"</a></p>" +
                                 "<p style='height: 62px;line-height: 20px' title='"+ci.description+"'> "+ ci.description.substr(0,95) +" </p>" +
                             "</td>" +
                        "</tr>"
                     );
                 }
                 html.push("</table>");
-                $G("searchList").innerHTML = str = html.length ==2 ?" &nbsp; &nbsp;抱歉，未搜到任何相关视频！" : html.join("");
+                $G("searchList").innerHTML = str = html.length ==2 ?lang.noVideo : html.join("");
                 var imgs = domUtils.getElementsByTagName($G("searchList"),"img");
                 if(!imgs)return;
                 for(var i=0,img;img = imgs[i++];){
@@ -366,7 +366,7 @@ var video = {};
     function addSearchListener(){
         domUtils.on($G("videoSearchBtn"),"click",getMovie);
         domUtils.on($G( "videoSearchTxt" ),"click",function () {
-            if ( this.value == "请输入搜索关键词" ) {
+            if ( this.value == lang.static.videoSearchTxt.value ) {
                 this.value = "";
             }
             this.setAttribute("hasClick","true");

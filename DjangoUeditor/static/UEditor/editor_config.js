@@ -20,6 +20,7 @@
      * window.UEDITOR_HOME_URL = "/xxxx/xxxx/";
      */
     var URL;
+
     /**
      * 此处配置写法适用于UEditor小组成员开发使用，外部部署用户请按照上述说明方式配置即可，建议保留下面两行，以兼容可在具体每个页面配置window.UEDITOR_HOME_URL的功能。
      */
@@ -34,12 +35,21 @@
         //为编辑器实例添加一个路径，这个不能被注释
         UEDITOR_HOME_URL : URL
 
+        //语言配置项,默认是zh-cn。有需要的话也可以使用如下这样的方式来自动多语言切换，当然，前提条件是lang文件夹下存在对应的语言文件：
+        //lang值也可以通过自动获取 (navigator.language||navigator.browserLanguage ||navigator.userLanguage).toLowerCase()
+        //,lang:"zh-cn"
+        //,langPath:URL +"lang/"
+
         //图片上传配置区
         ,imageUrl:URL+"php/imageUp.php"             //图片上传提交地址
         ,imagePath:URL + "php/"                     //图片修正地址，引用了fixedImagePath,如有特殊需求，可自行配置
-        //,imageFieldName:"upfile"                   //图片数据的key,若此处修改，需要在后台对应文件修改对应参数
+       //,imageFieldName:"upfile"                   //图片数据的key,若此处修改，需要在后台对应文件修改对应参数
         //,compressSide:0                            //等比压缩的基准，确定maxImageSideLength参数的参照对象。0为按照最长边，1为按照宽度，2为按照高度
         //,maxImageSideLength:900                    //上传图片最大允许的边长，超过会自动等比缩放,不缩放就设置一个比较大的值，更多设置在image.html中
+
+        //涂鸦图片配置区
+        ,scrawlUrl:URL+"php/scrawlUp.php"               //涂鸦上传地址
+        ,scrawlPath:URL+"php/"                          //图片修正地址，同imagePath
 
         //附件上传配置区
         ,fileUrl:URL+"php/fileUp.php"               //附件上传提交地址
@@ -52,7 +62,7 @@
         ,catcherPath:URL + "php/"                  //图片修正地址，同imagePath
         //,catchFieldName:"upfile"                   //提交到后台远程图片uri合集，若此处修改，需要在后台对应文件修改对应参数
         //,separater:'ue_separate_ue'               //提交至后台的远程图片地址字符串分隔符
-        //,localDomain:[]                            //本地顶级域名，当开启远程图片抓取时，除此之外的所有其它域名下的图片都将被抓取到本地
+        //,localDomain:[]                            //本地顶级域名，当开启远程图片抓取时，除此之外的所有其它域名下的图片都将被抓取到本地,默认不抓取127.0.0.1和localhost
 
         //图片在线管理配置区
         ,imageManagerUrl:URL + "php/imageManager.php"       //图片在线管理的处理地址
@@ -65,17 +75,13 @@
         //,snapscreenServerPort: 80                                    //屏幕截图的server端端口
         //,snapscreenImgAlign: 'center'                                //截图的图片默认的排版方式
 
-
         //word转存配置区
         ,wordImageUrl:URL + "php/imageUp.php"             //word转存提交地址
         ,wordImagePath:URL + "php/"                       //
         //,wordImageFieldName:"upfile"                     //word转存表单名若此处修改，需要在后台对应文件修改对应参数
 
-
         //获取视频数据的地址
         ,getMovieUrl:URL+"php/getMovie.php"                   //视频数据获取地址
-
-
 
         //工具栏上的所有的功能按钮和下拉框，可以在new编辑器的实例时选择自己需要的从新定义
         ,toolbars:[
@@ -84,158 +90,122 @@
                 'blockquote', '|', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist','selectall', 'cleardoc', '|', 'customstyle',
                 'paragraph', '|','rowspacingtop', 'rowspacingbottom','lineheight', '|','fontfamily', 'fontsize', '|',
                 'directionalityltr', 'directionalityrtl', '|', '', 'indent', '|',
-                'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|',
+                'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|','touppercase','tolowercase','|',
                 'link', 'unlink', 'anchor', '|', 'imagenone', 'imageleft', 'imageright',
-                'imagecenter', '|', 'insertimage', 'emotion', 'insertvideo', 'attachment', 'map', 'gmap', 'insertframe','highlightcode','webapp','pagebreak', '|',
+                'imagecenter', '|', 'insertimage', 'emotion','scrawl', 'insertvideo', 'attachment', 'map', 'gmap', 'insertframe','highlightcode','webapp','pagebreak','template','background', '|',
                 'horizontal', 'date', 'time', 'spechars','snapscreen', 'wordimage', '|',
                 'inserttable', 'deletetable', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols', '|',
                 'print', 'preview', 'searchreplace','help']
         ]
-        //当鼠标放在工具栏上时显示的tooltip提示
+        //当鼠标放在工具栏上时显示的tooltip提示,留空支持自动多语言配置，否则以配置值为准
         ,labelMap:{
-            'anchor':'锚点', 'undo':'撤销', 'redo':'重做', 'bold':'加粗', 'indent':'首行缩进','snapscreen': '截图',
-            'italic':'斜体', 'underline':'下划线', 'strikethrough':'删除线', 'subscript':'下标',
-            'superscript':'上标', 'formatmatch':'格式刷', 'source':'源代码', 'blockquote':'引用',
-            'pasteplain':'纯文本粘贴模式', 'selectall':'全选', 'print':'打印', 'preview':'预览',
-            'horizontal':'分隔线', 'removeformat':'清除格式', 'time':'时间', 'date':'日期',
-            'unlink':'取消链接', 'insertrow':'前插入行', 'insertcol':'前插入列', 'mergeright':'右合并单元格', 'mergedown':'下合并单元格',
-            'deleterow':'删除行', 'deletecol':'删除列', 'splittorows':'拆分成行', 'splittocols':'拆分成列', 'splittocells':'完全拆分单元格',
-            'mergecells':'合并多个单元格', 'deletetable':'删除表格', 'insertparagraphbeforetable':'表格前插行', 'cleardoc':'清空文档',
-            'fontfamily':'字体', 'fontsize':'字号', 'paragraph':'段落格式', 'insertimage':'图片', 'inserttable':'表格', 'link':'超链接',
-            'emotion':'表情', 'spechars':'特殊字符', 'searchreplace':'查询替换', 'map':'Baidu地图', 'gmap':'Google地图',
-            'insertvideo':'视频', 'help':'帮助', 'justifyleft':'居左对齐', 'justifyright':'居右对齐', 'justifycenter':'居中对齐',
-            'justifyjustify':'两端对齐', 'forecolor':'字体颜色', 'backcolor':'背景色', 'insertorderedlist':'有序列表',
-            'insertunorderedlist':'无序列表', 'fullscreen':'全屏', 'directionalityltr':'从左向右输入', 'directionalityrtl':'从右向左输入',
-            'RowSpacingTop':'段前距', 'RowSpacingBottom':'段后距','highlightcode':'插入代码', 'pagebreak':'分页', 'insertframe':'插入Iframe', 'imagenone':'默认',
-            'imageleft':'左浮动', 'imageright':'右浮动','attachment':'附件', 'imagecenter':'居中', 'wordimage':'图片转存',
-            'lineheight':'行间距', 'customstyle':'自定义标题','autotypeset': '自动排版','webapp':'百度应用'
+            'anchor':'', 'undo':''
         }
-
         //webAppKey
-        //百度应用的APIkey，每个站长必须首先去百度官网注册一个key后方能正常使用app功能
+        //百度应用的APIkey，每个站长必须首先去百度官网注册一个key后方能正常使用app功能  盛怒安乐死卡解决
         ,webAppKey:""
 
+
+        //若实例化编辑器的页面手动修改的domain，此处需要设置为true
+        //,customDomain:false
+
+        //针对getAllHtml方法，会在对应的head标签中增加该编码设置。
+        //,charset:"utf-8"
 
         //常用配置项目
         //,isShow : true    //默认显示编辑器
 
-
         //,initialContent:'欢迎使用ueditor!'    //初始化编辑器的内容,也可以通过textarea/script给值，看官网例子
 
-
-        //,autoClearinitialContent:false //是否自动清除编辑器初始内容，注意：如果focus属性设置为true,这个也为真，那么编辑器一上来就会触发导致初始化的内容看不到了
-
+        //,autoClearinitialContent:true //是否自动清除编辑器初始内容，注意：如果focus属性设置为true,这个也为真，那么编辑器一上来就会触发导致初始化的内容看不到了
 
         //,iframeCssUrl: URL + '/themes/default/iframe.css' //给编辑器内部引入一个css文件
 
-
         //,textarea:'editorValue' // 提交表单时，服务器获取编辑器提交内容的所用的参数，多实例时可以给容器name属性，会将name给定的值最为每个实例的键值，不用每次实例化的时候都设置这个值
-
 
         //,focus:false //初始化时，是否让编辑器获得焦点true或false
 
-
         ,minFrameHeight:80  // 最小高度,默认320
-
-
 
         //,autoClearEmptyNode : true //getContent时，是否删除空的inlineElement节点（包括嵌套的情况）
 
         //,fullscreen : false //是否开启初始化时即全屏，默认关闭
 
-
         //,readonly : false /编辑器初始化结束后,编辑区域是否是只读的，默认是false
-
 
         //,zIndex : 900     //编辑器层级的基数,默认是900
 
-
         //,imagePopup:true      //图片操作的浮层开关，默认打开
-
 
         //,initialStyle:'body{font-size:18px}'   //编辑器内部样式,可以用来改变字体等
 
-
         //,emotionLocalization:false //是否开启表情本地化，默认关闭。若要开启请确保emotion文件夹下包含官网提供的images表情文件夹
 
+        //,pasteplain:true  //是否纯文本粘贴。false为不使用纯文本粘贴，true为使用纯文本粘贴
 
-         //,enterTag:'p' //编辑器回车标签。p或br
-
-
-
-        //,pasteplain:false  //是否纯文本粘贴。false为不使用纯文本粘贴，true为使用纯文本粘贴
-
-
+        //,allHtmlEnabled:false //提交到后台的数据是否包含整个html字符串
         //iframeUrlMap
         //dialog内容的路径 ～会被替换成URL,垓属性一旦打开，将覆盖所有的dialog的默认路径
         //,iframeUrlMap:{
         // 'anchor':'~/dialogs/anchor/anchor.html',
         // }
 
-
         //insertorderedlist
-        //有序列表的下拉配置
-        //,insertorderedlist : [
-        //['1,2,3...','decimal'],
-        //['a,b,c...','lower-alpha'],
-        //['i,ii,iii...','lower-roman'],
-        //['A,B,C','upper-alpha'],
-        //['I,II,III...','upper-roman']
-        // ]
-
+        //有序列表的下拉配置,值留空时支持多语言自动识别，若配置值，则以此值为准
+//        ,'insertorderedlist':{
+//             'decimal' : '' ,         //'1,2,3...'
+//             'lower-alpha' : '' ,    // 'a,b,c...'
+//             'lower-roman' : '' ,    //'i,ii,iii...'
+//             'upper-alpha' : '' ,    //'A,B,C'
+//             'upper-roman' : ''      //'I,II,III...'
+//        }
 
         //insertunorderedlist
-        //无序列表的下拉配置
-        //,insertunorderedlist : [
-        //['○ 小圆圈','circle'],
-        //['● 小圆点','disc'],
-        //['■ 小方块','square']
-        //]
-
+        //无序列表的下拉配置，值留空时支持多语言自动识别，若配置值，则以此值为准
+        //,insertunorderedlist : {
+        //    'circle' : '',  // '○ 小圆圈'
+        //    'disc' : '',    // '● 小圆点'
+        //    'square' : ''   //'■ 小方块'
+        //}
 
         //fontfamily
-        //字体
-        //,'fontfamily':[
-        //   ['宋体',['宋体', 'SimSun']],
-        //   ['楷体',['楷体', '楷体_GB2312', 'SimKai']],
-        //   ['黑体',['黑体', 'SimHei']],
-        //   ['隶书',['隶书', 'SimLi']],
-        //   ['andale mono',['andale mono']],
-        //   ['arial',['arial', 'helvetica', 'sans-serif']],
-        //   ['arial black',['arial black', 'avant garde']],
-        //   ['comic sans ms',['comic sans ms']],
-        //   ['impact',['impact', 'chicago']],
-        //   ['times new roman',['times new roman']]
-        //  ]
-
+        //字体设置 label留空支持多语言自动切换，若配置，则以配置值为准
+//        ,'fontfamily':[
+//            { label:'',name:'songti',val:'宋体,SimSun'},
+//            { label:'',name:'kaiti',val:'楷体,楷体_GB2312, SimKai'},
+//            { label:'',name:'yahei',val:'微软雅黑,Microsoft YaHei'},
+//            { label:'',name:'heiti',val:'黑体, SimHei'},
+//            { label:'',name:'lishu',val:'隶书, SimLi'},
+//            { label:'',name:'andaleMono',val:'andale mono'},
+//            { label:'',name:'arial',val:'arial, helvetica,sans-serif'},
+//            { label:'',name:'arialBlack',val:'arial black,avant garde'},
+//            { label:'',name:'comicSansMs',val:'comic sans ms'},
+//            { label:'',name:'impact',val:'impact,chicago'},
+//            { label:'',name:'timesNewRoman',val:'times new roman'}
+//          ]
 
         //fontsize
         //字号
         //,'fontsize':[10, 11, 12, 14, 16, 18, 20, 24, 36]
 
-
         //paragraph
-        //段落格式 值:显示的名字
-        //,'paragraph':['p:段落', 'h1:标题 1', 'h2:标题 2', 'h3:标题 3', 'h4:标题 4', 'h5:标题 5', 'h6:标题 6']
-
+        //段落格式 值留空时支持多语言自动识别，若配置，则以配置值为准
+        //,'paragraph':{'p':'', 'h1':'', 'h2':'', 'h3':'', 'h4':'', 'h5':'', 'h6':''}
 
         //rowspacingtop
         //段间距 值和显示的名字相同
         //,'rowspacingtop':['5', '10', '15', '20', '25']
 
-
         //rowspacingBottom
         //段间距 值和显示的名字相同
-        //,'rowspacingtop':['5', '10', '15', '20', '25']
-
+        //,'rowspacingbottom':['5', '10', '15', '20', '25']
 
         //lineheight
         //行内间距 值和显示的名字相同
         //,'lineheight':['1', '1.5','1.75','2', '3', '4', '5']
 
-
         //customstyle
-        //自定义样式
+        //自定义样式，不支持国际化，此处配置值即可最后显示值
         //block的元素是依据设置段落的逻辑设置的，inline的元素依据BIU的逻辑设置
         //尽量使用一些常用的标签
         //参数说明
@@ -244,51 +214,46 @@
         //style 添加的样式
         //每一个对象就是一个自定义的样式
         //,'customstyle':[
-        //      {tag:'h1', label:'居中标题', style:'border-bottom:#ccc 2px solid;padding:0 4px 0 0;text-align:center;margin:0 0 20px 0;'},
-        //      {tag:'h1', label:'居左标题', style:'border-bottom:#ccc 2px solid;padding:0 4px 0 0;margin:0 0 10px 0;'},
-        //      {tag:'span', label:'强调', style:'font-style:italic;font-weight:bold;color:#000'},
-        //      {tag:'span', label:'明显强调', style:'font-style:italic;font-weight:bold;color:rgb(51, 153, 204)'}
+        //      {tag:'h1', name:'tc', label:'', style:'border-bottom:#ccc 2px solid;padding:0 4px 0 0;text-align:center;margin:0 0 20px 0;'},
+        //      {tag:'h1', name:'tl',label:'', style:'border-bottom:#ccc 2px solid;padding:0 4px 0 0;margin:0 0 10px 0;'},
+        //      {tag:'span',name:'im', label:'', style:'font-style:italic;font-weight:bold;color:#000'},
+        //      {tag:'span',name:'hi', label:'', style:'font-style:italic;font-weight:bold;color:rgb(51, 153, 204)'}
         //  ]
 
-
-        //contextMenu //定义了右键菜单的内容，可以参考plugins/contextmenu.js里边的默认菜单的例子
-        //,contextMenu:[
-        //    {
-        //        label:'显示的名字',
-        //        cmdName:'执行的command命令，当点击这个右键菜单时',
-        //        //exec可选，有了exec就会在点击时执行这个function,
-        //        exec:function () {
-        //            //this是当前编辑器的实例
-        //            //this.ui._dialogs['inserttableDialog'].open();
-        //        }
-        //    }
-        //   ]
-
-
+        //右键菜单的内容，可以参考plugins/contextmenu.js里边的默认菜单的例子，label留空支持国际化，否则以此配置为准
+//        ,contextMenu:[
+//            {
+//                label:'',       //显示的名称
+//                cmdName:'selectall',//执行的command命令，当点击这个右键菜单时
+//                //exec可选，有了exec就会在点击时执行这个function，优先级高于cmdName
+//                exec:function () {
+//                    //this是当前编辑器的实例
+//                    //this.ui._dialogs['inserttableDialog'].open();
+//                }
+//            }
+//           ]
 
         //wordCount
-        //,wordCount:true          //是否开启字数统计
+        //,wordCount:false          //是否开启字数统计
         //,maximumWords:10000       //允许的最大字符数
-        //,wordCountMsg:'当前已输入 {#count} 个字符，您还可以输入{#leave} 个字符 '   //字数统计提示，{#count}代表当前字数，{#leave}代表还可以输入多少字符数
-        //,wordOverFlowMsg:'<span style="color:red;">你输入的字符个数已经超出最大允许值，服务器可能会拒绝保存！</span>'    //超出字数限制提示
-
-
+        //字数统计提示，{#count}代表当前字数，{#leave}代表还可以输入多少字符数,留空支持多语言自动切换，否则按此配置显示
+        //,wordCountMsg:''   //当前已输入 {#count} 个字符，您还可以输入{#leave} 个字符
+        //超出字数限制提示  留空支持多语言自动切换，否则按此配置显示
+        //,wordOverFlowMsg:''    //<span style="color:red;">你输入的字符个数已经超出最大允许值，服务器可能会拒绝保存！</span>
 
         //highlightcode
         // 代码高亮时需要加载的第三方插件的路径
         // ,highlightJsUrl:URL + "third-party/SyntaxHighlighter/shCore.js"
         // ,highlightCssUrl:URL + "third-party/SyntaxHighlighter/shCoreDefault.css"
 
-
         //tab
         //点击tab键时移动的距离,tabSize倍数，tabNode什么字符做为单位
         //,tabSize:4
         //,tabNode:'&nbsp;'
 
-
         //elementPathEnabled
         //是否启用元素路径，默认是显示
-        //,elementPathEnabled : true
+        //,elementPathEnabled : false
 
         //removeFormat
         //清除格式时可以删除的标签和属性
@@ -297,36 +262,29 @@
         //removeFormatAttributes属性
         //,removeFormatAttributes:'class,style,lang,width,height,align,hspace,valign'
 
-
-
          //undo
          //可以最多回退的次数,默认20
          //,maxUndoCount:20
          //当输入的字符数超过该值时，保存一次现场
-         //,maxInputCount:20
-
-
+//         ,maxInputCount:1
 
         //autoHeightEnabled
         // 是否自动长高,默认true
-        ,autoHeightEnabled:true
-
+        //,autoHeightEnabled:false
 
         //autoFloatEnabled
         //是否保持toolbar的位置不动,默认true
-        //,autoFloatEnabled:true
-
+        ,autoFloatEnabled:false,
+        //浮动时工具栏距离浏览器顶部的高度，用于某些具有固定头部的页面
+        //,topOffset:30
 
         //indentValue
         //首行缩进距离,默认是2em
         //,indentValue:'2em'
 
-
         //pageBreakTag
         //分页标识符,默认是_baidu_page_break_tag_
         //,pageBreakTag:'_baidu_page_break_tag_'
-
-
 
         //sourceEditor
         //源码的查看方式,codemirror 是代码高亮，textarea是文本框,默认是codemirror
@@ -336,18 +294,17 @@
         //,codeMirrorJsUrl:URL + "third-party/codemirror2.15/codemirror.js"
         //codeMirrorCssUrl css加载的路径，默认是 URL + "third-party/codemirror2.15/codemirror.css"
         //,codeMirrorCssUrl:URL + "third-party/codemirror2.15/codemirror.css"
-
-
-
+        //编辑器初始化完成后是否进入源码模式，默认为否。
+        //,sourceEditorFirst:false
 
         //serialize
         // 配置编辑器的过滤规则
         // serialize是个object,可以有属性blackList，whiteList属性，默认是{}
         // 例子:
-        //, serialize : {
-        //      //黑名单，编辑器会过滤掉一下标签
-        //      blackList:{style:1, link:1,object:1, applet:1, input:1, meta:1, base:1, button:1, select:1, textarea:1, '#comment':1, 'map':1, 'area':1}
-        // }
+//        , serialize : {
+//              //黑名单，编辑器会过滤掉一下标签
+//              blackList:{object:1, applet:1, input:1, meta:1, base:1, button:1, select:1, textarea:1, '#comment':1, 'map':1, 'area':1}
+//        }
 
 
         //autotypeset
@@ -367,6 +324,5 @@
         //      indent : false,                 // 行首缩进
         //      indentValue : '2em'             //行首缩进的大小
         //  }
-
     };
 })();

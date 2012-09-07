@@ -2,9 +2,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>插入地图</title>
+<title></title>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.1&services=true"></script>
-<script type="text/javascript" src="../internal.js"></script>
+
     <style type="text/css">
         *{color: #838383}
         body {
@@ -29,23 +29,24 @@
 <div class="content">
     <table>
         <tr>
-            <td>城市:</td>
-            <td><input id="city" type="text" value="北京市" /></td>
-            <td>地址:</td>
+            <td><var id="lang_city"></var>:</td>
+            <td><input id="city" type="text" /></td>
+            <td><var id="lang_address"></var>:</td>
             <td><input id="address" type="text" value="" /></td>
-            <td><a href="javascript:doSearch()" class="doSearch">搜索</a></td>
+            <td><a href="javascript:doSearch()" class="doSearch"><var id="lang_search"></var></a></td>
         </tr>
     </table>
     <div style="width:520px;height:340px;border:1px solid gray" id="container"></div>
 
 </div>
+<script type="text/javascript" src="../internal.js"></script>
 <script type="text/javascript">
     var map = new BMap.Map("container"),marker,point,imgcss;
     map.enableScrollWheelZoom();
     map.enableContinuousZoom();
     function doSearch(){
         if (!document.getElementById('city').value) {
-            alert('请输入城市!');
+            alert(lang.cityMsg);
             return;
         }
         var search = new BMap.LocalSearch(document.getElementById('city').value, {
@@ -63,7 +64,7 @@
                     point = map.getCenter();
                     marker.setPoint(point);
                 } else {
-                    alert('无法定位到该地址！');
+                    alert(lang.errorMsg);
                 }
             }
         });

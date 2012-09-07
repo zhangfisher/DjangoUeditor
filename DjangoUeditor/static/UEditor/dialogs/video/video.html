@@ -2,7 +2,7 @@
         "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>视频</title>
+    <title></title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
     <link rel="stylesheet" type="text/css" href="video.css" />
 </head>
@@ -10,23 +10,23 @@
 <div class="wrapper">
     <div id="videoTab">
         <div id="tabHeads">
-            <span tabSrc="video" class="focus">插入视频</span>
-            <span tabSrc="videoSearch">视频搜索</span>
+            <span tabSrc="video" class="focus"><var id="lang_tab_insertV"></var></span>
+            <span tabSrc="videoSearch"><var id="lang_tab_searchV"></var></span>
         </div>
         <div id="tabBodys">
             <div id="video" class="panel">
-               <table><tr><td><label for="videoUrl" class="url">视频地址</label></td><td><input id="videoUrl" type="text"></td></tr></table>
+               <table><tr><td><label for="videoUrl" class="url"><var id="lang_video_url"></var></label></td><td><input id="videoUrl" type="text"></td></tr></table>
                <div id="preview"></div>
                <div id="videoInfo">
                    <fieldset>
-                       <legend>视频尺寸</legend>
+                       <legend><var id="lang_video_size"></var></legend>
                        <table>
-                           <tr><td><label for="videoWidth">宽度</label></td><td><input class="txt" id="videoWidth" type="text"/></td></tr>
-                           <tr><td><label for="videoHeight">高度</label></td><td><input class="txt" id="videoHeight" type="text"/></td></tr>
+                           <tr><td><label for="videoWidth"><var id="lang_videoW"></var></label></td><td><input class="txt" id="videoWidth" type="text"/></td></tr>
+                           <tr><td><label for="videoHeight"><var id="lang_videoH"></var></label></td><td><input class="txt" id="videoHeight" type="text"/></td></tr>
                        </table>
                    </fieldset>
                    <fieldset>
-                      <legend>对齐方式</legend>
+                      <legend><var id="lang_alignment"></var></legend>
                       <div id="videoFloat"></div>
                   </fieldset>
                </div>
@@ -34,20 +34,20 @@
             <div id="videoSearch" class="panel" style="display: none">
                 <table style="margin-top: 5px;">
                     <tr>
-                        <td><input id="videoSearchTxt" value="请输入搜索关键词" type="text" /></td>
+                        <td><input id="videoSearchTxt"  type="text" /></td>
                         <td>
                             <select id="videoType">
-                                <option value="0">全部</option>
-                                <option value="29">热点</option>
-                                <option value="1">娱乐</option>
-                                <option value="5">搞笑</option>
-                                <option value="15">体育</option>
-                                <option value="21">科技</option>
-                                <option value="31">综艺</option>
+                                <option value="0"></option>
+                                <option value="29"></option>
+                                <option value="1"></option>
+                                <option value="5"></option>
+                                <option value="15"></option>
+                                <option value="21"></option>
+                                <option value="31"></option>
                             </select>
                         </td>
-                        <td><input id="videoSearchBtn" type="button" value="百度一下" /></td>
-                        <td><input id="videoSearchReset" type="button" value="清空搜索" /></td>
+                        <td><input id="videoSearchBtn" type="button"/></td>
+                        <td><input id="videoSearchReset" type="button" /></td>
                     </tr>
                 </table>
                 <div id="searchList"></div>

@@ -8,7 +8,7 @@
     padding-left: 6px;
 }
 #divStatus {display:inline-block; width:336px;color: #aaa;font-size: 12px; }
-#startUpload{cursor: pointer;margin-right: 10px; float: right; display: inline-block; background: url(../../themes/default/images/upload.png) no-repeat ; width: 100px;height: 30px}
+#startUpload{cursor: pointer;margin-right: 10px; float: right; display: inline-block; width: 100px;height: 30px}
 div.fieldset {
 	border:  1px solid #afe14c;
 	padding: 10px 10px;
@@ -32,7 +32,7 @@ div.flash {
 }
 
 .progressWrapper {
-	width: 420px;
+	width: 412px;
 	overflow: hidden;
 }
 

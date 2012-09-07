@@ -2,9 +2,9 @@
         "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>标题</title>
+    <title></title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-    <script type="text/javascript" src="../internal.js"></script>
+
     <style type="text/css">
         * {margin: 0; padding: 0}
         table { margin: 10px;font-size: 12px}
@@ -17,12 +17,12 @@
 <body>
 <table>
     <tr>
-        <td width="70"><span class="strong">背景颜色</span></td>
+        <td width="70"><span class="strong"><var id="lang_background"></var></span></td>
         <td><input id="bgColor" type="text" value="#FFFFFF"></td>
     </tr>
     <tr>
-        <td rowspan="2"><span class="strong">对齐方式</span></td>
-        <td>水平:&nbsp;<select id="align">
+        <td rowspan="2"><span class="strong"><var id="lang_alignment"></var></span></td>
+        <td><var id="lang_horizontal"></var>:&nbsp;<select id="align">
                 <option value="">默认</option>
                 <option value="center">居中</option>
                 <option value="left">居左</option>
@@ -31,7 +31,7 @@
         </td>
     </tr>
     <tr>
-        <td>垂直:&nbsp;<select id="vAlign">
+        <td><var id="lang_vertical"></var>:&nbsp;<select id="vAlign">
                 <option value="">默认</option>
                 <option value="middle">居中</option>
                 <option value="top">顶端对齐</option>
@@ -41,6 +41,7 @@
     </tr>
 
 </table>
+<script type="text/javascript" src="../internal.js"></script>
 <script type="text/javascript">
     addColorPickListener();
     dialog.onok = function () {
@@ -96,7 +97,8 @@
     function getColorPicker() {
         return new UE.ui.Popup( {
             content:new UE.ui.ColorPicker( {
-                noColorText:'清除颜色'
+                noColorText:lang.noColor,
+                editor:editor
             } )
         } );
     }

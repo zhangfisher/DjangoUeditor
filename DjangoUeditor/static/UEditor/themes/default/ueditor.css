@@ -325,6 +325,9 @@ span.edui-unclickable {
 .edui-tablepicker .edui-infoarea .edui-label {
     float: left;
 }
+.edui-dialog-buttons .edui-label{
+    line-height: 24px;
+}
 .edui-tablepicker .edui-infoarea .edui-clickable {
     float: right;
 }
@@ -740,6 +743,12 @@ span.edui-unclickable {
 .edui-for-unlink .edui-icon {
     background-position: -640px 0;
 }
+.edui-for-touppercase .edui-icon {
+    background-position: -786px 0;
+}
+.edui-for-tolowercase .edui-icon {
+    background-position: -806px 0;
+}
 .edui-for-insertrow .edui-icon {
     background-position: -740px -20px;
 }
@@ -820,7 +829,9 @@ span.edui-unclickable {
 .edui-for-edittable .edui-icon {
     background-position: -420px -40px;
 }
-
+.edui-for-template .edui-icon {
+    background-position: -339px -40px;
+}
 .edui-for-delete .edui-icon {
     background-position: -360px -40px;
 }
@@ -840,7 +851,12 @@ span.edui-unclickable {
 .edui-for-snapscreen .edui-icon {
     background-position: -581px -40px
 }
-
+.edui-for-scrawl .edui-icon {
+    background-position: -801px -41px
+}
+.edui-for-background .edui-icon {
+    background-position: -678px -40px;
+}
 
 /*link-dialog*/
 .edui-for-link .edui-dialog-content  {
@@ -848,8 +864,26 @@ span.edui-unclickable {
     height:200px;
     overflow: hidden;
 }
+/*background-dialog*/
+.edui-for-background .edui-dialog-content  {
+    width:440px;
+    height:280px;
+    overflow: hidden;
+}
+/*template-dialog*/
+.edui-for-template .edui-dialog-content  {
+    width:630px;
+    height:390px;
+    overflow: hidden;
+}
 /*emoticon-dialog*/
 .edui-for-emoticon .edui-dialog-content{
+    width:515px;
+    *width:506px;
+    height:360px;
+}
+/*scrawl-dialog*/
+.edui-for-scrawl .edui-dialog-content{
     width:515px;
     *width:506px;
     height:360px;

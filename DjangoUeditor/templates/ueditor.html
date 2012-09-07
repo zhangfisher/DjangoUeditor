@@ -5,6 +5,8 @@
          {% ifnotequal UEditor.toolbars None %}"toolbars":{{ UEditor.toolbars|safe }},{% endifnotequal %}
          "imageUrl":"/ueditor/ImageUp/{{ UEditor.imagePath }}",
          "imagePath":"{{ MEDIA_URL }}{{ UEditor.imagePath }}",
+         "scrawlUrl":"/ueditor/scrawlUp/{{ UEditor.scrawlPath }}",
+         "scrawlPath":"{{ MEDIA_URL }}{{ UEditor.scrawlPath }}",
          "imageManagerUrl":"/ueditor/ImageManager/{{ UEditor.imageManagerPath }}",
          "imageManagerPath":"{{ MEDIA_URL }}{{ UEditor.imageManagerPath }}",
          "catcherUrl":"/ueditor/RemoteCatchImage/{{ UEditor.imagePath }}",
