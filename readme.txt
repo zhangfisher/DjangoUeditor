@@ -1,5 +1,8 @@
 ﻿本模块帮助在Django应用中集成百度Ueditor HTML编辑器，Ueditor HTML编辑器是百度开源的HTML编辑器，
-Ueditor HTML编辑器版本：1.2.5
+
+*2013-2-22
+--更新到Ueditor 1.2.5
+
 
 使用Django-Ueditor非常简单，方法如下：
 
