@@ -1,6 +1,6 @@
 ﻿本模块帮助在Django应用中集成百度Ueditor HTML编辑器，Ueditor HTML编辑器是百度开源的HTML编辑器，
 
-****2013-2-22
+*2013-2-22*
 --更新到Ueditor 1.2.5
 --BUGfix:更新UEditor文件夹名字，避免在linux出现找不到静态文件问题
 --BUGfix:现在支持south更新了
@@ -9,6 +9,7 @@
 使用Django-Ueditor非常简单，方法如下：
 
 1、安装方法
+============================
 	
 	**方法一：下载安装包，在命令行运行：
 		python setup.py install
@@ -16,6 +17,7 @@
    		pip install DjangoUeditor
 
 2、在INSTALL_APPS里面增加DjangoUeditor app，如下：
+============================
      
 		INSTALLED_APPS = (
 			#........
@@ -24,11 +26,11 @@
 
 
 3、在urls.py中增加：
-
+============================
 	url(r'^ueditor/',include('DjangoUeditor.urls' )),
 
 4、在models中这样定义：
-	
+============================
 	from DjangoUeditor.models import UEditorField
 	class Blog(models.Model):
     	Name=models.CharField(,max_length=100,blank=True)
@@ -47,7 +49,7 @@
         width，height:编辑器的宽度和高度，以像素为单位。
 
 5、在表单中使用非常简单，与常规的form字段没什么差别，如下：
-	
+============================	
 	class TestUeditorModelForm(forms.ModelForm):
     	class Meta:
         	model=Blog
@@ -69,7 +71,7 @@
 	widgets.UEditorWidget和forms.UEditorField的输入参数与上述models.UEditorField一样。
 
 6、Settings配置
-     
+============================     
       在Django的Settings可以配置以下参数：
             UEDITOR_SETTINGS={
                 "toolbars":{           #定义多个工具栏显示的按钮，允行定义多个
@@ -94,7 +96,7 @@
                 }
             }
 7、在模板里面：
-
+============================
     <head>
         ......
         {{ form.media }}        #这一句会将所需要的CSS和JS加进来。
@@ -103,7 +105,7 @@
     注：运行collectstatic命令，将所依赖的css,js之类的文件复制到{{STATIC_ROOT}}文件夹里面。
 
 8、高级运用：
-
+============================
      ****************
      动态指定imagePath、filePath、scrawlPath、imageManagerPath
      ****************
@@ -146,15 +148,8 @@
          **在新建表单中，model_instance由于还没有保存到数据库，所以如果访问model_instance.pk可能是空的。因为您需要在getUploadPath处理这种情况
 
 
-class UEditorTestModelForm(UEditorModelForm):
-    class Meta:
-        model=Blog
-
-
-
-
 8、其他事项：
-
+============================
     **本程序版本号采用a.b.ccc,其中a.b是本程序的号，ccc是ueditor的版本号，如1.2.122，1.2是DjangoUeditor的版本号，122指Ueditor 1.2.2.
     **本程序安装包里面已经包括了Ueditor，不需要再额外安装。
     **目前暂时不支持ueditor的插件
