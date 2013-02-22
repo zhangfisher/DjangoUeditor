@@ -4,6 +4,7 @@ import settings as USettings
 import os
 from django.utils import simplejson
 from  utils import GenerateRndFilename
+from django.views.decorators.csrf import csrf_exempt
 
 #保存上传的文件
 def SaveUploadFile(PostFile,FilePath):
@@ -18,6 +19,7 @@ def SaveUploadFile(PostFile,FilePath):
     return u"SUCCESS"
 
 #上传附件
+@csrf_exempt
 def UploadFile(request,uploadtype,uploadpath):
     if not request.method=="POST": return  HttpResponse(simplejson.dumps( u"{'state:'ERROR'}"),mimetype="Application/javascript")
     state="SUCCESS"
@@ -95,6 +97,7 @@ def ReadDirImageFiles(path):
     return files
 
 #抓取远程图片
+@csrf_exempt
 def RemoteCatchImage(request,imagepath):
     upfile_url=request.POST.get("upfile",None)
     if upfile_url is None:
@@ -135,6 +138,7 @@ def RemoteCatchImage(request,imagepath):
 
 
 #搜索视频
+@csrf_exempt
 def SearchMovie(request):
     Searchkey =request.POST.get("searchKey",None)
     if Searchkey is None:
@@ -150,6 +154,7 @@ def SearchMovie(request):
         return HttpResponse(E.message)
 
 #涂鸦功能上传
+@csrf_exempt
 def scrawlUp(request,uploadpath):
     action=request.GET.get("action","")
     #背景上传

@@ -7,8 +7,15 @@ def FixFilePath(OutputPath,instance=None):
             OutputPath=OutputPath(instance)
         except:
             OutputPath=""
-    if len(OutputPath)>0:
-        OutputPath="%s/" % OutputPath.strip("/")
+    else:
+        try:
+            import datetime
+            OutputPath=datetime.datetime.now().strftime(OutputPath)
+        except:
+            pass
+        if len(OutputPath)>0:
+            OutputPath="%s/" % OutputPath.strip("/")
+
     return OutputPath
 
 #在上传的文件名后面追加一个日期时间+随机,如abc.jpg--> abc_20120801202409.jpg

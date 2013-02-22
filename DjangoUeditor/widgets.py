@@ -52,8 +52,8 @@ class UEditorWidget(forms.Textarea):
         }
         return mark_safe(render_to_string('ueditor.html',context))
     class Media:
-        css={"all": ("ueditor/themes/default/ueditor.css" ,
-                     "ueditor/themes/default/iframe.css" ,
+        css={"all": ("ueditor/themes/default/css/ueditor.css" ,
+                     "ueditor/themes/iframe.css" ,
             )}
         js=("ueditor/editor_config.js",
             "ueditor/editor_all_min.js")

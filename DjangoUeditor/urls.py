@@ -5,7 +5,7 @@ if VERSION[0:2]>(1,3):
 else:
     from django.conf.urls.defaults import patterns, url
 
-from DjangoUeditor.views import UploadFile,ImageManager,RemoteCatchImage,SearchMovie,scrawlUp
+from views import UploadFile,ImageManager,RemoteCatchImage,SearchMovie,scrawlUp
 
 urlpatterns = patterns('',
     url(r'^ImageUp/(?P<uploadpath>.*)',UploadFile,{'uploadtype':'image'}),

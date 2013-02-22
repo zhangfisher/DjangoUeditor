@@ -1,8 +1,10 @@
 ﻿本模块帮助在Django应用中集成百度Ueditor HTML编辑器，Ueditor HTML编辑器是百度开源的HTML编辑器，
 
-*2013-2-22
+****2013-2-22
 --更新到Ueditor 1.2.5
-
+--BUGfix:更新UEditor文件夹名字，避免在linux出现找不到静态文件问题
+--BUGfix:现在支持south更新了
+--针对csrf导致上传图片失败的问题，现在默认上传视图开启了csrf_exempt装饰
 
 使用Django-Ueditor非常简单，方法如下：
 
@@ -30,7 +32,7 @@
 	from DjangoUeditor.models import UEditorField
 	class Blog(models.Model):
     	Name=models.CharField(,max_length=100,blank=True)
-    	Content=UEditorField('内容	',height=100,width=500,default='test',imagePath="uploadimg/",imageManagerPath="imglib",toolbars='mini',options={"elementPathEnabled":True},filePath='upload',blank=True)
+    	Content=UEditorField(u'内容	',height=100,width=500,default='test',imagePath="uploadimg/",imageManagerPath="imglib",toolbars='mini',options={"elementPathEnabled":True},filePath='upload',blank=True)
 
 	说明：
 	UEditorField继承自models.TextField,因此你可以直接将model里面定义的models.TextField直接改成UEditorField即可。

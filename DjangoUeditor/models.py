@@ -1,8 +1,9 @@
 #coding: utf-8
 from django.db import models
 from django.contrib.admin import widgets as admin_widgets
-from DjangoUeditor.widgets import UEditorWidget,AdminUEditorWidget
+from widgets import UEditorWidget,AdminUEditorWidget
 from utils import MadeUeditorOptions
+
 
 class UEditorField(models.TextField):
     """
@@ -17,10 +18,9 @@ class UEditorField(models.TextField):
         options：其他UEditor参数，字典类型
         css:编辑器textarea的CSS样式
     """
-    def __init__(self,verbose_name,width=600,height=300,plugins=(),toolbars="normal",filePath="",imagePath="",scrawlPath="",imageManagerPath="",css="",options={},**kwargs):
+    def __init__(self,verbose_name=None,width=600,height=300,plugins=(),toolbars="normal",filePath="",imagePath="",scrawlPath="",imageManagerPath="",css="",options={},**kwargs):
         self.ueditor_options=MadeUeditorOptions(width,height,plugins,toolbars,filePath,imagePath,scrawlPath,imageManagerPath,css,options)
         kwargs["verbose_name"]=verbose_name
-
         super(UEditorField,self).__init__(**kwargs)
 
     def formfield(self,**kwargs):
@@ -30,3 +30,9 @@ class UEditorField(models.TextField):
             defaults['widget'] = AdminUEditorWidget(**self.ueditor_options)
         return super(UEditorField, self).formfield(**defaults)
 
+#以下支持south
+try:
+    from south.modelsinspector import add_ignored_fields,add_introspection_rules
+    add_introspection_rules([], [r"^.DjangoUeditor\.models\.UEditorField"])
+except:
+    pass

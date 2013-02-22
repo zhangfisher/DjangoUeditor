@@ -171,6 +171,7 @@
      */
     function getColorPicker(){
         return new UE.ui.Popup({
+            editor:editor,
             content: new UE.ui.ColorPicker({
                 noColorText: lang.noColor,
                 editor:editor
