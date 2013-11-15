@@ -74,6 +74,7 @@ def UploadFile(request,uploadtype,uploadpath):
         return HttpResponse(simplejson.dumps(rInfo),mimetype="application/javascript")
 
 #图片文件管理器
+@csrf_exempt #如果不加这个,在开启了CSRF功能的站点上，无妨正常访问图片管理器
 def ImageManager(request,imagepath):
     if not request.method!="GET": return  HttpResponse(simplejson.dumps(u"{'state:'ERROR'}") ,mimetype="Application/javascript")
     #取得动作
