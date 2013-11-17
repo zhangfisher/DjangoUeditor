@@ -29,7 +29,11 @@ mime2type["application/pdf"]="pdf"
 def UploadFile(request,uploadtype,uploadpath):
     if not request.method=="POST": return  HttpResponse(simplejson.dumps( u"{'state:'ERROR'}"),mimetype="Application/javascript")
     state="SUCCESS"
-    file=request.FILES.get("upfile",None)
+    if "file" in request.FILES:
+        f = request.FILES["upfile"]
+    else:
+        return  HttpResponse(simplejson.dumps( u"{'state:'ERROR'}"),mimetype="Application/javascript")
+        
     #如果没有提交upfile则返回错误
     if file is None:return  HttpResponse(simplejson.dumps(u"{'state:'ERROR'}") ,mimetype="Application/javascript")
     #取得上传的文件的原始名称
