@@ -24,6 +24,8 @@ def GenerateRndFilename(filename):
     import random
     from os.path import splitext
     f_name,f_ext=splitext(filename)
+    if type_ext is not None:
+        f_ext=type_ext
     return "%s_%s%s%s" % (f_name, datetime.datetime.now().strftime("%Y%m%d_%H%M%S_"),random.randrange(10,99),f_ext)
 
 #文件大小类
