@@ -29,7 +29,7 @@ mime2type["application/pdf"]="pdf"
 def UploadFile(request,uploadtype,uploadpath):
     if not request.method=="POST": return  HttpResponse(simplejson.dumps( u"{'state:'ERROR'}"),mimetype="Application/javascript")
     state="SUCCESS"
-    if "file" in request.FILES:
+    if "upfile" in request.FILES:
         f = request.FILES["upfile"]
     else:
         return  HttpResponse(simplejson.dumps( u"{'state:'ERROR'}"),mimetype="Application/javascript")
