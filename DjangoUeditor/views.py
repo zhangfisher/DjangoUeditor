@@ -19,6 +19,12 @@ def SaveUploadFile(PostFile,FilePath):
     return u"SUCCESS"
 
 #上传附件
+#addnew
+mime2type = {}
+mime2type["image/gif"]="gif"
+mime2type["image/jpeg"]="jpg"
+mime2type["image/png"]="png"
+mime2type["application/pdf"]="pdf"
 @csrf_exempt
 def UploadFile(request,uploadtype,uploadpath):
     if not request.method=="POST": return  HttpResponse(simplejson.dumps( u"{'state:'ERROR'}"),mimetype="Application/javascript")
@@ -30,11 +36,13 @@ def UploadFile(request,uploadtype,uploadpath):
     original_name,original_ext=file.name.split('.')
     #类型检验
     if uploadtype=="image" or uploadtype=="scrawlbg":
-        allow_type= USettings.UEditorSettings["images_upload"]['allow_type']
+        allow_type = USettings.UEditorSettings["images_upload"]['allow_type']
+        typ_str = USettings.UEditorSettings["images_upload"]['allow_type_str']
     else:
-        allow_type= USettings.UEditorSettings["files_upload"]['allow_type']
-    if not original_ext  in allow_type:
-        state=u"服务器不允许上传%s类型的文件。" % original_ext
+        allow_type = USettings.UEditorSettings["files_upload"]['allow_type']
+        type_str = USettings.UEditorSettings["images_upload"]['allow_type_str']
+    if not file.content_type  in allow_type:
+        state=u"服务器只允许上传%s类型的文件。" % type_str
     #大小检验
     max_size=USettings.UEditorSettings["images_upload"]['max_size']
     if  max_size!=0:
