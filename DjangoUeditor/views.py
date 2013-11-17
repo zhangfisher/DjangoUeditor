@@ -37,10 +37,14 @@ def UploadFile(request,uploadtype,uploadpath):
     #类型检验
     if uploadtype=="image" or uploadtype=="scrawlbg":
         allow_type = USettings.UEditorSettings["images_upload"]['allow_type']
-        typ_str = USettings.UEditorSettings["images_upload"]['allow_type_str']
     else:
         allow_type = USettings.UEditorSettings["files_upload"]['allow_type']
-        type_str = USettings.UEditorSettings["images_upload"]['allow_type_str']
+    
+    if not file.content_type  in allow_type:
+        allow_type_exts = [mime2type[x] for x in USettings.UEditorSettings["images_upload"]['allow_type']]
+        allow_type_str = ",".join(allow_type_exts)
+        state=u"服务器只允许上传%s类型的文件。" % allow_type_str
+        
     if not file.content_type  in allow_type:
         state=u"服务器只允许上传%s类型的文件。" % type_str
     #大小检验
