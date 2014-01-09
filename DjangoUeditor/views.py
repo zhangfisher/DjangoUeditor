@@ -27,7 +27,8 @@ def UploadFile(request,uploadtype,uploadpath):
     #如果没有提交upfile则返回错误
     if file is None:return  HttpResponse(simplejson.dumps(u"{'state:'ERROR'}") ,mimetype="Application/javascript")
     #取得上传的文件的原始名称
-    original_name,original_ext=file.name.split('.')
+    original_name,original_ext=os.path.splitext(file.name)
+    original_ext=original_ext[1:]
     #类型检验
     if uploadtype=="image" or uploadtype=="scrawlbg":
         allow_type= USettings.UEditorSettings["images_upload"]['allow_type']
