@@ -5,6 +5,7 @@ import os
 from django.utils import simplejson
 from  utils import GenerateRndFilename
 from django.views.decorators.csrf import csrf_exempt
+from django.core.files.storage import default_storage
 
 #保存上传的文件
 def SaveUploadFile(PostFile,FilePath):
@@ -59,15 +60,16 @@ def UploadFile(request,uploadtype,uploadpath):
         if file.size>MF.size:
             state=u"上传文件大小不允许超过%s。" % MF.FriendValue
     #检测保存路径是否存在,如果不存在则需要创建
-    OutputPath=os.path.join(USettings.gSettings.MEDIA_ROOT,os.path.dirname(uploadpath)).replace("//","/")
-    if not os.path.exists(OutputPath):
-        os.makedirs(OutputPath)
+    #OutputPath=os.path.join(USettings.gSettings.MEDIA_ROOT,os.path.dirname(uploadpath)).replace("//","/")
+    #if not os.path.exists(OutputPath):
+    #    os.makedirs(OutputPath)
         #要保存的文件名格式使用"原文件名_当前时间.扩展名"
     OutputFile=GenerateRndFilename(file.name)
     #所有检测完成后写入文件
     if state=="SUCCESS":
         #保存到文件中
-        state=SaveUploadFile(file,os.path.join(OutputPath,OutputFile))
+        #state=SaveUploadFile(file,os.path.join(OutputPath,OutputFile))
+        default_storage.save(os.path.join(uploadpath,OutputFile),upfile)
     #返回数据
 
     if uploadtype=="image" or uploadtype=="scrawlbg":
