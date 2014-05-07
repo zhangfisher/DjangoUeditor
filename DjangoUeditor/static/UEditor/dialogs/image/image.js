@@ -63,7 +63,8 @@ var imageUploader = {},
         g("searchList").innerHTML = "<p class='msg'>" + lang.imageLoading + "</p>";
         var key = imgSearchInput.value,
             type = $G("imgType").value,
-            url = "http://image.baidu.com/i?ct=201326592&cl=2&lm=-1&st=-1&tn=baiduimagejson&istype=2&rn=32&fm=index&pv=&word=" + encodeToGb2312(key) + type + "&" + +new Date;
+            keepOriginName = editor.options.keepOriginName ? "1":"0",
+            url = "http://image.baidu.com/i?ct=201326592&cl=2&lm=-1&st=-1&tn=baiduimagejson&istype=2&rn=32&fm=index&pv=&word=" + encodeToGb2312(key) + type + "&keeporiginname=" + keepOriginName + "&" + +new Date;
         var reqCallBack = function (data) {
             try {
                 var imgObjs = data.data;
@@ -204,7 +205,7 @@ var imageUploader = {},
             if (ci.getAttribute("selected")) {
                 var url = ci.getAttribute("src", 2).replace(/(\s*$)/g, ""), img = {};
                 img.src = url;
-                img.data_ue_src = url;
+                img._src = url;
                 imgObjs.push(img);
             }
         }
@@ -229,7 +230,7 @@ var imageUploader = {},
         if (!flagImg) return;   //粘贴地址后如果没有生成对应的预览图，可以认为本次粘贴地址失败
         if (!checkNum([width, height, border, vhSpace])) return false;
         imgObj.src = url.value;
-        imgObj.data_ue_src = url.value;
+        imgObj._src = url.value;
         imgObj.width = width.value;
         imgObj.height = height.value;
         imgObj.border = border.value;
@@ -279,7 +280,7 @@ var imageUploader = {},
             tmpObj.title = ci.title;
             tmpObj.floatStyle = align;
             //修正显示时候的地址数据,如果后台返回的是图片的绝对地址，那么此处无需修正
-            tmpObj.data_ue_src = tmpObj.src = editor.options.imagePath + ci.url;
+            tmpObj._src = tmpObj.src = editor.options.imagePath + ci.url;
             imgObjs.push(tmpObj);
         }
         insertImage(imgObjs);
@@ -394,7 +395,7 @@ var imageUploader = {},
     function showImageInfo(img) {
         if (!img.getAttribute("src") || !img.src) return;
         var wordImgFlag = img.getAttribute("word_img");
-        g("url").value = wordImgFlag ? wordImgFlag.replace("&amp;", "&") : (img.getAttribute('data_ue_src') || img.getAttribute("src", 2).replace("&amp;", "&"));
+        g("url").value = wordImgFlag ? wordImgFlag.replace("&amp;", "&") : (img.getAttribute('_src') || img.getAttribute("src", 2).replace("&amp;", "&"));
         g("width").value = img.width || 0;
         g("height").value = img.height || 0;
         g("border").value = img.getAttribute("border") || 0;
@@ -617,7 +618,7 @@ var imageUploader = {},
                                         this.onload = null;
                                     };
                                     img.setAttribute(k < 35 ? "src" : "lazy_src", editor.options.imageManagerPath + ci.replace(/\s+|\s+/ig, ""));
-                                    img.setAttribute("data_ue_src", editor.options.imageManagerPath + ci.replace(/\s+|\s+/ig, ""));
+                                    img.setAttribute("_src", editor.options.imageManagerPath + ci.replace(/\s+|\s+/ig, ""));
 
                                 }
                             },

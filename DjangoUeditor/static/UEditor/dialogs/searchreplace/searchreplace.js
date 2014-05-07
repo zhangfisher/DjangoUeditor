@@ -27,9 +27,6 @@ function clickHandler( tabHeads,tabBodys,obj ) {
     for ( var j = 0, length = tabBodys.length; j < length; j++ ) {
         var body = tabBodys[j],
             id = body.getAttribute( "id" );
-        body.onclick = function(){
-            this.style.zoom = 1;
-        };
         if ( id != tabSrc ) {
             body.style.zIndex = 1;
         } else {
@@ -56,7 +53,10 @@ function switchTab( tabParentId ) {
         }
     }
 }
-
+$G('searchtab').onmousedown = function(){
+    $G('search-msg').innerHTML = '';
+    $G('replace-msg').innerHTML = ''
+}
 //是否区分大小写
 function getMatchCase(id) {
     return $G(id).checked ? true : false;
@@ -73,7 +73,11 @@ $G("nextFindBtn").onclick = function (txt, dir, mcase) {
         casesensitive:getMatchCase("matchCase")
     };
     if (!frCommond(obj)) {
-        alert(lang.getEnd);
+        var bk = editor.selection.getRange().createBookmark();
+        $G('search-msg').innerHTML = lang.getEnd;
+        editor.selection.getRange().moveToBookmark(bk).select();
+
+
     }
 };
 $G("nextReplaceBtn").onclick = function (txt, dir, mcase) {
@@ -99,7 +103,7 @@ $G("preFindBtn").onclick = function (txt, dir, mcase) {
         casesensitive:getMatchCase("matchCase")
     };
     if (!frCommond(obj)) {
-        alert(lang.getStart);
+        $G('search-msg').innerHTML = lang.getStart;
     }
 };
 $G("preReplaceBtn").onclick = function (txt, dir, mcase) {
@@ -150,7 +154,7 @@ $G("repalceAllBtn").onclick = function () {
     };
     var num = frCommond(obj);
     if (num) {
-        alert(lang.countMsg.replace("{#count}", num));
+        $G('replace-msg').innerHTML = lang.countMsg.replace("{#count}", num);
     }
 };
 //执行
