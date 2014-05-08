@@ -2,17 +2,24 @@
 from django.http import HttpResponse
 import settings as USettings
 import os
-from django.utils import simplejson
-from  utils import GenerateRndFilename
+import json
+from utils import GenerateRndFilename
 from django.views.decorators.csrf import csrf_exempt
 
+class MyException(Exception):
+    def _get_message(self): 
+        return self._message
+    def _set_message(self, message): 
+        self._message = message
+    message = property(_get_message, _set_message)
+	
 #保存上传的文件
 def SaveUploadFile(PostFile,FilePath):
     try:
         f = open(FilePath, 'wb')
         for chunk in PostFile.chunks():
             f.write(chunk)
-    except Exception,E:
+    except MyException,E:
         f.close()
         return u"写入文件错误:"+ E.message
     f.close()
@@ -21,11 +28,12 @@ def SaveUploadFile(PostFile,FilePath):
 #上传附件
 @csrf_exempt
 def UploadFile(request,uploadtype,uploadpath):
-    if not request.method=="POST": return  HttpResponse(simplejson.dumps( u"{'state:'ERROR'}"),mimetype="Application/javascript")
+    if not request.method=="POST": 
+        return  HttpResponse(json.dumps( u"{'state:'ERROR'}"),content_type="application/javascript")
     state="SUCCESS"
     file=request.FILES.get("upfile",None)
     #如果没有提交upfile则返回错误
-    if file is None:return  HttpResponse(simplejson.dumps(u"{'state:'ERROR'}") ,mimetype="Application/javascript")
+    if file is None:return  HttpResponse(json.dumps(u"{'state:'ERROR'}") ,content_type="application/javascript")
     #取得上传的文件的原始名称
     original_name,original_ext=os.path.splitext(file.name)
     original_ext=original_ext[1:]
@@ -72,18 +80,18 @@ def UploadFile(request,uploadtype,uploadpath):
     if uploadtype=="scrawlbg":#上传涂鸦背景
         return HttpResponse(u"<script>parent.ue_callback('%s','%s');</script>" % (rInfo["url"],rInfo["state"]))
     else:#上传文件与图片
-        return HttpResponse(simplejson.dumps(rInfo),mimetype="application/javascript")
+        return HttpResponse(json.dumps(rInfo),content_type="application/javascript")
 
 #图片文件管理器
 def ImageManager(request,imagepath):
-    if not request.method!="GET": return  HttpResponse(simplejson.dumps(u"{'state:'ERROR'}") ,mimetype="Application/javascript")
+    if not request.method!="GET": return  HttpResponse(json.dumps(u"{'state:'ERROR'}") ,content_type="application/javascript")
     #取得动作
     action=request.GET.get("action","get")
     if action=="get":
         TargetPath=os.path.join(USettings.gSettings.MEDIA_ROOT,os.path.dirname(imagepath)).replace("//","/")
         if not os.path.exists(TargetPath):
             os.makedirs(TargetPath)
-        return HttpResponse(ReadDirImageFiles(TargetPath),mimetype="Application/javascript")
+        return HttpResponse(ReadDirImageFiles(TargetPath),content_type="application/javascript")
 
 #遍历所有文件清单
 def ReadDirImageFiles(path):
@@ -102,16 +110,16 @@ def ReadDirImageFiles(path):
 def RemoteCatchImage(request,imagepath):
     upfile_url=request.POST.get("upfile",None)
     if upfile_url is None:
-        return HttpResponse(simplejson.dumps("{'state:'ERROR'}"),mimetype="Application/javascript")
+        return HttpResponse(json.dumps("{'state:'ERROR'}"),content_type="application/javascript")
     import urllib
     from urlparse import urlparse
 
     #读取远程图片文件
     try:
         CatchFile=urllib.urlopen(upfile_url)
-    except Exception,E:
+    except MyException,E:
         tip=u"抓取图片错误：%s" % E.message
-        return HttpResponse(simplejson.dumps("{'tip:'%s'}" % tip),mimetype="Application/javascript")
+        return HttpResponse(json.dumps("{'tip:'%s'}" % tip),content_type="application/javascript")
 
     #取得目标抓取的文件名称
     OutFile=os.path.basename(urlparse(CatchFile.geturl()).path)
@@ -119,7 +127,7 @@ def RemoteCatchImage(request,imagepath):
     OutFileExt=os.path.splitext(OutFile)[1][1:]
     if not (OutFileExt!="" and OutFileExt in USettings.UEditorSettings['images_upload']['allow_type']):
         tip=u"不允许抓取%s类型的图片错误" % OutFileExt
-        return HttpResponse(simplejson.dumps(u"{'tip:'%s'}" % tip),mimetype="Application/javascript")
+        return HttpResponse(json.dumps(u"{'tip:'%s'}" % tip),content_type="application/javascript")
 
     #将抓取到的文件写入文件
     try:
@@ -132,10 +140,10 @@ def RemoteCatchImage(request,imagepath):
             'tip'   :u'远程图片抓取成功！'           #'状态提示'
         }
 
-        return HttpResponse(simplejson.dumps(rInfo),mimetype="Application/javascript")
-    except Exception,E:
+        return HttpResponse(json.dumps(rInfo),content_type="application/javascript")
+    except MyException,E:
         tip=u"写入图片文件错误:" % E.message
-        return HttpResponse(simplejson.dumps(u"{'tip:'%s'}" % tip),mimetype="Application/javascript")
+        return HttpResponse(json.dumps(u"{'tip:'%s'}" % tip),content_type="application/javascript")
 
 
 #搜索视频
@@ -151,7 +159,7 @@ def SearchMovie(request):
     try:
         htmlcontent=urllib.urlopen(u'http://api.tudou.com/v3/gw?method=item.search&appKey=myKey&format=json&kw=%s&pageNo=1&pageSize=20&channelId=%s&inDays=7&media=v&sort=s' % (Searchkey,Searchtype))
         return HttpResponse(htmlcontent)
-    except Exception,E:
+    except MyException,E:
         return HttpResponse(E.message)
 
 #涂鸦功能上传
@@ -175,10 +183,10 @@ def scrawlUp(request,uploadpath):
             f.write(base64.decodestring(content))
             f.close()
             state="SUCCESS"
-        except Exception,E:
+        except MyException,E:
             state="ERROR:"
         rInfo={
             "url":OutputFile,
             "state":state
         }
-        return HttpResponse(simplejson.dumps(rInfo),mimetype="application/javascript")
+        return HttpResponse(json.dumps(rInfo),content_type="application/javascript")
