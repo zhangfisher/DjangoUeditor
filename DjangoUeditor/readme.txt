@@ -1,7 +1,7 @@
 ﻿Ueditor HTML编辑器是百度开源的HTML编辑器，
 
 本模块帮助在Django应用中集成百度Ueditor HTML编辑器。
-安装包中已经集成Ueditor v1.2.2
+安装包中已经集成Ueditor v1.3.6
 
 使用Django-Ueditor非常简单，方法如下：
 
@@ -34,7 +34,7 @@
 	说明：
 	UEditorField继承自models.TextField,因此你可以直接将model里面定义的models.TextField直接改成UEditorField即可。
 	UEditorField提供了额外的参数：
-        toolbars:配置你想显示的工具栏，取值为mini,normal,full，代表小，一般，全部。如果默认的工具栏不符合您的要求，您可以在settings里面配置自己的显示按钮。参见后面介绍。
+        toolbars:配置你想显示的工具栏，取值为mini,normal,full,besttome, 代表小，一般，全部,涂伟忠贡献的一种样式。如果默认的工具栏不符合您的要求，您可以在settings里面配置自己的显示按钮。参见后面介绍。
         imagePath:图片上传的路径,如"images/",实现上传到"{{MEDIA_ROOT}}/images"文件夹
         filePath:附件上传的路径,如"files/",实现上传到"{{MEDIA_ROOT}}/files"文件夹
         scrawlPath:涂鸦文件上传的路径,如"scrawls/",实现上传到"{{MEDIA_ROOT}}/scrawls"文件夹,如果不指定则默认=imagepath
