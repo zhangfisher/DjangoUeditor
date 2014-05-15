@@ -1,5 +1,10 @@
 ﻿本模块帮助在Django应用中集成百度Ueditor HTML编辑器，Ueditor HTML编辑器是百度开源的HTML编辑器，
 
+*2014-5-15*
+--修复在django 1.6和python2.7下的警告
+--使用 json 代替 django 中的 simplejson
+--增加不过滤 script,style ,不自动转div为p的脚本
+
 *2014-5-7* 
 --更新到Ueditor 1.3.6
 --BUGfix:更新UEditor文件夹名字，避免在linux出现找不到静态文件问题
