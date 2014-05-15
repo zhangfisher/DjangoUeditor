@@ -6,7 +6,7 @@ from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
 from django.utils.html import  conditional_escape
 from django.utils.encoding import  force_unicode
-from django.utils import simplejson
+import json
 
 from utils import MadeUeditorOptions
 import settings as USettings
@@ -22,13 +22,13 @@ class UEditorWidget(forms.Textarea):
         #取得工具栏设置
         try:
             if type(self.ueditor_options['toolbars'])==list:
-                tbar=simplejson.dumps(self.ueditor_options['toolbars'])
+                tbar=json.dumps(self.ueditor_options['toolbars'])
             else:
                 if getattr(USettings,"TOOLBARS_SETTINGS",{}).has_key(str(self.ueditor_options['toolbars'])):
                     if self.ueditor_options['toolbars'] =="full":
                         tbar=None
                     else:
-                        tbar=simplejson.dumps(USettings.TOOLBARS_SETTINGS[str(self.ueditor_options['toolbars'])])
+                        tbar=json.dumps(USettings.TOOLBARS_SETTINGS[str(self.ueditor_options['toolbars'])])
                 else:
                     tbar=None
         except:
@@ -40,7 +40,7 @@ class UEditorWidget(forms.Textarea):
             "name":name,
             "value":conditional_escape(force_unicode(value)),
             "toolbars":tbar,
-            "options":simplejson.dumps(self.ueditor_options['options'])[1:-1]
+            "options":json.dumps(self.ueditor_options['options'])[1:-1]
                 #str(self.ueditor_options['options'])[1:-1].replace("True","true").replace("False","false").replace("'",'"')
         })
         context = {

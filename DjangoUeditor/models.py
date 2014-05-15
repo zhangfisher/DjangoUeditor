@@ -32,7 +32,7 @@ class UEditorField(models.TextField):
 
 #以下支持south
 try:
-    from south.modelsinspector import add_ignored_fields,add_introspection_rules
-    add_introspection_rules([], [r"^.DjangoUeditor\.models\.UEditorField"])
+    from south.modelsinspector import add_introspection_rules
+    add_introspection_rules([], ["^DjangoUeditor\.models\.UEditorField"])
 except:
     pass
