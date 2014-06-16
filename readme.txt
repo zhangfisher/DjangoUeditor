@@ -1,5 +1,8 @@
 ﻿本模块帮助在Django应用中集成百度Ueditor HTML编辑器，Ueditor HTML编辑器是百度开源的HTML编辑器，
 
+*2014-6-16*
+--更新到Ueditor 1.4.3
+
 *2014-5-15*
 --增加不过滤 script,style ,不自动转div为p的脚本
 --修复在django 1.6和python2.7下的警告
