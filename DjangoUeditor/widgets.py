@@ -12,8 +12,8 @@ from utils import MadeUeditorOptions
 import settings as USettings
 
 class UEditorWidget(forms.Textarea):
-    def __init__(self,width=600,height=300,plugins=(),toolbars="normal",filePath="",imagePath="",scrawlPath="",imageManagerPath="",css="",options={}, attrs=None,**kwargs):
-        self.ueditor_options=MadeUeditorOptions(width,height,plugins,toolbars,filePath,imagePath,scrawlPath,imageManagerPath,css,options)
+    def __init__(self,width=600,height=300,plugins=(),toolbars="normal",filePath="",imagePath="",scrawlPath="",imageManagerPath="",css="",sourceEditorFirst=False,options={}, attrs=None,**kwargs):
+        self.ueditor_options=MadeUeditorOptions(width,height,plugins,toolbars,filePath,imagePath,scrawlPath,imageManagerPath,css,sourceEditorFirst,options)
         super(UEditorWidget, self).__init__(attrs)
 
 
@@ -28,12 +28,12 @@ class UEditorWidget(forms.Textarea):
                     if self.ueditor_options['toolbars'] =="full":
                         tbar=None
                     else:
-                        tbar=json.dumps(USettings.TOOLBARS_SETTINGS[str(self.ueditor_options['toolbars'])])
+                        tb=USettings.TOOLBARS_SETTINGS[str(self.ueditor_options['toolbars'])]
+                        tbar=json.dumps(tb)
                 else:
                     tbar=None
         except:
             pass
-
         #传入模板的参数
         uOptions=self.ueditor_options.copy()
         uOptions.update({
@@ -55,8 +55,8 @@ class UEditorWidget(forms.Textarea):
         css={"all": ("ueditor/themes/default/css/ueditor.css" ,
                      "ueditor/themes/iframe.css" ,
             )}
-        js=("ueditor/editor_config.js",
-            "ueditor/editor_all_min.js")
+        js=("ueditor/ueditor.config.js",
+            "ueditor/ueditor.all.min.js")
 
 
 class AdminUEditorWidget(AdminTextareaWidget, UEditorWidget):
