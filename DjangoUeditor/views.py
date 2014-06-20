@@ -5,6 +5,7 @@ import os
 import json
 from utils import GenerateRndFilename
 from django.views.decorators.csrf import csrf_exempt
+from django.core.files.storage import default_storage
 
 class MyException(Exception):
     def _get_message(self): 
@@ -26,12 +27,22 @@ def SaveUploadFile(PostFile,FilePath):
     return u"SUCCESS"
 
 #上传附件
+#addnew
+mime2type = {}
+mime2type["image/gif"]="gif"
+mime2type["image/jpeg"]="jpg"
+mime2type["image/png"]="png"
+mime2type["application/pdf"]="pdf"
 @csrf_exempt
 def UploadFile(request,uploadtype,uploadpath):
     if not request.method=="POST": 
         return  HttpResponse(json.dumps( u"{'state:'ERROR'}"),content_type="application/javascript")
     state="SUCCESS"
-    file=request.FILES.get("upfile",None)
+    if "upfile" in request.FILES:
+        f = request.FILES["upfile"]
+    else:
+        return  HttpResponse(simplejson.dumps( u"{'state:'ERROR'}"),mimetype="Application/javascript")
+        
     #如果没有提交upfile则返回错误
     if file is None:return  HttpResponse(json.dumps(u"{'state:'ERROR'}") ,content_type="application/javascript")
     #取得上传的文件的原始名称
@@ -39,11 +50,17 @@ def UploadFile(request,uploadtype,uploadpath):
     original_ext=original_ext[1:]
     #类型检验
     if uploadtype=="image" or uploadtype=="scrawlbg":
-        allow_type= USettings.UEditorSettings["images_upload"]['allow_type']
+        allow_type = USettings.UEditorSettings["images_upload"]['allow_type']
     else:
-        allow_type= USettings.UEditorSettings["files_upload"]['allow_type']
-    if not original_ext  in allow_type:
-        state=u"服务器不允许上传%s类型的文件。" % original_ext
+        allow_type = USettings.UEditorSettings["files_upload"]['allow_type']
+    
+    if not file.content_type  in allow_type:
+        allow_type_exts = [mime2type[x] for x in USettings.UEditorSettings["images_upload"]['allow_type']]
+        allow_type_str = ",".join(allow_type_exts)
+        state=u"服务器只允许上传%s类型的文件。" % allow_type_str
+        
+    if not file.content_type  in allow_type:
+        state=u"服务器只允许上传%s类型的文件。" % type_str
     #大小检验
     max_size=USettings.UEditorSettings["images_upload"]['max_size']
     if  max_size!=0:
@@ -52,15 +69,16 @@ def UploadFile(request,uploadtype,uploadpath):
         if file.size>MF.size:
             state=u"上传文件大小不允许超过%s。" % MF.FriendValue
     #检测保存路径是否存在,如果不存在则需要创建
-    OutputPath=os.path.join(USettings.gSettings.MEDIA_ROOT,os.path.dirname(uploadpath)).replace("//","/")
-    if not os.path.exists(OutputPath):
-        os.makedirs(OutputPath)
+    #OutputPath=os.path.join(USettings.gSettings.MEDIA_ROOT,os.path.dirname(uploadpath)).replace("//","/")
+    #if not os.path.exists(OutputPath):
+    #    os.makedirs(OutputPath)
         #要保存的文件名格式使用"原文件名_当前时间.扩展名"
     OutputFile=GenerateRndFilename(file.name)
     #所有检测完成后写入文件
     if state=="SUCCESS":
         #保存到文件中
-        state=SaveUploadFile(file,os.path.join(OutputPath,OutputFile))
+        #state=SaveUploadFile(file,os.path.join(OutputPath,OutputFile))
+        default_storage.save(os.path.join(uploadpath,OutputFile),upfile)
     #返回数据
 
     if uploadtype=="image" or uploadtype=="scrawlbg":
@@ -83,6 +101,7 @@ def UploadFile(request,uploadtype,uploadpath):
         return HttpResponse(json.dumps(rInfo),content_type="application/javascript")
 
 #图片文件管理器
+@csrf_exempt #如果不加这个,在开启了CSRF功能的站点上，无妨正常访问图片管理器
 def ImageManager(request,imagepath):
     if not request.method!="GET": return  HttpResponse(json.dumps(u"{'state:'ERROR'}") ,content_type="application/javascript")
     #取得动作

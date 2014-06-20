@@ -1,3 +1,9 @@
+这个项目在集成的时候我也做了一些修改，但是因为和自己的项目结合比较紧密，所以就不share了。
+说一个问题：这个项目所带的Ueditor版本在某些浏览器下有中文输入困难的问题，所以碰到此问题的同学请把Ueditor本身升级到1.6.1以后的版本升级方法：
+简单说一下，怎样手动升级静态包：
+1、官方目前提供的完整包里没有完整uetior_all_min.js。不过你到官方地址：http://ueditor.baidu.com/ueditor/ueditor.all.min.js 这个可以用。
+2、themes/default的_css目录得改成css。
+-----------------------------------------------﻿
 ﻿本模块帮助在Django应用中集成百度Ueditor HTML编辑器，Ueditor HTML编辑器是百度开源的HTML编辑器，
 
 *2014-6-16*
