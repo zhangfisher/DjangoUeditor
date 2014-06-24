@@ -31,7 +31,7 @@
 
         // 服务器统一请求接口路径
         , serverUrl: URL + "php/controller.php"
-
+        ,catchRemoteImageEnable:false
         //工具栏上的所有的功能按钮和下拉框，可以在new编辑器的实例时选择自己需要的从新定义
         , toolbars: [[
             'fullscreen', 'source', '|', 'undo', 'redo', '|',
@@ -287,7 +287,7 @@
 
         //autoFloatEnabled
         //是否保持toolbar的位置不动,默认true
-        //,autoFloatEnabled:true
+        ,autoFloatEnabled:false
         //浮动时工具栏距离浏览器顶部的高度，用于某些具有固定头部的页面
         //,topOffset:30
         //编辑器底部距离工具栏高度(如果参数大于等于编辑器高度，则设置无效)

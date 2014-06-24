@@ -153,15 +153,7 @@ LOGGING = {
     }
 }
 
+#以下可以自行配置ueditor的配置项
 UEDITOR_SETTINGS = {
-    'toolbars':{"testa":[['fullscreen', 'source', '|', 'undo', 'redo', '|','bold', 'italic', 'underline']],
-                "testb":[[ 'source', '|','bold', 'italic', 'underline']]
-                },
-    'images_upload':{
-        'max_size':0,
-        'path':"asd"
-    },
-    'scrawl_upload':{
-        'path':'scrawlabc'
-    }
+    "test":1
 }

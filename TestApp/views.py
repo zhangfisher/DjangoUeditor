@@ -1,19 +1,18 @@
 #coding:utf-8
-
-from TestApp.forms import TestUEditorForm,UEditorTestModelForm
+from TestApp.forms import UEditorTestModelForm
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from TestApp.models import Blog
 from django.views.decorators.cache import never_cache
-def TestUEditor(request):
-    if request.method == 'POST':
-        form = TestUEditorForm(request.POST)
-        return HttpResponse(form.data["Content"])
-    else:
-        form = TestUEditorForm(
-            initial={'Description': '测试'}
-        )
-        return render_to_response('test.html', {'form': form})
+# def TestUEditor(request):
+#     if request.method == 'POST':
+#         form = TestUEditorForm(request.POST)
+#         return HttpResponse(form.data["Content"])
+#     else:
+#         form = TestUEditorForm(
+#             initial={'Description': u'测试'}
+#         )
+#         return render_to_response('test.html', {'form': form})
 
 def TestUEditorModel(request):
     if request.method == 'POST':
@@ -23,7 +22,7 @@ def TestUEditorModel(request):
             form.save()
             return render_to_response('test.html', {'form': form})
         else:
-            return HttpResponse("数据校验错误")
+            return HttpResponse(u"数据校验错误")
     else:
         try:
             M=Blog.objects.get(pk=1)
@@ -33,3 +32,7 @@ def TestUEditorModel(request):
                 initial={'Description': '测试'}
             )
         return render_to_response('test.html', {'form': form})
+
+
+def ajaxcmd(request):
+    return HttpResponse(u"我来自后端",content_type="plain/text")

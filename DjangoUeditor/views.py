@@ -3,190 +3,293 @@ from django.http import HttpResponse
 import settings as USettings
 import os
 import json
-from utils import GenerateRndFilename
 from django.views.decorators.csrf import csrf_exempt
+import datetime,random
+import urllib
 
-class MyException(Exception):
-    def _get_message(self): 
-        return self._message
-    def _set_message(self, message): 
-        self._message = message
-    message = property(_get_message, _set_message)
-	
 #保存上传的文件
-def SaveUploadFile(PostFile,FilePath):
+def save_upload_file(PostFile,FilePath):
     try:
         f = open(FilePath, 'wb')
         for chunk in PostFile.chunks():
             f.write(chunk)
-    except MyException,E:
+    except Exception,E:
         f.close()
         return u"写入文件错误:"+ E.message
     f.close()
     return u"SUCCESS"
 
-#上传附件
+
 @csrf_exempt
-def UploadFile(request,uploadtype,uploadpath):
-    if not request.method=="POST": 
-        return  HttpResponse(json.dumps( u"{'state:'ERROR'}"),content_type="application/javascript")
-    state="SUCCESS"
-    file=request.FILES.get("upfile",None)
-    #如果没有提交upfile则返回错误
-    if file is None:return  HttpResponse(json.dumps(u"{'state:'ERROR'}") ,content_type="application/javascript")
-    #取得上传的文件的原始名称
-    original_name,original_ext=os.path.splitext(file.name)
-    original_ext=original_ext[1:]
-    #类型检验
-    if uploadtype=="image" or uploadtype=="scrawlbg":
-        allow_type= USettings.UEditorSettings["images_upload"]['allow_type']
+def get_ueditor_settings(request):
+    return HttpResponse(json.dumps(USettings.UEditorUploadSettings,ensure_ascii=False), content_type="application/javascript")
+
+def get_ueditor_controller(request):
+    """获取ueditor的后端URL地址    """
+
+    action=request.GET.get("action","")
+    reponseAction={
+        #返回ueditor的上传功能的后端配置，由于我们采用通过前端配置传入，此处默认传回一个空配置即可
+        "config":get_ueditor_settings,
+        "uploadimage":UploadFile,
+        "uploadscrawl":UploadFile,
+        "uploadvideo":UploadFile,
+        "uploadfile":UploadFile,
+        "catchimage":catcher_remote_image,
+        "listimage":list_files,
+        "listfile":list_files
+    }
+    return reponseAction[action](request)
+
+
+@csrf_exempt
+def list_files(request):
+    """列出文件"""
+    if request.method!="GET":
+        return  HttpResponse(json.dumps(u"{'state:'ERROR'}") ,content_type="application/javascript")
+    #取得动作
+    action=request.GET.get("action","listimage")
+
+    allowFiles={
+        "listfile":USettings.UEditorUploadSettings.get("fileManagerAllowFiles",[]),
+        "listimage":USettings.UEditorUploadSettings.get("imageManagerAllowFiles",[])
+    }
+    listSize={
+        "listfile":USettings.UEditorUploadSettings.get("fileManagerListSize",""),
+        "listimage":USettings.UEditorUploadSettings.get("imageManagerListSize","")
+    }
+    listpath={
+        "listfile":USettings.UEditorUploadSettings.get("fileManagerListPath",""),
+        "listimage":USettings.UEditorUploadSettings.get("imageManagerListPath","")
+    }
+    #取得参数
+    list_size=long(request.GET.get("size",listSize[action]))
+    list_start=long(request.GET.get("start",0))
+
+    files=[]
+    root_path=os.path.join(USettings.gSettings.MEDIA_ROOT,listpath[action]).replace("\\","/")
+    files=get_files(root_path,root_path,allowFiles[action])
+
+    if (len(files)==0):
+        return_info={
+            "state":u"未找到匹配文件！",
+            "list":[],
+            "start":list_start,
+            "total":0
+        }
     else:
-        allow_type= USettings.UEditorSettings["files_upload"]['allow_type']
-    if not original_ext  in allow_type:
-        state=u"服务器不允许上传%s类型的文件。" % original_ext
+        return_info={
+            "state":"SUCCESS",
+            "list":files[list_start:list_start+list_size],
+            "start":list_start,
+            "total":len(files)
+        }
+
+    return HttpResponse(json.dumps(return_info),content_type="application/javascript")
+
+
+def get_files(root_path,cur_path, allow_types=[]):
+    files = []
+    items = os.listdir(cur_path)
+    for item in items:
+        item=unicode(item)
+        item_fullname = os.path.join(root_path,cur_path, item).replace("\\", "/")
+        if os.path.isdir(item_fullname):
+            files.extend(get_files(root_path,item_fullname, allow_types))
+        else:
+            ext = os.path.splitext(item_fullname)[1]
+            is_allow_list= (len(allow_types)==0) or (ext in allow_types)
+            if is_allow_list:
+                files.append({
+                    "url":urllib.basejoin(USettings.gSettings.MEDIA_URL ,os.path.join(os.path.relpath(cur_path,root_path),item).replace("\\","/" )),
+                    "mtime":os.path.getmtime(item_fullname)
+                })
+
+    return files
+
+
+@csrf_exempt
+def UploadFile(request):
+    """上传文件"""
+    if not request.method=="POST":
+        return  HttpResponse(json.dumps(u"{'state:'ERROR'}"),content_type="application/javascript")
+
+    state="SUCCESS"
+    action=request.GET.get("action")
+    #上传文件
+    upload_field_name={
+        "uploadfile":"fileFieldName","uploadimage":"imageFieldName",
+        "uploadscrawl":"scrawlFieldName","catchimage":"catcherFieldName",
+        "uploadvideo":"videoFieldName",
+    }
+    UploadFieldName=request.GET.get(upload_field_name[action],USettings.UEditorUploadSettings.get(action,"upfile"))
+
+    #上传涂鸦，涂鸦是采用base64编码上传的，需要单独处理
+    if action=="uploadscrawl":
+        upload_file_name="scrawl.png"
+        upload_file_size=0
+    else:
+        #取得上传的文件
+        file=request.FILES.get(UploadFieldName,None)
+        if file is None:return  HttpResponse(json.dumps(u"{'state:'ERROR'}") ,content_type="application/javascript")
+        upload_file_name=file.name
+        upload_file_size=file.size
+
+    #取得上传的文件的原始名称
+    upload_original_name,upload_original_ext=os.path.splitext(upload_file_name)
+
+    #文件类型检验
+    upload_allow_type={
+        "uploadfile":"fileAllowFiles",
+        "uploadimage":"imageAllowFiles",
+        "uploadvideo":"videoAllowFiles"
+    }
+    if upload_allow_type.has_key(action):
+        allow_type= list(request.GET.get(upload_allow_type[action],USettings.UEditorUploadSettings.get(upload_allow_type[action],"")))
+        if not upload_original_ext  in allow_type:
+            state=u"服务器不允许上传%s类型的文件。" % upload_original_ext
+
     #大小检验
-    max_size=USettings.UEditorSettings["images_upload"]['max_size']
+    upload_max_size={
+        "uploadfile":"filwMaxSize",
+        "uploadimage":"imageMaxSize",
+        "uploadscrawl":"scrawlMaxSize",
+        "uploadvideo":"videoMaxSize"
+    }
+    max_size=long(request.GET.get(upload_max_size[action],USettings.UEditorUploadSettings.get(upload_max_size[action],0)))
     if  max_size!=0:
         from utils import FileSize
         MF=FileSize(max_size)
-        if file.size>MF.size:
+        if upload_file_size>MF.size:
             state=u"上传文件大小不允许超过%s。" % MF.FriendValue
+
     #检测保存路径是否存在,如果不存在则需要创建
-    OutputPath=os.path.join(USettings.gSettings.MEDIA_ROOT,os.path.dirname(uploadpath)).replace("//","/")
-    if not os.path.exists(OutputPath):
-        os.makedirs(OutputPath)
-        #要保存的文件名格式使用"原文件名_当前时间.扩展名"
-    OutputFile=GenerateRndFilename(file.name)
+    upload_path_format={
+        "uploadfile":"filePathFormat",
+        "uploadimage":"imagePathFormat",
+        "uploadscrawl":"scrawlPathFormat",
+        "uploadvideo":"videoPathFormat"
+    }
+
+    path_format_var={
+        "basename":upload_original_name,
+        "extname":upload_original_ext[1:],
+        "filename":upload_file_name,
+        "time":datetime.datetime.now().strftime("%H%M%S"),
+        "datetime":datetime.datetime.now().strftime("%Y%m%d%H%M%S"),
+        "rnd":random.randrange(100,999)
+    }
+    #取得输出文件的路径
+    OutputPathFormat,OutputPath,OutputFile=get_output_path(request,upload_path_format[action],path_format_var)
+
     #所有检测完成后写入文件
     if state=="SUCCESS":
-        #保存到文件中
-        state=SaveUploadFile(file,os.path.join(OutputPath,OutputFile))
+        if action=="uploadscrawl":
+            state=save_scrawl_file(request,os.path.join(OutputPath,OutputFile))
+        else:
+            #保存到文件中，如果保存错误，需要返回ERROR
+            state=save_upload_file(file,os.path.join(OutputPath,OutputFile))
+
     #返回数据
+    return_info = {
+        'url': urllib.basejoin(USettings.gSettings.MEDIA_URL , OutputPathFormat) ,                # 保存后的文件名称
+        'original': upload_file_name,                  #原始文件名
+        'type': upload_original_ext,
+        'state': state,                         #上传状态，成功时返回SUCCESS,其他任何值将原样返回至图片上传框中
+        'size': upload_file_size
+    }
+    return HttpResponse(json.dumps(return_info,ensure_ascii=False),content_type="application/javascript")
 
-    if uploadtype=="image" or uploadtype=="scrawlbg":
-        rInfo={
-            'url'      :OutputFile,    #保存后的文件名称
-            'title'    :request.POST.get("pictitle",file.name),       #文件描述，对图片来说在前端会添加到title属性上
-            'original' :file.name,      #原始文件名
-            'state'    :state           #上传状态，成功时返回SUCCESS,其他任何值将原样返回至图片上传框中
-        }
-    else:
-        rInfo={
-            'url'      :OutputFile,         #保存后的文件名称
-            'original' :file.name,         #原始文件名
-            'filetype' :original_ext,
-            'state'    :state               #上传状态，成功时返回SUCCESS,其他任何值将原样返回至图片上传框中
-        }
-    if uploadtype=="scrawlbg":#上传涂鸦背景
-        return HttpResponse(u"<script>parent.ue_callback('%s','%s');</script>" % (rInfo["url"],rInfo["state"]))
-    else:#上传文件与图片
-        return HttpResponse(json.dumps(rInfo),content_type="application/javascript")
-
-#图片文件管理器
-def ImageManager(request,imagepath):
-    if not request.method!="GET": return  HttpResponse(json.dumps(u"{'state:'ERROR'}") ,content_type="application/javascript")
-    #取得动作
-    action=request.GET.get("action","get")
-    if action=="get":
-        TargetPath=os.path.join(USettings.gSettings.MEDIA_ROOT,os.path.dirname(imagepath)).replace("//","/")
-        if not os.path.exists(TargetPath):
-            os.makedirs(TargetPath)
-        return HttpResponse(ReadDirImageFiles(TargetPath),content_type="application/javascript")
-
-#遍历所有文件清单
-def ReadDirImageFiles(path):
-    files=""
-    dirs=os.listdir(path)
-    for f in dirs:
-        ext=os.path.splitext(f)[1][1:]
-        if ext!="":
-            if ext in USettings.UEditorSettings["images_upload"]["allow_type"]:
-                if files!="":  files+="ue_separate_ue"
-                files+=f
-    return files
-
-#抓取远程图片
 @csrf_exempt
-def RemoteCatchImage(request,imagepath):
-    upfile_url=request.POST.get("upfile",None)
-    if upfile_url is None:
-        return HttpResponse(json.dumps("{'state:'ERROR'}"),content_type="application/javascript")
-    import urllib
-    from urlparse import urlparse
+def catcher_remote_image(request):
+    """远程抓图，当catchRemoteImageEnable:true时，
+        如果前端插入图片地址与当前web不在同一个域，则由本函数从远程下载图片到本地
+    """
+    if not request.method=="POST":
+        return  HttpResponse(json.dumps( u"{'state:'ERROR'}"),content_type="application/javascript")
 
-    #读取远程图片文件
+    state="SUCCESS"
+
+    allow_type= list(request.GET.get("catcherAllowFiles",USettings.UEditorUploadSettings.get("catcherAllowFiles","")))
+    max_size=long(request.GET.get("catcherMaxSize",USettings.UEditorUploadSettings.get("catcherMaxSize",0)))
+
+    remote_urls=request.POST.getlist("source[]",[])
+    catcher_infos=[]
+    path_format_var={
+        "time":datetime.datetime.now().strftime("%H%M%S"),
+        "datetime":datetime.datetime.now().strftime("%Y%m%d%H%M%S"),
+        "rnd":random.randrange(100,999)
+    }
+    for remote_url in remote_urls:
+        #取得上传的文件的原始名称
+        remote_file_name=os.path.basename(remote_url)
+        remote_original_name,remote_original_ext=os.path.splitext(remote_file_name)
+        #文件类型检验
+        if remote_original_ext  in allow_type:
+            path_format_var.update({
+                "basename":remote_original_name,
+                "extname":remote_original_ext[1:],
+                "filename":remote_original_name
+            })
+            #计算保存的文件名
+            o_path_format,o_path,o_file=get_output_path(request,"catcherPathFormat",path_format_var)
+            o_filename=os.path.join(o_path,o_file).replace("\\","/")
+            #读取远程图片文件
+            try:
+                remote_image=urllib.urlopen(remote_url)
+                 #将抓取到的文件写入文件
+                try:
+                    f = open(o_filename, 'wb')
+                    f.write(remote_image.read())
+                    f.close()
+                    state="SUCCESS"
+                except Exception,E:
+                    state=u"写入抓取图片文件错误:%s" % E.message
+            except Exception,E:
+                state=u"抓取图片错误：%s" % E.message
+
+            catcher_infos.append({
+                "state":state,
+                "url":urllib.basejoin(USettings.gSettings.MEDIA_URL , o_path_format),
+                "size":os.path.getsize(o_filename),
+                "title":os.path.basename(o_file),
+                "original":remote_file_name,
+                "source":remote_url
+            })
+
+    return_info={
+        "state":"SUCCESS" if len(catcher_infos) >0 else "ERROR",
+        "list":catcher_infos
+    }
+
+    return HttpResponse(json.dumps(return_info,ensure_ascii=False),content_type="application/javascript")
+
+
+def get_output_path(request,path_format,path_format_var):
+    #取得输出文件的路径
+    OutputPathFormat=(request.GET.get(path_format,USettings.UEditorSettings["defaultPathFormat"]) % path_format_var).replace("\\","/")
+    #分解OutputPathFormat
+    OutputPath,OutputFile=os.path.split(OutputPathFormat)
+    OutputPath=os.path.join(USettings.gSettings.MEDIA_ROOT,OutputPath)
+    if not OutputFile:#如果OutputFile为空说明传入的OutputPathFormat没有包含文件名，因此需要用默认的文件名
+        OutputFile=USettings.UEditorSettings["defaultPathFormat"] % path_format_var
+        OutputPathFormat=os.path.join(OutputPathFormat,OutputFile)
+    if not os.path.exists(OutputPath):
+        os.makedirs(OutputPath)
+    return ( OutputPathFormat,OutputPath,OutputFile)
+
+#涂鸦功能上传处理
+@csrf_exempt
+def save_scrawl_file(request,filename):
+    import base64
     try:
-        CatchFile=urllib.urlopen(upfile_url)
-    except MyException,E:
-        tip=u"抓取图片错误：%s" % E.message
-        return HttpResponse(json.dumps("{'tip:'%s'}" % tip),content_type="application/javascript")
-
-    #取得目标抓取的文件名称
-    OutFile=os.path.basename(urlparse(CatchFile.geturl()).path)
-    #检查文件类型
-    OutFileExt=os.path.splitext(OutFile)[1][1:]
-    if not (OutFileExt!="" and OutFileExt in USettings.UEditorSettings['images_upload']['allow_type']):
-        tip=u"不允许抓取%s类型的图片错误" % OutFileExt
-        return HttpResponse(json.dumps(u"{'tip:'%s'}" % tip),content_type="application/javascript")
-
-    #将抓取到的文件写入文件
-    try:
-        f = open(os.path.join(USettings.settings.MEDIA_ROOT,imagepath,OutFile).replace("\\","/"), 'wb')
-        f.write(CatchFile.read())
+        content=request.POST.get(USettings.UEditorUploadSettings.get("scrawlFieldName","upfile"))
+        f = open(filename, 'wb')
+        f.write(base64.decodestring(content))
         f.close()
-        rInfo={
-            'url'   : OutFile,                      # 新地址一ue_separate_ue新地址二ue_separate_ue新地址三',
-            'srcUrl':upfile_url,                    #原始地址一ue_separate_ue原始地址二ue_separate_ue原始地址三',
-            'tip'   :u'远程图片抓取成功！'           #'状态提示'
-        }
-
-        return HttpResponse(json.dumps(rInfo),content_type="application/javascript")
-    except MyException,E:
-        tip=u"写入图片文件错误:" % E.message
-        return HttpResponse(json.dumps(u"{'tip:'%s'}" % tip),content_type="application/javascript")
+        state="SUCCESS"
+    except Exception,E:
+        state="写入图片文件错误:%s" % E.message
+    return state
 
 
-#搜索视频
-@csrf_exempt
-def SearchMovie(request):
-    Searchkey =request.POST.get("searchKey",None)
-    if Searchkey is None:
-        return HttpResponse(u"错误！")
-    Searchtype=request.POST.get("videoType","")
-    import urllib
-    Searchkey=urllib.quote(Searchkey.encode("utf8"))
-    Searchtype=urllib.quote(Searchtype.encode("utf8"))
-    try:
-        htmlcontent=urllib.urlopen(u'http://api.tudou.com/v3/gw?method=item.search&appKey=myKey&format=json&kw=%s&pageNo=1&pageSize=20&channelId=%s&inDays=7&media=v&sort=s' % (Searchkey,Searchtype))
-        return HttpResponse(htmlcontent)
-    except MyException,E:
-        return HttpResponse(E.message)
-
-#涂鸦功能上传
-@csrf_exempt
-def scrawlUp(request,uploadpath):
-    action=request.GET.get("action","")
-    #背景上传
-    if action=="tmpImg":
-        return UploadFile(request,"scrawlbg", uploadpath)
-    else:       #处理涂鸦合成相片上传
-        try:
-            content=request.POST.get("content","")
-            import base64
-
-
-            OutputFile=GenerateRndFilename("scrawl.png")
-            OutputPath=os.path.join(USettings.gSettings.MEDIA_ROOT,os.path.dirname(uploadpath)).replace("//","/")
-            if not os.path.exists(OutputPath):
-                os.makedirs(OutputPath)
-            f = open(os.path.join(OutputPath,OutputFile), 'wb')
-            f.write(base64.decodestring(content))
-            f.close()
-            state="SUCCESS"
-        except MyException,E:
-            state="ERROR:"
-        rInfo={
-            "url":OutputFile,
-            "state":state
-        }
-        return HttpResponse(json.dumps(rInfo),content_type="application/javascript")

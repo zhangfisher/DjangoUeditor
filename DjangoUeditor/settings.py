@@ -4,52 +4,102 @@ from django.conf import settings as gSettings   #全局设置
 #工具栏样式，可以添加任意多的模式
 TOOLBARS_SETTINGS={
     "besttome":[['source','undo', 'redo','bold', 'italic', 'underline','forecolor', 'backcolor','superscript','subscript',"justifyleft","justifycenter","justifyright","insertorderedlist","insertunorderedlist","blockquote",'formatmatch',"removeformat",'autotypeset','inserttable',"pasteplain","wordimage","searchreplace","map","preview","fullscreen"], ['insertcode','paragraph',"fontfamily","fontsize",'link', 'unlink','insertimage','insertvideo','attachment','emotion',"date","time"]],
-    "mini":[['source','|','undo', 'redo', '|','bold', 'italic', 'underline','formatmatch','autotypeset', '|', 'forecolor', 'backcolor','|', 'link', 'unlink','|','insertimage','attachment']],
-    "normal":[['source','|','undo', 'redo', '|','bold', 'italic', 'underline','removeformat', 'formatmatch','autotypeset', '|', 'forecolor', 'backcolor','|', 'link', 'unlink','|','insertimage', 'emotion','attachment', '|','inserttable', 'deletetable', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols']],
+    "mini":[['source','|','undo', 'redo', '|','bold', 'italic', 'underline','formatmatch','autotypeset', '|', 'forecolor', 'backcolor','|', 'link', 'unlink','|','simpleupload','attachment']],
+    "normal":[['source','|','undo', 'redo', '|','bold', 'italic', 'underline','removeformat', 'formatmatch','autotypeset', '|', 'forecolor', 'backcolor','|', 'link', 'unlink','|','simpleupload', 'emotion','attachment', '|','inserttable', 'deletetable', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols']]
 }
 
-#引入的第三方插件元组
-THIRD_PARTY_PLUGINS=()
-
-#允许上传的图片类型
-UPLOAD_IMAGES_SETTINGS={
-    "allow_type":"jpg,bmp,png,gif,jpeg",         #文件允许格式
-    "path":"",
-    "max_size":0                                #文件大小限制，单位KB,0不限制
-}
-#允许上传的附件类型
-UPLOAD_FILES_SETTINGS={
-    "allow_type":"zip,rar,doc,docx,xls,xlsx,ppt,pptx,swf,dat,avi,rmvb,txt,pdf",         #文件允许格式
-    "path":"",
-    "max_size":0                               #文件大小限制，单位KB,0不限制
-}
-#涂鸦上传
-SCRAWL_FILES_SETTINGS={
-    "path":"",
-}
-
-#图片管理器地址
-IMAGE_MANGER_SETTINGS={
-    "path":""                  #图片管理器的位置,如果没有指定，默认跟图片路径上传一样
-}
-
+#默认的Ueditor设置，请参见ueditor.config.js
 UEditorSettings={
-    "toolbars":TOOLBARS_SETTINGS,
-    "images_upload":UPLOAD_IMAGES_SETTINGS,
-    "files_upload":UPLOAD_FILES_SETTINGS,
-    "image_manager":IMAGE_MANGER_SETTINGS,
-    "scrawl_upload":SCRAWL_FILES_SETTINGS
+    "toolbars":TOOLBARS_SETTINGS["normal"],
+    "autoFloatEnabled":False,
+    "defaultPathFormat":"%(basename)s_%(datetime)s_%(rnd)s.%(extname)s"   #默认保存上传文件的命名方式
+}
+#请参阅php文件夹里面的config.json进行配置
+UEditorUploadSettings={
+   #上传图片配置项
+    "imageActionName": "uploadimage", #执行上传图片的action名称
+    "imageMaxSize": 10485760, #上传大小限制，单位B,10M
+    "imageFieldName": "upfile", #* 提交的图片表单名称 */
+    "imageUrlPrefix":"",
+    "imagePathFormat":"",
+    "imageAllowFiles": [".png", ".jpg", ".jpeg", ".gif", ".bmp"], #上传图片格式显示
+
+    #涂鸦图片上传配置项 */
+    "scrawlActionName": "uploadscrawl", #执行上传涂鸦的action名称 */
+    "scrawlFieldName": "upfile", #提交的图片表单名称 */
+    "scrawlMaxSize": 10485760, #上传大小限制，单位B  10M
+    "scrawlUrlPrefix":"",
+    "scrawlPathFormat":"",
+
+    #截图工具上传 */
+    "snapscreenActionName": "uploadimage", #执行上传截图的action名称 */
+    "snapscreenPathFormat":"",
+    "snapscreenUrlPrefix":"",
+
+    #抓取远程图片配置 */
+    "catcherLocalDomain": ["127.0.0.1", "localhost", "img.baidu.com"],
+    "catcherPathFormat":"",
+    "catcherActionName": "catchimage", #执行抓取远程图片的action名称 */
+    "catcherFieldName": "source", #提交的图片列表表单名称 */
+    "catcherMaxSize": 10485760, #上传大小限制，单位B */
+    "catcherAllowFiles": [".png", ".jpg", ".jpeg", ".gif", ".bmp"], #抓取图片格式显示 */
+    "catcherUrlPrefix":"",
+    #上传视频配置 */
+    "videoActionName": "uploadvideo", #执行上传视频的action名称 */
+    "videoPathFormat":"",
+    "videoFieldName": "upfile", # 提交的视频表单名称 */
+    "videoMaxSize": 102400000, #上传大小限制，单位B，默认100MB */
+    "videoUrlPrefix":"",
+    "videoAllowFiles": [
+        ".flv", ".swf", ".mkv", ".avi", ".rm", ".rmvb", ".mpeg", ".mpg",
+        ".ogg", ".ogv", ".mov", ".wmv", ".mp4", ".webm", ".mp3", ".wav", ".mid"], #上传视频格式显示 */
+
+    #上传文件配置 */
+    "fileActionName": "uploadfile", #controller里,执行上传视频的action名称 */
+    "filePathFormat":"",
+    "fileFieldName": "upfile",#提交的文件表单名称 */
+    "fileMaxSize": 204800000, #上传大小限制，单位B，200MB */
+    "fileUrlPrefix": "",#文件访问路径前缀 */
+    "fileAllowFiles": [
+        ".png", ".jpg", ".jpeg", ".gif", ".bmp",
+        ".flv", ".swf", ".mkv", ".avi", ".rm", ".rmvb", ".mpeg", ".mpg",
+        ".ogg", ".ogv", ".mov", ".wmv", ".mp4", ".webm", ".mp3", ".wav", ".mid",
+        ".rar", ".zip", ".tar", ".gz", ".7z", ".bz2", ".cab", ".iso",
+        ".doc", ".docx", ".xls", ".xlsx", ".ppt", ".pptx", ".pdf", ".txt", ".md", ".xml"
+    ], #上传文件格式显示 */
+
+    #列出指定目录下的图片 */
+    "imageManagerActionName": "listimage", #执行图片管理的action名称 */
+    "imageManagerListPath":"",
+    "imageManagerListSize": 30, #每次列出文件数量 */
+    "imageManagerAllowFiles": [".png", ".jpg", ".jpeg", ".gif", ".bmp"], #列出的文件类型 */
+    "imageManagerUrlPrefix": "",#图片访问路径前缀 */
+
+    #列出指定目录下的文件 */
+    "fileManagerActionName": "listfile", #执行文件管理的action名称 */
+    "fileManagerListPath":"",
+    "fileManagerUrlPrefix": "",
+    "fileManagerListSize": 30, #每次列出文件数量 */
+    "fileManagerAllowFiles": [
+        ".png", ".jpg", ".jpeg", ".gif", ".bmp",".tif",".psd"
+        ".flv", ".swf", ".mkv", ".avi", ".rm", ".rmvb", ".mpeg", ".mpg",
+        ".ogg", ".ogv", ".mov", ".wmv", ".mp4", ".webm", ".mp3", ".wav", ".mid",
+        ".rar", ".zip", ".tar", ".gz", ".7z", ".bz2", ".cab", ".iso",
+        ".doc", ".docx", ".xls", ".xlsx", ".ppt", ".pptx", ".pdf", ".txt", ".md", ".xml",
+        ".exe",".com",".dll",".msi"
+    ] #列出的文件类型 */
 }
 
-#更新配置：从用户配置文件settings.py重新读入配置UEDITOR_SETTINGS,
+
+#更新配置：从用户配置文件settings.py重新读入配置UEDITOR_SETTINGS,覆盖默认
 def UpdateUserSettings():
     UserSettings=getattr(gSettings,"UEDITOR_SETTINGS",{}).copy()
-    for k in UEditorSettings.iterkeys():
-        try:
-            UEditorSettings[k].update(UserSettings.pop(k,{}))
-        except Exception:
-            pass
-    UEditorSettings.update(UserSettings)
+    if UserSettings.has_key("config"):UEditorSettings.update(UserSettings["config"])
+    if UserSettings.has_key("upload"):UEditorUploadSettings.update(UserSettings["upload"])
+
+#读取用户Settings文件并覆盖默认配置
+UpdateUserSettings()
+
 
 #取得配置项参数
 def GetUeditorSettings(key,default=None):
@@ -59,5 +109,4 @@ def GetUeditorSettings(key,default=None):
         return default
 
 
-#读取用户Settings文件覆盖默认配置
-UpdateUserSettings()
+
