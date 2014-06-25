@@ -36,6 +36,10 @@ class myBtn(UEditorButtonCommand):
             alert("爽!");
             editor.execCommand(uiName);
         """
+    def onExecuteQueryvalueCommand(self):
+        return """
+            return 1;
+        """
     def onExecuteAjaxCommand(self,state):
         if state=="success":
             return u"""

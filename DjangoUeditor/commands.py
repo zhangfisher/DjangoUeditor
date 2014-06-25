@@ -45,9 +45,7 @@ class UEditorCommand(object):
         """" 创建ueditor的ui扩展对象的js代码，如button,combo等  """
         raise NotImplementedError
 
-    def render_queryvalue_command(self):
-        """"生成通过ajax调用后端命令的前端ajax代码"""
-        return ""
+
 
     def render_ajax_command(self):
         """"生成通过ajax调用后端命令的前端ajax代码"""
@@ -71,7 +69,7 @@ class UEditorCommand(object):
         """" 返回注册命令的js定义  """
         cmd=self.onExecuteCommand()
         ajax_cmd=self.render_ajax_command()
-        queryvalue_command=self.render_queryvalue_command()
+        queryvalue_command=self.onExecuteQueryvalueCommand()
         cmds=[]
         if cmd or ajax_cmd:
             cmds.append( u"""execCommand: function() {
@@ -113,7 +111,8 @@ class UEditorCommand(object):
     def onExecuteAjaxCommand(self,state):
         """ 返回执行Command时发起Ajax调用成功与失败的js代码 """
         return ""
-    def onQueryCommandValue(selfself):
+    def onExecuteQueryvalueCommand(self):
+        """"生成通过ajax调用后端命令的前端ajax代码"""
         return ""
 
 class UEditorButtonCommand(UEditorCommand):
