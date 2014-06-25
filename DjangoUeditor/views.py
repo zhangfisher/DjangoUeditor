@@ -29,7 +29,6 @@ def get_ueditor_controller(request):
 
     action=request.GET.get("action","")
     reponseAction={
-        #返回ueditor的上传功能的后端配置，由于我们采用通过前端配置传入，此处默认传回一个空配置即可
         "config":get_ueditor_settings,
         "uploadimage":UploadFile,
         "uploadscrawl":UploadFile,
@@ -217,6 +216,7 @@ def catcher_remote_image(request):
     catcher_infos=[]
     path_format_var={
         "time":datetime.datetime.now().strftime("%H%M%S"),
+        "date":datetime.datetime.now().strftime("%Y%m%d"),
         "datetime":datetime.datetime.now().strftime("%Y%m%d%H%M%S"),
         "rnd":random.randrange(100,999)
     }

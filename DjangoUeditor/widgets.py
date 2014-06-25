@@ -19,7 +19,6 @@ def calc_path(OutputPath, instance=None):
     else:
         try:
             import datetime
-
             OutputPath = datetime.datetime.now().strftime(OutputPath)
         except:
             pass
@@ -96,18 +95,19 @@ class UEditorWidget(forms.Textarea):
     def render(self, name, value, attrs=None):
         if value is None: value = ''
         #传入模板的参数
+        editor_id="id_%s" % name.replace("-", "_")
         uSettings={
             "name": name.replace("-", "_"),
-            "id": name,
+            "id": editor_id,
             "value":value
         }
         if isinstance(self.command,list):
             cmdjs=""
             if isinstance(self.command,list):
                 for cmd in self.command:
-                    cmdjs=cmdjs+cmd.render("id_%s" % name.replace("-", "_"))
+                    cmdjs=cmdjs+cmd.render(editor_id)
             else:
-                cmdis=self.command.render("id_%s" % name.replace("-", "_"))
+                cmdis=self.command.render(editor_id)
             uSettings["commands"]=cmdjs
 
 
@@ -115,7 +115,9 @@ class UEditorWidget(forms.Textarea):
         uSettings["settings"].update({
             "serverUrl": "/ueditor/controller/?%s" % urlencode(self.upload_settings)
         })
-        #uSettings["settings"]["bindEvents"]=self.event_handler.render()
+        #生成事件侦听
+        if self.event_handler:
+            uSettings["bindEvents"]=self.event_handler.render(editor_id)
 
         context = {
             'UEditor': uSettings,
@@ -127,9 +129,6 @@ class UEditorWidget(forms.Textarea):
         return mark_safe(render_to_string('ueditor.html', context))
 
     class Media:
-        # css = {"all": ("ueditor/themes/default/css/ueditor.css",
-        #                "ueditor/themes/iframe.css",
-        # )}
         js = ("ueditor/ueditor.config.js",
               "ueditor/ueditor.all.min.js")
 

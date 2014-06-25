@@ -5,12 +5,31 @@ import settings as USettings
 
 class UEditorEventHandler(object):
     """用来处理UEditor的事件侦听"""
-    def onSelectionChange(self):
+    def on_selectionchange(self):
         return ""
-    def onContentChange(self):
+    def on_contentchange(self):
         return ""
     def render(self,editorID):
-        events=filter(lambda x: x[0:2]=="on", dir(self))
+        jscode="""
+            %(editor)s.addListener('%(event)s', function () {
+                %(event_code)s
+        });"""
+        event_codes=[]
+        #列出所有on_打头的方法，然后在ueditor中进行侦听
+        events=filter(lambda x: x[0:3]=="on_", dir(self))
+        for event in events:
+            try:
+                event_code=getattr(self,event)()
+                if event_code:
+                    event_code=event_code % {"editor":editorID}
+                    event_codes.append(jscode % {"editor":editorID,"event":event[3:],"event_code":event_code})
+            except:
+                pass
+
+        if len(event_codes)==0:
+            return ""
+        else:
+            return "\n".join(event_codes)
 
 class UEditorCommand(object):
     """
