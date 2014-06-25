@@ -112,7 +112,7 @@ class UEditorCommand(object):
         """ 返回执行Command时发起Ajax调用成功与失败的js代码 """
         return ""
     def onExecuteQueryvalueCommand(self):
-        """"生成通过ajax调用后端命令的前端ajax代码"""
+        """" 返回执行QueryvalueCommand时的js代码 """
         return ""
 
 class UEditorButtonCommand(UEditorCommand):

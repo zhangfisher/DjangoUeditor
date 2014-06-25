@@ -88,11 +88,7 @@
       <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\ueditor_all.js" afterPath="" />
       <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\uparse.js" afterPath="" />
       <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\标签div不转p_不过滤style_script的editor_all_min.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MANIFEST" afterPath="$PROJECT_DIR$/MANIFEST" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/commands.py" afterPath="$PROJECT_DIR$/DjangoUeditor/commands.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TestApp/models.py" afterPath="$PROJECT_DIR$/TestApp/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup.py" afterPath="$PROJECT_DIR$/setup.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DjangoUeditor.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -138,8 +134,8 @@
       <file leaf-file-name="commands.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DjangoUeditor/commands.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.62666667" vertical-offset="1371" max-vertical-offset="4092">
-              <caret line="74" column="46" selection-start-line="74" selection-start-column="46" selection-end-line="74" selection-end-column="46" />
+            <state vertical-scroll-proportion="0.64533335" vertical-offset="2244" max-vertical-offset="4092">
+              <caret line="114" column="34" selection-start-line="114" selection-start-column="34" selection-end-line="114" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -253,8 +249,8 @@
         <option value="$PROJECT_DIR$/DjangoUeditor/templates/ueditor.html" />
         <option value="$PROJECT_DIR$/DjangoUeditor/settings.py" />
         <option value="$PROJECT_DIR$/readme.md" />
-        <option value="$PROJECT_DIR$/DjangoUeditor/commands.py" />
         <option value="$PROJECT_DIR$/TestApp/models.py" />
+        <option value="$PROJECT_DIR$/DjangoUeditor/commands.py" />
       </list>
     </option>
   </component>
@@ -663,7 +659,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991454" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1134,8 +1130,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DjangoUeditor/commands.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.62666667" vertical-offset="1371" max-vertical-offset="4092">
-          <caret line="74" column="46" selection-start-line="74" selection-start-column="46" selection-end-line="74" selection-end-column="46" />
+        <state vertical-scroll-proportion="0.64533335" vertical-offset="2244" max-vertical-offset="4092">
+          <caret line="114" column="34" selection-start-line="114" selection-start-column="34" selection-end-line="114" selection-end-column="34" />
           <folding />
         </state>
       </provider>
