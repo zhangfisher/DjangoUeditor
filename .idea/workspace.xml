@@ -3,103 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a277f214-fdc3-4d56-a982-825f5989727e" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DUSite/data/cool/admin_privilege_20140627165232_276.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/lib/DjangoUeditor/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/lib/DjangoUeditor/commands.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/lib/DjangoUeditor/forms.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/lib/DjangoUeditor/models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/lib/DjangoUeditor/settings.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/lib/DjangoUeditor/urls.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/lib/DjangoUeditor/utils.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/lib/DjangoUeditor/views.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/lib/DjangoUeditor/widgets.py" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\dialogs\attachment\callbacks.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\dialogs\attachment\fileTypeMaps.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\dialogs\image\imageUploader.swf" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\dialogs\image\images\center_focus.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\dialogs\image\images\left_focus.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\dialogs\image\images\none_focus.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\dialogs\image\images\right_focus.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\dialogs\tangram.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\dialogs\video\callbacks.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\lang\en\images\imglabel.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\lang\zh-cn\images\imglabel.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\css\ueditor.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\dialogbase.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\images\anchor.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\images\arrow.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\images\bottom.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\images\button-bg.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\images\cancelbutton.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\images\cursor_h.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\images\cursor_v.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\images\dialog-title-bg.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\images\dialog_title.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\images\filescan.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\images\highlighted.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\images\icons-all.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\images\icons-all.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\images\icons-checked.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\images\icons-checked.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\images\icons-hover.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\images\icons-hover.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\images\icons.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\images\icons.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\images\lock.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\images\neweditor-tab-bg.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\images\pagebreak.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\images\scale.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\images\spacer.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\images\sparator_v.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\images\toolbar-bg.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\images\unhighlighted.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\images\upload.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\images\videologo.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\gorgeous\images\word.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\css\ueditor.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\dialogbase.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\images\anchor.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\images\arrow.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\images\bottom.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\images\button-bg.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\images\cancelbutton.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\images\cursor_h.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\images\cursor_v.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\images\dialog-title-bg.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\images\dialog_title.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\images\filescan.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\images\highlighted.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\images\icons-all.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\images\icons-all.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\images\icons-checked.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\images\icons-checked.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\images\icons-hover.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\images\icons-hover.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\images\icons.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\images\icons.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\images\lock.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\images\neweditor-tab-bg.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\images\pagebreak.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\images\scale.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\images\spacer.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\images\sparator_v.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\images\toolbar-bg.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\images\unhighlighted.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\images\upload.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\images\videologo.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\themes\modern\images\word.gif" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\third-party\swfupload\fileprogress.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\third-party\swfupload\swfupload.cookies.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\third-party\swfupload\swfupload.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\third-party\swfupload\swfupload.proxy.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\third-party\swfupload\swfupload.queue.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\third-party\swfupload\swfupload.speed.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\third-party\swfupload\swfupload.swf" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\third-party\swfupload\swfupload_fp9.swf" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\ueditor_all.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\uparse.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\标签div不转p_不过滤style_script的editor_all_min.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/views.py" afterPath="$PROJECT_DIR$/DjangoUeditor/views.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup.py" afterPath="$PROJECT_DIR$/setup.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DjangoUeditor.iws" />
@@ -163,16 +68,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="readme.md" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="readme.md" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/readme.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3378119" vertical-offset="0" max-vertical-offset="6006">
+            <state vertical-scroll-proportion="-6.769231" vertical-offset="0" max-vertical-offset="6006">
               <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
               <folding />
             </state>
           </provider>
           <provider editor-type-id="MarkdownPreviewEditor">
             <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="558">
+              <caret line="0" column="4" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
+              <folding />
+            </state>
           </provider>
         </entry>
       </file>
@@ -252,6 +167,7 @@
         <option value="$PROJECT_DIR$/DjangoUeditor/templates/ueditor.html" />
         <option value="$PROJECT_DIR$/DjangoUeditor/views.py" />
         <option value="$PROJECT_DIR$/readme.md" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -562,12 +478,18 @@
       <created>1346741346086</created>
       <updated>1346741346086</updated>
     </task>
+    <task id="LOCAL-00001" summary="fix admin">
+      <created>1403864038699</created>
+      <updated>1403864038699</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991454" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -626,6 +548,8 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="fix admin" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix admin" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -633,13 +557,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/Python27/Lib/SocketServer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="3202" max-vertical-offset="16126">
-          <caret line="154" column="0" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Python27/Lib/site-packages/django/core/handlers/wsgi.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="4260" max-vertical-offset="4554">
@@ -1012,13 +929,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/readme.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3378119" vertical-offset="0" max-vertical-offset="6006">
+        <state vertical-scroll-proportion="-6.769231" vertical-offset="0" max-vertical-offset="6006">
           <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
           <folding />
         </state>
       </provider>
       <provider editor-type-id="MarkdownPreviewEditor">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="558">
+          <caret line="0" column="4" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>
