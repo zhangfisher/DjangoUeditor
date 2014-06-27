@@ -6,6 +6,7 @@ Ueditor HTML编辑器是百度开源的在线HTML编辑器,功能非常强大，
 ###[2014-6-27]
 
 * Fix:解决在admin管理后台的使用问题。
+* 增加year,month,day的上传路径变量
 
 ###[2014-6-25]
 
@@ -75,12 +76,16 @@ UEditorField的参数如下：
 * *width，height* :编辑器的宽度和高度，以像素为单位。
 * *toolbars* :配置你想显示的工具栏，取值为mini,normal,full，代表小，一般，全部。如果默认的工具栏的按钮数量不符合您的要求，您可以在settings里面配置自己的显示按钮。参见后面介绍。
 * *imagePath* :图片上传后保存的路径,如"images/",实现上传到"{{MEDIA_ROOT}}/images"文件夹。
+    注意：如果imagePath值只设置文件夹，则未尾要有"/"
     imagePath可以按python字符串格式化：如"images/%(basename)s_%(datetime)s.%(extname)"。这样如果上传test.png，则文件会
     被保存为"{{MEDIA_ROOT}}/images/test_20140625122399.png"。
     imagePath中可以使用的变量有：
     * time :上传时的时间，datetime.datetime.now().strftime("%H%M%S")
     * date ：上传时的日期，datetime.datetime.now().strftime("%Y%m%d%")
     * datetime ：上传时的时间和日期，datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+    * year : 年
+    * month : 月
+    * day : 日
     * rnd : 三位随机数，random.randrange(100,999)
     * basename ： 上传的文件名称，不包括扩展名
     * extname : 上传的文件扩展名

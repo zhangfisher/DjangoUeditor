@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a277f214-fdc3-4d56-a982-825f5989727e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DUSite/templates/test2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DUSite/data/cool/admin_privilege_20140627165232_276.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/lib/DjangoUeditor/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/lib/DjangoUeditor/commands.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/lib/DjangoUeditor/forms.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/lib/DjangoUeditor/models.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/lib/DjangoUeditor/settings.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/lib/DjangoUeditor/urls.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/lib/DjangoUeditor/utils.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/lib/DjangoUeditor/views.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build/lib/DjangoUeditor/widgets.py" />
       <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\dialogs\attachment\callbacks.js" afterPath="" />
       <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\dialogs\attachment\fileTypeMaps.js" afterPath="" />
       <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\dialogs\image\imageUploader.swf" afterPath="" />
@@ -89,17 +98,8 @@
       <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\ueditor_all.js" afterPath="" />
       <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\uparse.js" afterPath="" />
       <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\标签div不转p_不过滤style_script的editor_all_min.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/DjangoUeditor-1.5.143.zip" afterPath="$PROJECT_DIR$/dist/DjangoUeditor-1.5.143.zip" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DUSite/test.db" afterPath="$PROJECT_DIR$/DUSite/test.db" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/forms.py" afterPath="$PROJECT_DIR$/DjangoUeditor/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TestApp/forms.py" afterPath="$PROJECT_DIR$/TestApp/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/models.py" afterPath="$PROJECT_DIR$/DjangoUeditor/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup.py" afterPath="$PROJECT_DIR$/setup.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/templates/ueditor.html" afterPath="$PROJECT_DIR$/DjangoUeditor/templates/ueditor.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DUSite/urls.py" afterPath="$PROJECT_DIR$/DUSite/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TestApp/views.py" afterPath="$PROJECT_DIR$/TestApp/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/widgets.py" afterPath="$PROJECT_DIR$/DjangoUeditor/widgets.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/views.py" afterPath="$PROJECT_DIR$/DjangoUeditor/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DjangoUeditor.iws" />
@@ -126,8 +126,8 @@
       <file leaf-file-name="widgets.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DjangoUeditor/widgets.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1116" max-vertical-offset="3300">
-              <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="261" max-vertical-offset="3300">
+              <caret line="42" column="36" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -138,9 +138,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="122" max-vertical-offset="946">
               <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-              <folding>
-                <element signature="e#14#76#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -148,7 +146,7 @@
       <file leaf-file-name="test2.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DUSite/templates/test2.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.677419" vertical-offset="0" max-vertical-offset="462">
+            <state vertical-scroll-proportion="0.0" vertical-offset="176" max-vertical-offset="462">
               <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
               <folding />
             </state>
@@ -160,9 +158,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="88" max-vertical-offset="726">
               <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
-              <folding>
-                <element signature="e#14#65#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -170,8 +166,8 @@
       <file leaf-file-name="readme.md" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/readme.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.37288135" vertical-offset="66" max-vertical-offset="5896">
-              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.3378119" vertical-offset="0" max-vertical-offset="6006">
+              <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -180,11 +176,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DUSite/templates/test.html">
+      <file leaf-file-name="utils.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DjangoUeditor/utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.1290324" vertical-offset="0" max-vertical-offset="462">
-              <caret line="3" column="6" selection-start-line="0" selection-start-column="0" selection-end-line="15" selection-end-column="7" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="22" max-vertical-offset="2816">
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DjangoUeditor/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
+              <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -193,11 +199,9 @@
       <file leaf-file-name="ueditor.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DjangoUeditor/templates/ueditor.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.967742" vertical-offset="0" max-vertical-offset="330">
+            <state vertical-scroll-proportion="0.0" vertical-offset="154" max-vertical-offset="330">
               <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
-              <folding>
-                <element signature="n#style#0;n#script#0;n#!!top" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -205,30 +209,8 @@
       <file leaf-file-name="forms.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TestApp/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="528">
+            <state vertical-scroll-proportion="0.0" vertical-offset="264" max-vertical-offset="528">
               <caret line="12" column="61" selection-start-line="12" selection-start-column="61" selection-end-line="12" selection-end-column="61" />
-              <folding>
-                <element signature="e#15#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ueditor_old.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DjangoUeditor/templates/ueditor_old.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="638">
-              <caret line="0" column="86" selection-start-line="0" selection-start-column="66" selection-end-line="0" selection-end-column="86" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DjangoUeditor/static/ueditor/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.4193548" vertical-offset="198" max-vertical-offset="3960">
-              <caret line="7" column="55" selection-start-line="7" selection-start-column="55" selection-end-line="7" selection-end-column="55" />
               <folding />
             </state>
           </provider>
@@ -257,7 +239,6 @@
         <option value="$PROJECT_DIR$/DUSite/templates/test.html" />
         <option value="$PROJECT_DIR$/DjangoUeditor/static/ueditor/ueditor.config.js" />
         <option value="$PROJECT_DIR$/DjangoUeditor/utils.py" />
-        <option value="$PROJECT_DIR$/DjangoUeditor/views.py" />
         <option value="$PROJECT_DIR$/DjangoUeditor/settings.py" />
         <option value="$PROJECT_DIR$/TestApp/models.py" />
         <option value="$PROJECT_DIR$/DjangoUeditor/commands.py" />
@@ -269,6 +250,7 @@
         <option value="$PROJECT_DIR$/TestApp/views.py" />
         <option value="$PROJECT_DIR$/TestApp/forms.py" />
         <option value="$PROJECT_DIR$/DjangoUeditor/templates/ueditor.html" />
+        <option value="$PROJECT_DIR$/DjangoUeditor/views.py" />
         <option value="$PROJECT_DIR$/readme.md" />
       </list>
     </option>
@@ -330,20 +312,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="DjangoUeditor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DjangoUeditor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DjangoUeditor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dist" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -598,15 +566,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32991454" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19637462" sideWeight="0.6319613" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1978852" sideWeight="0.36784142" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3850085" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20392749" sideWeight="0.36784142" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3848684" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1918429" sideWeight="0.62995595" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46324787" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32820514" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -669,7 +637,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334" vertical-offset="3202" max-vertical-offset="16126">
           <caret line="154" column="0" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -677,7 +644,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="4260" max-vertical-offset="4554">
           <caret line="214" column="0" selection-start-line="214" selection-start-column="0" selection-end-line="214" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -685,7 +651,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334" vertical-offset="1684" max-vertical-offset="9944">
           <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -693,7 +658,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1180" max-vertical-offset="1474">
           <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -737,7 +701,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334" vertical-offset="10698" max-vertical-offset="14960">
           <caret line="493" column="0" selection-start-line="493" selection-start-column="0" selection-end-line="493" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -798,7 +761,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334" vertical-offset="1997" max-vertical-offset="6138">
           <caret line="112" column="0" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -862,14 +824,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DjangoUeditor/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="32" max-vertical-offset="374">
-          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DjangoUeditor/static/ueditor/ueditor.config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1452" max-vertical-offset="9152">
@@ -877,26 +831,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DjangoUeditor/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2816">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DjangoUeditor/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4351" max-vertical-offset="6490">
-          <caret line="218" column="55" selection-start-line="218" selection-start-column="55" selection-end-line="218" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Python27/Lib/site-packages/django/forms/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334" vertical-offset="4448" max-vertical-offset="12672">
           <caret line="222" column="0" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -904,7 +842,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="498" max-vertical-offset="3630">
           <caret line="28" column="40" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -912,7 +849,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2244" max-vertical-offset="4092">
           <caret line="111" column="45" selection-start-line="111" selection-start-column="45" selection-end-line="111" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -920,7 +856,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.13432837" vertical-offset="3255" max-vertical-offset="18942">
           <caret line="164" column="8" selection-start-line="164" selection-start-column="8" selection-end-line="164" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -936,7 +871,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3313433" vertical-offset="2375" max-vertical-offset="7106">
           <caret line="123" column="0" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -944,7 +878,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1275" max-vertical-offset="1738">
           <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -952,7 +885,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
           <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -968,7 +900,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="5745" max-vertical-offset="7172">
           <caret line="280" column="0" selection-start-line="280" selection-start-column="0" selection-end-line="280" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -976,7 +907,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="284" max-vertical-offset="814">
           <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -984,7 +914,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="12" max-vertical-offset="836">
           <caret line="9" column="58" selection-start-line="9" selection-start-column="58" selection-end-line="9" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -992,7 +921,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.4193548" vertical-offset="198" max-vertical-offset="3960">
           <caret line="7" column="55" selection-start-line="7" selection-start-column="55" selection-end-line="7" selection-end-column="55" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1000,7 +928,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="638">
           <caret line="0" column="86" selection-start-line="0" selection-start-column="66" selection-end-line="0" selection-end-column="86" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1008,21 +935,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.1290324" vertical-offset="0" max-vertical-offset="462">
           <caret line="3" column="6" selection-start-line="0" selection-start-column="0" selection-end-line="15" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DjangoUeditor/widgets.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="324" max-vertical-offset="3300">
-          <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DUSite/templates/test2.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.677419" vertical-offset="0" max-vertical-offset="462">
+        <state vertical-scroll-proportion="0.0" vertical-offset="176" max-vertical-offset="462">
           <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
           <folding />
         </state>
@@ -1032,19 +950,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="88" max-vertical-offset="726">
           <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
-          <folding>
-            <element signature="e#14#65#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DjangoUeditor/templates/ueditor.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.967742" vertical-offset="0" max-vertical-offset="330">
+        <state vertical-scroll-proportion="0.0" vertical-offset="154" max-vertical-offset="330">
           <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
-          <folding>
-            <element signature="n#style#0;n#script#0;n#!!top" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1052,9 +966,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="528">
           <caret line="12" column="61" selection-start-line="12" selection-start-column="61" selection-end-line="12" selection-end-column="61" />
-          <folding>
-            <element signature="e#15#39#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1062,16 +974,46 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="122" max-vertical-offset="946">
           <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding>
-            <element signature="e#14#76#0" expanded="true" />
-          </folding>
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DjangoUeditor/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2816">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DjangoUeditor/widgets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="261" max-vertical-offset="3300">
+          <caret line="42" column="36" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DjangoUeditor/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.5172414" vertical-offset="0" max-vertical-offset="6578">
+          <caret line="42" column="33" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DjangoUeditor/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
+          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/readme.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37288135" vertical-offset="66" max-vertical-offset="5896">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.3378119" vertical-offset="0" max-vertical-offset="6006">
+          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
           <folding />
         </state>
       </provider>

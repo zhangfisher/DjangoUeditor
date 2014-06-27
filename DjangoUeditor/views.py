@@ -7,6 +7,16 @@ from django.views.decorators.csrf import csrf_exempt
 import datetime,random
 import urllib
 
+def get_path_format_vars():
+    return {
+        "year":datetime.datetime.now().strftime("%Y"),
+        "month":datetime.datetime.now().strftime("%m"),
+        "day":datetime.datetime.now().strftime("%d"),
+        "time":datetime.datetime.now().strftime("%H%M%S"),
+        "datetime":datetime.datetime.now().strftime("%Y%m%d%H%M%S"),
+        "rnd":random.randrange(100,999)
+    }
+
 #保存上传的文件
 def save_upload_file(PostFile,FilePath):
     try:
@@ -23,7 +33,7 @@ def save_upload_file(PostFile,FilePath):
 @csrf_exempt
 def get_ueditor_settings(request):
     return HttpResponse(json.dumps(USettings.UEditorUploadSettings,ensure_ascii=False), content_type="application/javascript")
-
+@csrf_exempt
 def get_ueditor_controller(request):
     """获取ueditor的后端URL地址    """
 
@@ -170,14 +180,12 @@ def UploadFile(request):
         "uploadvideo":"videoPathFormat"
     }
 
-    path_format_var={
+    path_format_var=get_path_format_vars()
+    path_format_var.update({
         "basename":upload_original_name,
         "extname":upload_original_ext[1:],
         "filename":upload_file_name,
-        "time":datetime.datetime.now().strftime("%H%M%S"),
-        "datetime":datetime.datetime.now().strftime("%Y%m%d%H%M%S"),
-        "rnd":random.randrange(100,999)
-    }
+    })
     #取得输出文件的路径
     OutputPathFormat,OutputPath,OutputFile=get_output_path(request,upload_path_format[action],path_format_var)
 
@@ -214,12 +222,8 @@ def catcher_remote_image(request):
 
     remote_urls=request.POST.getlist("source[]",[])
     catcher_infos=[]
-    path_format_var={
-        "time":datetime.datetime.now().strftime("%H%M%S"),
-        "date":datetime.datetime.now().strftime("%Y%m%d"),
-        "datetime":datetime.datetime.now().strftime("%Y%m%d%H%M%S"),
-        "rnd":random.randrange(100,999)
-    }
+    path_format_var=get_path_format_vars()
+
     for remote_url in remote_urls:
         #取得上传的文件的原始名称
         remote_file_name=os.path.basename(remote_url)
