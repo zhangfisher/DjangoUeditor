@@ -1,18 +1,18 @@
 #coding:utf-8
-from TestApp.forms import UEditorTestModelForm
+from TestApp.forms import UEditorTestModelForm,TestUEditorForm
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from TestApp.models import Blog
-from django.views.decorators.cache import never_cache
-# def TestUEditor(request):
-#     if request.method == 'POST':
-#         form = TestUEditorForm(request.POST)
-#         return HttpResponse(form.data["Content"])
-#     else:
-#         form = TestUEditorForm(
-#             initial={'Description': u'测试'}
-#         )
-#         return render_to_response('test.html', {'form': form})
+
+def TestUEditor(request):
+    if request.method == 'POST':
+        form = TestUEditorForm(request.POST)
+    else:
+        form = TestUEditorForm(
+            initial={'Description': u'测试'}
+        )
+
+    return render_to_response('test2.html', {'form': form})
 
 def TestUEditorModel(request):
     if request.method == 'POST':

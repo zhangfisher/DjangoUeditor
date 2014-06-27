@@ -8,7 +8,7 @@ class UEditorField(forms.CharField):
     def __init__(self,label,width=600, height=300, toolbars="full",imagePath="", filePath="",upload_settings={},settings={},command=None ,event_handler=None,*args,**kwargs):
         uSettings=locals().copy()
         del uSettings["self"],uSettings["label"],uSettings["args"],uSettings["kwargs"]
-        kwargs["widget"]=UEditorWidget(**uSettings)
+        kwargs["widget"]=UEditorWidget(attrs=uSettings)
         kwargs["label"]=label
         super(UEditorField,self).__init__( *args, **kwargs)
 

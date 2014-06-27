@@ -3,7 +3,7 @@ from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 import settings
 from django.contrib import admin
-from TestApp.views import  TestUEditorModel,ajaxcmd
+from TestApp.views import  TestUEditorModel,ajaxcmd,TestUEditor
 
 admin.autodiscover()
 
@@ -15,6 +15,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^ueditor/',include('DjangoUeditor.urls')),
     url(r'^test/$',TestUEditorModel),
+    url(r'^test2/$',TestUEditor),
     url(r'^ajaxcmd/$',ajaxcmd)
 
 )

@@ -25,10 +25,22 @@ def calc_path(OutputPath, instance=None):
 
     return OutputPath
 
-
+#width=600, height=300, toolbars="full", imagePath="", filePath="", upload_settings={},
+                # settings={},command=None,event_handler=None
 class UEditorWidget(forms.Textarea):
-    def __init__(self, width=600, height=300, toolbars="full", imagePath="", filePath="", upload_settings={},
-                 settings={},command=None,event_handler=None ,attrs=None):
+    def __init__(self,attrs=None):
+
+        params=attrs.copy()
+
+        width=params.pop("width")
+        height=params.pop("height")
+        toolbars=params.pop("toolbars","full")
+        imagePath=params.pop("imagePath","")
+        filePath=params.pop("filePath","")
+        upload_settings=params.pop("upload_settings",{})
+        settings=params.pop("settings",{})
+        command=params.pop("command",None)
+        event_handler=params.pop("event_handler",None)
 
         #扩展命令
         self.command=command
@@ -39,6 +51,7 @@ class UEditorWidget(forms.Textarea):
             "imagePathFormat": imagePath,
             "filePathFormat": filePath
         })
+        #保存
         self._upload_settings =self.upload_settings.copy()
         self.recalc_path(None)
 
@@ -113,7 +126,7 @@ class UEditorWidget(forms.Textarea):
 
         uSettings["settings"] = self.ueditor_settings.copy()
         uSettings["settings"].update({
-            "serverUrl": "/ueditor/controller/?%s" % urlencode(self.upload_settings)
+            "serverUrl": "/ueditor/controller/?%s" % urlencode(self._upload_settings)
         })
         #生成事件侦听
         if self.event_handler:
@@ -133,7 +146,6 @@ class UEditorWidget(forms.Textarea):
               "ueditor/ueditor.all.min.js")
 
 
-class AdminUEditorWidget(AdminTextareaWidget, UEditorWidget):
+class AdminUEditorWidget(AdminTextareaWidget,UEditorWidget ):
     def __init__(self, **kwargs):
-        self.ueditor_options = kwargs
-        super(UEditorWidget, self).__init__(kwargs)
+        super(AdminUEditorWidget, self).__init__(**kwargs)

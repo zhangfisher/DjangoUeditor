@@ -19,10 +19,10 @@ class UEditorField(models.TextField):
         super(UEditorField,self).__init__(**kwargs)
 
     def formfield(self,**kwargs):
-        defaults = {'widget': UEditorWidget(**self.ueditor_settings)}
+        defaults = {'widget': UEditorWidget(attrs=self.ueditor_settings)}
         defaults.update(kwargs)
         if defaults['widget'] == admin_widgets.AdminTextareaWidget:
-            defaults['widget'] = AdminUEditorWidget(**self.ueditor_settings)
+            defaults['widget'] = AdminUEditorWidget(attrs=self.ueditor_settings)
         return super(UEditorField, self).formfield(**defaults)
 
 #以下支持south
