@@ -22,7 +22,7 @@ class UEditorField(models.TextField):
         defaults = {'widget': UEditorWidget(**self.ueditor_settings)}
         defaults.update(kwargs)
         if defaults['widget'] == admin_widgets.AdminTextareaWidget:
-            defaults['widget'] = AdminUEditorWidget(**self.ueditor_options)
+            defaults['widget'] = AdminUEditorWidget(**self.ueditor_settings)
         return super(UEditorField, self).formfield(**defaults)
 
 #以下支持south

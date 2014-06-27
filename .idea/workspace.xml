@@ -88,7 +88,8 @@
       <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\ueditor_all.js" afterPath="" />
       <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\uparse.js" afterPath="" />
       <change type="DELETED" beforePath="C:\work\Code\workspace\DjangoUeditor\DjangoUeditor\static\ueditor\标签div不转p_不过滤style_script的editor_all_min.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoUeditor/commands.py" afterPath="$PROJECT_DIR$/DjangoUeditor/commands.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/DjangoUeditor-1.5.143.zip" afterPath="$PROJECT_DIR$/dist/DjangoUeditor-1.5.143.zip" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DjangoUeditor.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -134,8 +135,8 @@
       <file leaf-file-name="commands.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DjangoUeditor/commands.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.64533335" vertical-offset="2244" max-vertical-offset="4092">
-              <caret line="114" column="34" selection-start-line="114" selection-start-column="34" selection-end-line="114" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.46933332" vertical-offset="2244" max-vertical-offset="4092">
+              <caret line="111" column="45" selection-start-line="111" selection-start-column="45" selection-end-line="111" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -669,7 +670,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19637462" sideWeight="0.6319613" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19486405" sideWeight="0.36784142" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31282052" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31282052" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1918429" sideWeight="0.62995595" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46324787" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32820514" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1130,8 +1131,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DjangoUeditor/commands.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64533335" vertical-offset="2244" max-vertical-offset="4092">
-          <caret line="114" column="34" selection-start-line="114" selection-start-column="34" selection-end-line="114" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.46933332" vertical-offset="2244" max-vertical-offset="4092">
+          <caret line="111" column="45" selection-start-line="111" selection-start-column="45" selection-end-line="111" selection-end-column="45" />
           <folding />
         </state>
       </provider>
