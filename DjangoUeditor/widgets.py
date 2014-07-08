@@ -110,7 +110,7 @@ class UEditorWidget(forms.Textarea):
         #传入模板的参数
         editor_id="id_%s" % name.replace("-", "_")
         uSettings={
-            "name": name.replace("-", "_"),
+            "name": name,
             "id": editor_id,
             "value":value
         }
