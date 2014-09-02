@@ -201,6 +201,20 @@ UEditorField的参数如下：
 	
 	widgets.UEditorWidget和forms.UEditorField的输入参数与上述models.UEditorField一样。
 
+    说明 关于第一种方法，需要在代码中建立相应的类（比如就在views.py中），并且需要在views.py渲染视图的时候返回到模板（template）中，对于上面的代码，具体使用可能如下（在views.py中）：
+
+    from DjangoUeditor.forms import UEditorField class TestUEditorForm(forms.Form):
+        Description=UEditorField("描述",initial="abc",width=600,height=800)
+
+    def edit_description_view(request):
+        form = TestUEditorForm()
+        return render(request,'edit-description.htm',{"form": form})
+
+    而在edit-description.htm这个模板（template）里面，只需要在模板相应位置输出form即可：
+    <div class="edit-area"> 
+        {{ form }} 
+    </div>
+
 ##6、Settings配置
       在Django的Settings可以配置以下参数：
             UEDITOR_SETTINGS={
