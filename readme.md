@@ -82,11 +82,11 @@ UEditorField的参数如下：
 * *toolbars* :配置你想显示的工具栏，取值为mini,normal,full，代表小，一般，全部。如果默认的工具栏的按钮数量不符合您的要求，您可以在settings里面配置自己的显示按钮。参见后面介绍。
 * *imagePath* :图片上传后保存的路径,如"images/",实现上传到"{{MEDIA_ROOT}}/images"文件夹。
     注意：如果imagePath值只设置文件夹，则未尾要有"/"
-    imagePath可以按python字符串格式化：如"images/%(basename)s_%(datetime)s.%(extname)"。这样如果上传test.png，则文件会
+    imagePath可以按python字符串格式化：如"images/%(basename)s_%(datetime)s.%(extname)s"。这样如果上传test.png，则文件会
     被保存为"{{MEDIA_ROOT}}/images/test_20140625122399.png"。
     imagePath中可以使用的变量有：
     * time :上传时的时间，datetime.datetime.now().strftime("%H%M%S")
-    * date ：上传时的日期，datetime.datetime.now().strftime("%Y%m%d%")
+    * date ：上传时的日期，datetime.datetime.now().strftime("%Y%m%d")
     * datetime ：上传时的时间和日期，datetime.datetime.now().strftime("%Y%m%d%H%M%S")
     * year : 年
     * month : 月
@@ -98,7 +98,7 @@ UEditorField的参数如下：
 * *filePath* : 附件上传后保存的路径，设置规则与imagePath一样。
 * *upload_settings* : 字典值,
  例:upload_settings={
-        imagePathFormat:"images/%(basename)s_%(datetime)s.%(extname)",
+        imagePathFormat:"images/%(basename)s_%(datetime)s.%(extname)s",
         imageMaxSize:323232
         fileManagerListPath:"files"
    } 
