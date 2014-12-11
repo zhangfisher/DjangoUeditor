@@ -12,6 +12,7 @@ def get_path_format_vars():
         "year":datetime.datetime.now().strftime("%Y"),
         "month":datetime.datetime.now().strftime("%m"),
         "day":datetime.datetime.now().strftime("%d"),
+        "date": datetime.datetime.now().strftime("%Y%m%d"),
         "time":datetime.datetime.now().strftime("%H%M%S"),
         "datetime":datetime.datetime.now().strftime("%Y%m%d%H%M%S"),
         "rnd":random.randrange(100,999)
