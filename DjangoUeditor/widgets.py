@@ -61,14 +61,12 @@ class UEditorWidget(forms.Textarea):
             'initialFrameHeight':height
         }
         #以下处理工具栏设置，将normal,mini等模式名称转化为工具栏配置值
-        try:
-            if type(toolbars)==str:
-                if toolbars =="full":
-                    del self.ueditor_settings['toolbars']
-                else:
-                    self.ueditor_settings["toolbars"]=USettings.TOOLBARS_SETTINGS[toolbars]
-        except:
-            pass
+        if toolbars == "full":
+            del self.ueditor_settings['toolbars']
+        elif isinstance(toolbars, basestring) and toolbars in USettings.TOOLBARS_SETTINGS:
+            self.ueditor_settings["toolbars"]=USettings.TOOLBARS_SETTINGS[toolbars]
+        else:
+            raise ValueError('toolbars should be a string defined in DjangoUeditor.settings.TOOLBARS_SETTINGS, options are full(default), besttome, mini and normal!')
         self.ueditor_settings.update(settings)
         super(UEditorWidget, self).__init__(attrs)
 

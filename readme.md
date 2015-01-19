@@ -1,8 +1,12 @@
-﻿本模块帮助在Django应用中集成百度Ueditor HTML编辑器,Django是Python世界最有影响力的web框架。
+本模块帮助在Django应用中集成百度Ueditor HTML编辑器,Django是Python世界最有影响力的web框架。
 Ueditor HTML编辑器是百度开源的在线HTML编辑器,功能非常强大，像表格可以直接拖动调整单元格大小等。
 
 更新历史
 ============
+###[2015-1-17]     Ver:1.9.143
+
+* Fix:当models.py中toolbars变量使用unicode字符时，编辑器无法加载的问题
+
 
 ###[2014-7-8]     Ver:1.8.143
 
