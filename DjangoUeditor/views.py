@@ -1,4 +1,5 @@
 #coding:utf-8
+from importlib import import_module
 from django.http import HttpResponse
 import settings as USettings
 import os
@@ -196,7 +197,12 @@ def UploadFile(request):
             state=save_scrawl_file(request,os.path.join(OutputPath,OutputFile))
         else:
             #保存到文件中，如果保存错误，需要返回ERROR
-            state=save_upload_file(file,os.path.join(OutputPath,OutputFile))
+            upload_module_name = USettings.UEditorUploadSettings.get("upload_module", None)
+            if upload_module_name:
+                mod = import_module(upload_module_name)
+                state = mod.upload(file, os.path.join(OutputPath, OutputFile))
+            else:
+                state = save_upload_file(file, os.path.join(OutputPath, OutputFile))
 
     #返回数据
     return_info = {
