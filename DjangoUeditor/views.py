@@ -200,7 +200,7 @@ def UploadFile(request):
             upload_module_name = USettings.UEditorUploadSettings.get("upload_module", None)
             if upload_module_name:
                 mod = import_module(upload_module_name)
-                state = mod.upload(file, os.path.join(OutputPath, OutputFile))
+                state = mod.upload(file, os.path.join(OutputPath, OutputPathFormat))
             else:
                 state = save_upload_file(file, os.path.join(OutputPath, OutputFile))
 
