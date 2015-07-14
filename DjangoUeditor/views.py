@@ -194,13 +194,13 @@ def UploadFile(request):
     #所有检测完成后写入文件
     if state=="SUCCESS":
         if action=="uploadscrawl":
-            state=save_scrawl_file(request,os.path.join(OutputPath,OutputFile))
+            state=save_scrawl_file(request, os.path.join(OutputPath,OutputFile))
         else:
             #保存到文件中，如果保存错误，需要返回ERROR
             upload_module_name = USettings.UEditorUploadSettings.get("upload_module", None)
             if upload_module_name:
                 mod = import_module(upload_module_name)
-                state = mod.upload(file, os.path.join(OutputPath, OutputPathFormat))
+                state = mod.upload(file, OutputPathFormat)
             else:
                 state = save_upload_file(file, os.path.join(OutputPath, OutputFile))
 
