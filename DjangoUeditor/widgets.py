@@ -66,7 +66,8 @@ class UEditorWidget(forms.Textarea):
         elif isinstance(toolbars, basestring) and toolbars in USettings.TOOLBARS_SETTINGS:
             self.ueditor_settings["toolbars"]=USettings.TOOLBARS_SETTINGS[toolbars]
         else:
-            raise ValueError('toolbars should be a string defined in DjangoUeditor.settings.TOOLBARS_SETTINGS, options are full(default), besttome, mini and normal!')
+            self.ueditor_settings["toolbars"] = toolbars
+            # raise ValueError('toolbars should be a string defined in DjangoUeditor.settings.TOOLBARS_SETTINGS, options are full(default), besttome, mini and normal!')
         self.ueditor_settings.update(settings)
         super(UEditorWidget, self).__init__(attrs)
 
