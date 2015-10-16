@@ -5,8 +5,8 @@ from django.contrib.admin.widgets import AdminTextareaWidget
 from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
 from django.utils.http import urlencode
-import settings as USettings
-from  commands import *
+import DjangoUeditor.settings as USettings
+from  .commands import *
 
 # 修正输入的文件路径,输入路径的标准格式：abc,不需要前后置的路径符号
 #如果输入的路径参数是一个函数则执行，否则可以拉接受时间格式化，用来生成如file20121208.bmp的重命名格式
@@ -63,10 +63,11 @@ class UEditorWidget(forms.Textarea):
         #以下处理工具栏设置，将normal,mini等模式名称转化为工具栏配置值
         if toolbars == "full":
             del self.ueditor_settings['toolbars']
-        elif isinstance(toolbars, basestring) and toolbars in USettings.TOOLBARS_SETTINGS:
+        elif isinstance(toolbars, str) and toolbars in USettings.TOOLBARS_SETTINGS:
             self.ueditor_settings["toolbars"]=USettings.TOOLBARS_SETTINGS[toolbars]
         else:
-            raise ValueError('toolbars should be a string defined in DjangoUeditor.settings.TOOLBARS_SETTINGS, options are full(default), besttome, mini and normal!')
+            self.ueditor_settings["toolbars"] = toolbars
+            # raise ValueError('toolbars should be a string defined in DjangoUeditor.settings.TOOLBARS_SETTINGS, options are full(default), besttome, mini and normal!')
         self.ueditor_settings.update(settings)
         super(UEditorWidget, self).__init__(attrs)
 
