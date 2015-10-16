@@ -1,10 +1,12 @@
 #coding:utf-8
+from importlib import import_module
 from django.http import HttpResponse
-import settings as USettings
+import DjangoUeditor.settings as USettings
 import os
 import json
 from django.views.decorators.csrf import csrf_exempt
-import datetime,random
+from datetime import datetime
+import random
 import urllib
 
 def get_path_format_vars():
@@ -24,7 +26,7 @@ def save_upload_file(PostFile,FilePath):
         f = open(FilePath, 'wb')
         for chunk in PostFile.chunks():
             f.write(chunk)
-    except Exception,E:
+    except Exception as E:
         f.close()
         return u"写入文件错误:"+ E.message
     f.close()
@@ -193,10 +195,15 @@ def UploadFile(request):
     #所有检测完成后写入文件
     if state=="SUCCESS":
         if action=="uploadscrawl":
-            state=save_scrawl_file(request,os.path.join(OutputPath,OutputFile))
+            state=save_scrawl_file(request, os.path.join(OutputPath,OutputFile))
         else:
             #保存到文件中，如果保存错误，需要返回ERROR
-            state=save_upload_file(file,os.path.join(OutputPath,OutputFile))
+            upload_module_name = USettings.UEditorUploadSettings.get("upload_module", None)
+            if upload_module_name:
+                mod = import_module(upload_module_name)
+                state = mod.upload(file, OutputPathFormat)
+            else:
+                state = save_upload_file(file, os.path.join(OutputPath, OutputFile))
 
     #返回数据
     return_info = {
@@ -248,9 +255,9 @@ def catcher_remote_image(request):
                     f.write(remote_image.read())
                     f.close()
                     state="SUCCESS"
-                except Exception,E:
+                except Exception as E:
                     state=u"写入抓取图片文件错误:%s" % E.message
-            except Exception,E:
+            except Exception as E:
                 state=u"抓取图片错误：%s" % E.message
 
             catcher_infos.append({
@@ -293,7 +300,7 @@ def save_scrawl_file(request,filename):
         f.write(base64.decodestring(content))
         f.close()
         state="SUCCESS"
-    except Exception,E:
+    except Exception as E:
         state="写入图片文件错误:%s" % E.message
     return state
 

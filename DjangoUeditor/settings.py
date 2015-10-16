@@ -94,8 +94,8 @@ UEditorUploadSettings={
 #更新配置：从用户配置文件settings.py重新读入配置UEDITOR_SETTINGS,覆盖默认
 def UpdateUserSettings():
     UserSettings=getattr(gSettings,"UEDITOR_SETTINGS",{}).copy()
-    if UserSettings.has_key("config"):UEditorSettings.update(UserSettings["config"])
-    if UserSettings.has_key("upload"):UEditorUploadSettings.update(UserSettings["upload"])
+    if "config" in UserSettings: UEditorSettings.update(UserSettings["config"])
+    if "upload" in UserSettings: UEditorUploadSettings.update(UserSettings["upload"])
 
 #读取用户Settings文件并覆盖默认配置
 UpdateUserSettings()
