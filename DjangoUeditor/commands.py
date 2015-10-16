@@ -1,6 +1,6 @@
 # coding:utf-8
 import urllib
-import DjangoUeditor.settings as USettings
+from . import settings as USettings
 
 
 class UEditorEventHandler(object):
