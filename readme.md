@@ -1,3 +1,6 @@
+
+###由于近期均没有使用django的计划，所以DjangoUeditor停止更新，欢迎fork自行更改。
+
 本模块帮助在Django应用中集成百度Ueditor HTML编辑器,Django是Python世界最有影响力的web框架。
 Ueditor HTML编辑器是百度开源的在线HTML编辑器,功能非常强大，像表格可以直接拖动调整单元格大小等。
 
