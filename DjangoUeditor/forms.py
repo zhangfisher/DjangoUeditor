@@ -1,13 +1,14 @@
-# coding: utf-8
-
+# -*- coding: utf-8 -*-
 from django import forms
 from widgets import UEditorWidget
 from DjangoUeditor.models import UEditorField as ModelUEditorField
 
 
 class UEditorField(forms.CharField):
-
-    def __init__(self, label, width=600, height=300, toolbars="full", imagePath="", filePath="", upload_settings={}, settings={}, command=None, event_handler=None, *args, **kwargs):
+    def __init__(self, label, width=600, height=300, toolbars="full",
+                 imagePath="", filePath="", upload_settings={},
+                 settings={}, command=None, event_handler=None, *args,
+                 **kwargs):
         uSettings = locals().copy()
         del uSettings["self"], uSettings[
             "label"], uSettings["args"], uSettings["kwargs"]

@@ -1,4 +1,4 @@
-# coding:utf-8
+# -*- coding: utf-8 -*-
 from django.conf import settings as gSettings  # 全局设置
 
 # 工具栏样式，可以添加任意多的模式
@@ -101,6 +101,7 @@ def UpdateUserSettings():
         UEditorSettings.update(UserSettings["config"])
     if 'upload' in UserSettings:
         UEditorUploadSettings.update(UserSettings["upload"])
+
 
 # 读取用户Settings文件并覆盖默认配置
 UpdateUserSettings()

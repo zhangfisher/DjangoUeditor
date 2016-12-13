@@ -1,4 +1,4 @@
-# coding: utf-8
+# -*- coding: utf-8 -*-
 # 文件大小类
 from django.utils import six
 
@@ -7,7 +7,10 @@ if six.PY3:
 
 
 class FileSize():
-    SIZE_UNIT = {"Byte": 1, "KB": 1024, "MB": 1048576, "GB": 1073741824, "TB": 1099511627776}
+    SIZE_UNIT = {
+        "Byte": 1, "KB": 1024, "MB": 1048576,
+        "GB": 1073741824, "TB": 1099511627776
+    }
 
     def __init__(self, size):
         self.size = long(FileSize.Format(size))
@@ -18,7 +21,7 @@ class FileSize():
         if isinstance(size, six.integer_types):
             return size
         else:
-            if not isinstance(size, str):
+            if not isinstance(size, six.string_types):
                 return 0
             else:
                 oSize = size.lstrip().upper().replace(" ", "")
@@ -41,14 +44,14 @@ class FileSize():
     # 返回字节为单位的值
     @property
     def size(self):
-        return self.size
+        return self._size
 
     @size.setter
     def size(self, newsize):
         try:
-            self.size = long(newsize)
+            self._size = long(newsize)
         except:
-            self.size = 0
+            self._size = 0
 
     # 返回带单位的自动值
     @property
@@ -67,7 +70,8 @@ class FileSize():
         if (self.size % FileSize.SIZE_UNIT[unit]) == 0:
             return "%s%s" % ((self.size / FileSize.SIZE_UNIT[unit]), unit)
         else:
-            return "%0.2f%s" % (round(float(self.size) / float(FileSize.SIZE_UNIT[unit]), 2), unit)
+            return "%0.2f%s" % (round(float(self.size) / float(
+                FileSize.SIZE_UNIT[unit]), 2), unit)
 
     def __str__(self):
         return self.FriendValue

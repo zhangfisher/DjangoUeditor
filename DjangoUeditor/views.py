@@ -1,4 +1,4 @@
-# coding:utf-8
+# -*- coding: utf-8 -*-
 from importlib import import_module
 from django.http import HttpResponse
 from . import settings as USettings
@@ -7,8 +7,11 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 import datetime
 import random
-import urllib
 from django.utils import six
+
+from django.utils.six.moves.urllib.request import urlopen
+from django.utils.six.moves.urllib.parse import urljoin
+
 
 if six.PY3:
     long = int
@@ -35,19 +38,22 @@ def save_upload_file(PostFile, FilePath):
             f.write(chunk)
     except Exception as E:
         f.close()
-        return u"写入文件错误:" + E.message
+        return u"写入文件错误: {}".format(E.message)
     f.close()
     return u"SUCCESS"
 
 
 @csrf_exempt
 def get_ueditor_settings(request):
-    return HttpResponse(json.dumps(USettings.UEditorUploadSettings, ensure_ascii=False), content_type="application/javascript")
+    json_data = json.dumps(
+        USettings.UEditorUploadSettings,
+        ensure_ascii=False)
+    return HttpResponse(json_data, content_type="application/javascript")
 
 
 @csrf_exempt
 def get_ueditor_controller(request):
-    """获取ueditor的后端URL地址    """
+    """获取ueditor的后端URL地址"""
 
     action = request.GET.get("action", "")
     reponseAction = {
@@ -67,7 +73,10 @@ def get_ueditor_controller(request):
 def list_files(request):
     """列出文件"""
     if request.method != "GET":
-        return HttpResponse(json.dumps(u"{'state:'ERROR'}"), content_type="application/javascript")
+        return HttpResponse(
+            json.dumps(u"{'state:'ERROR'}"),
+            content_type="application/javascript"
+        )
     # 取得动作
     action = request.GET.get("action", "listimage")
 
@@ -114,7 +123,6 @@ def get_files(root_path, cur_path, allow_types=[]):
     files = []
     items = os.listdir(cur_path)
     for item in items:
-        item = unicode(item)
         item_fullname = os.path.join(
             root_path, cur_path, item).replace("\\", "/")
         if os.path.isdir(item_fullname):
@@ -124,7 +132,11 @@ def get_files(root_path, cur_path, allow_types=[]):
             is_allow_list = (len(allow_types) == 0) or (ext in allow_types)
             if is_allow_list:
                 files.append({
-                    "url": urllib.basejoin(USettings.gSettings.MEDIA_URL, os.path.join(os.path.relpath(cur_path, root_path), item).replace("\\", "/")),
+                    "url": urljoin(
+                        USettings.gSettings.MEDIA_URL,
+                        os.path.join(
+                            os.path.relpath(cur_path, root_path), item
+                            ).replace("\\", "/")),
                     "mtime": os.path.getmtime(item_fullname)
                 })
 
@@ -228,7 +240,7 @@ def UploadFile(request):
     # 返回数据
     return_info = {
         # 保存后的文件名称
-        'url': urllib.basejoin(USettings.gSettings.MEDIA_URL, OutputPathFormat),
+        'url': urljoin(USettings.gSettings.MEDIA_URL, OutputPathFormat),
         'original': upload_file_name,  # 原始文件名
         'type': upload_original_ext,
         'state': state,  # 上传状态，成功时返回SUCCESS,其他任何值将原样返回至图片上传框中
@@ -274,7 +286,7 @@ def catcher_remote_image(request):
             o_filename = os.path.join(o_path, o_file).replace("\\", "/")
             # 读取远程图片文件
             try:
-                remote_image = urllib.urlopen(remote_url)
+                remote_image = urlopen(remote_url)
                 # 将抓取到的文件写入文件
                 try:
                     f = open(o_filename, 'wb')
@@ -288,7 +300,7 @@ def catcher_remote_image(request):
 
             catcher_infos.append({
                 "state": state,
-                "url": urllib.basejoin(USettings.gSettings.MEDIA_URL, o_path_format),
+                "url": urljoin(USettings.gSettings.MEDIA_URL, o_path_format),
                 "size": os.path.getsize(o_filename),
                 "title": os.path.basename(o_file),
                 "original": remote_file_name,
@@ -319,9 +331,8 @@ def get_output_path(request, path_format, path_format_var):
         os.makedirs(OutputPath)
     return (OutputPathFormat, OutputPath, OutputFile)
 
+
 # 涂鸦功能上传处理
-
-
 @csrf_exempt
 def save_scrawl_file(request, filename):
     import base64
@@ -333,5 +344,5 @@ def save_scrawl_file(request, filename):
         f.close()
         state = "SUCCESS"
     except Exception as E:
-        state = "写入图片文件错误:%s" % E.message
+        state = "写入图片文件错误: {}".format(E.message)
     return state
