@@ -147,7 +147,7 @@ def get_files(root_path, cur_path, allow_types=[]):
 def UploadFile(request):
     """上传文件"""
     if not request.method == "POST":
-        return HttpResponse(json.dumps(u"{'state:'ERROR'}"), content_type="application/javascript")
+        return HttpResponse(json.dumps({'state':'ERROR'}), content_type="application/javascript")
 
     state = "SUCCESS"
     action = request.GET.get("action")
@@ -168,7 +168,7 @@ def UploadFile(request):
         # 取得上传的文件
         file = request.FILES.get(UploadFieldName, None)
         if file is None:
-            return HttpResponse(json.dumps(u"{'state:'ERROR'}"), content_type="application/javascript")
+            return HttpResponse(json.dumps({'state':'ERROR'}), content_type="application/javascript")
         upload_file_name = file.name
         upload_file_size = file.size
 
