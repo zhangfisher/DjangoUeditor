@@ -79,7 +79,8 @@ def list_files(request):
 
     files=[]
     root_path=os.path.join(USettings.gSettings.MEDIA_ROOT,listpath[action]).replace("\\","/")
-    files=get_files(root_path,root_path,allowFiles[action])
+    #files=get_files(root_path,root_path,allowFiles[action])
+    files=get_files(USettings.gSettings.MEDIA_ROOT,listpath[action],allowFiles[action])
 
     if (len(files)==0):
         return_info={
@@ -101,18 +102,19 @@ def list_files(request):
 
 def get_files(root_path,cur_path, allow_types=[]):
     files = []
-    items = os.listdir(cur_path)
+    path = os.path.join(root_path, cur_path).replace("\\","/")
+    items = os.listdir(path)
     for item in items:
         item=unicode(item)
         item_fullname = os.path.join(root_path,cur_path, item).replace("\\", "/")
         if os.path.isdir(item_fullname):
-            files.extend(get_files(root_path,item_fullname, allow_types))
+            files.extend(get_files(root_path + cur_path, item, allow_types))
         else:
             ext = os.path.splitext(item_fullname)[1]
             is_allow_list= (len(allow_types)==0) or (ext in allow_types)
             if is_allow_list:
                 files.append({
-                    "url":urllib.basejoin(USettings.gSettings.MEDIA_URL ,os.path.join(os.path.relpath(cur_path,root_path),item).replace("\\","/" )),
+                    "url":urllib.basejoin(USettings.gSettings.MEDIA_URL ,os.path.join(cur_path, item).replace("\\","/" )),
                     "mtime":os.path.getmtime(item_fullname)
                 })
 
