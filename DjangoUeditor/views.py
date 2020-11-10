@@ -21,12 +21,14 @@ def get_path_format_vars():
 
 #保存上传的文件
 def save_upload_file(PostFile,FilePath):
+    f = None
     try:
         f = open(FilePath, 'wb')
         for chunk in PostFile.chunks():
             f.write(chunk)
     except Exception,E:
-        f.close()
+        if f:
+            f.close()
         return u"写入文件错误:"+ E.message
     f.close()
     return u"SUCCESS"
