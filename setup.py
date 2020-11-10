@@ -4,6 +4,7 @@ from distutils.command.install import INSTALL_SCHEMES
 import os
 import sys
 
+
 class osx_install_data(install_data):
     # On MacOS, the platform-specific lib dir is /System/Library/Framework/Python/.../
     # which is wrong. Python 2.5 supplied with MacOS 10.5 has an Apple-specific fix
@@ -17,10 +18,12 @@ class osx_install_data(install_data):
         self.set_undefined_options('install', ('install_lib', 'install_dir'))
         install_data.finalize_options(self)
 
+
 if sys.platform == "darwin":
     cmdclasses = {'install_data': osx_install_data}
 else:
     cmdclasses = {'install_data': install_data}
+
 
 def fullsplit(path, result=None):
     """
@@ -35,6 +38,7 @@ def fullsplit(path, result=None):
     if head == path:
         return result
     return fullsplit(head, [tail] + result)
+
 
 # Tell distutils not to put the data_files in platform-specific installation
 # locations. See here for an explanation:
@@ -69,17 +73,17 @@ if len(sys.argv) > 1 and sys.argv[1] == 'bdist_wininst':
 version = "1.8.143"
 
 setup(
-    name = "DjangoUeditor",
-    version = version,
-    url = 'http://github.com/zhangfisher/DjangoUeditor',
-    author = 'Zhang WeiXiong',
-    author_email = 'wxzhang@126.com',
-    description = 'A Django application for Baidu Ueditor.',
-    download_url = 'http://github.com/zhangfisher/DjangoUeditor',
-    packages = packages,
-    cmdclass = cmdclasses,
-    data_files = data_files,
-    classifiers = [
+    name="DjangoUeditor",
+    version=version,
+    url='http://github.com/zhangfisher/DjangoUeditor',
+    author='Zhang WeiXiong',
+    author_email='wxzhang@126.com',
+    description='A Django application for Baidu Ueditor.',
+    download_url='http://github.com/zhangfisher/DjangoUeditor',
+    packages=packages,
+    cmdclass=cmdclasses,
+    data_files=data_files,
+    classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
         'Framework :: Django',
@@ -95,5 +99,5 @@ setup(
         'Topic :: Internet :: WWW/HTTP :: WSGI',
         'Topic :: Software Development :: Libraries :: Application Frameworks',
         'Topic :: Software Development :: Libraries :: Python Modules',
-   ],
+    ], requires=['django']
 )
