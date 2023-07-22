@@ -44,7 +44,7 @@ for scheme in INSTALL_SCHEMES.values():
 
 # Compile the list of packages available, because distutils doesn't have
 # an easy way to do this.
-packages, data_files = [], []
+packages, data_files = ['six'], []
 root_dir = os.path.dirname(__file__)
 if root_dir != '':
     os.chdir(root_dir)
@@ -68,6 +68,7 @@ if len(sys.argv) > 1 and sys.argv[1] == 'bdist_wininst':
 # Dynamically calculate the version based on django.VERSION.
 version = "1.8.143"
 
+
 setup(
     name = "DjangoUeditor",
     version = version,
@@ -90,6 +91,10 @@ setup(
         'Programming Language :: Python :: 2.5',
         'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
         'Topic :: Internet :: WWW/HTTP :: WSGI',
