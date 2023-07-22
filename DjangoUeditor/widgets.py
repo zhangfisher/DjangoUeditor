@@ -7,7 +7,7 @@ from django.utils.safestring import mark_safe
 from django.utils.http import urlencode
 from . import settings as USettings
 from .commands import *
-from django.utils.six import string_types
+from six import string_types
 
 
 # 修正输入的文件路径,输入路径的标准格式：abc,不需要前后置的路径符号

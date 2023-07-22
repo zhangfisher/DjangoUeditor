@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django import forms
-from widgets import UEditorWidget
+from DjangoUeditor.widgets import UEditorWidget
 from DjangoUeditor.models import UEditorField as ModelUEditorField
 
 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # 文件大小类
-from django.utils import six
+import six
 
 if six.PY3:
     long = int
